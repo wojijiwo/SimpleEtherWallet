@@ -12,12 +12,12 @@
     <template #leftColItem2>
       <module-tokens />
     </template>
-    <template v-if="isEthNetwork" #rightColItem1>
+    <!-- <template v-if="isEthNetwork" #rightColItem1>
       <module-swap-rates />
-    </template>
-    <template #[name]>
+    </template> -->
+    <!-- <template #[name]>
       <wallet-carousel />
-    </template>
+    </template> -->
   </the-wrapper-wallet>
 </template>
 
@@ -26,18 +26,18 @@ import { mapGetters } from 'vuex';
 
 export default {
   components: {
-    WalletCarousel: () =>
-      import('@/views/components-wallet/WalletCarousel.vue'),
+    // WalletCarousel: () => import('@/views/components-wallet/WalletCarousel.vue'),
     ModuleBalance: () => import('@/modules/balance/ModuleBalance'),
     ModuleTokens: () => import('@/modules/balance/ModuleTokens'),
-    ModuleSwapRates: () => import('@/modules/swap/ModuleSwapRates'),
+    // ModuleSwapRates: () => import('@/modules/swap/ModuleSwapRates'),
     TheWrapperWallet: () => import('@/views/components-wallet/TheWrapperWallet')
   },
   computed: {
-    ...mapGetters('global', ['isEthNetwork']),
-    name() {
-      return !this.isEthNetwork ? 'rightColItem1' : 'rightColItem2';
-    }
+    ...mapGetters('global', ['isEthNetwork'])
+    //,
+    // name() {
+    //   return !this.isEthNetwork ? 'rightColItem1' : 'rightColItem2';
+    // }
   }
 };
 </script>

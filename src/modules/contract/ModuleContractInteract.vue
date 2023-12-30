@@ -7,14 +7,14 @@
   >
     <template #moduleBody>
       <div>
-        <mew-select
+        <!-- <mew-select
           v-model="currentContract"
           :items="mergedContracts"
           label="Contract Name"
           class="ContractSelect"
           normal-dropdown
           @input="selectedContract"
-        />
+        /> -->
         <mew-input
           v-model="contractAddress"
           label="Contract Address"
@@ -66,13 +66,13 @@
         :close="closeInteract"
         content-size="medium"
       >
-        <mew-select
+        <!-- <mew-select
           label="Function"
           :items="methods"
           class="mt-4 mt-lg-0 mb-1 FunctionSelect"
           normal-dropdown
           @input="methodSelect"
-        />
+        /> -->
 
         <div v-show="selectedMethod.inputs.length" class="mew-heading-2 mb-3">
           Inputs
@@ -155,7 +155,7 @@
 import Vue from 'vue';
 import { mapState, mapGetters } from 'vuex';
 import { toBN, toWei } from 'web3-utils';
-import { isString, throttle } from 'lodash';
+import { throttle } from 'lodash';
 import { getAddressInfo } from '@kleros/address-tags-sdk';
 
 import { isAddress } from '@/core/helpers/addressUtils';
@@ -181,7 +181,7 @@ export default {
         inputs: [],
         outputs: []
       },
-      outputValues: [],
+      // outputValues: [],
       ethPayable: '0',
       nametag: '',
       networkContracts: []
@@ -218,30 +218,30 @@ export default {
       }
       return true;
     },
-    mergedContracts() {
-      const checkContract = arr =>
-        arr.filter(contract => isString(contract.name));
-      return [
-        { text: 'Select a Contract', selectLabel: true, divider: true }
-      ].concat(
-        checkContract(this.localContracts),
-        checkContract(this.networkContracts)
-      );
-    },
-    methods() {
-      if (this.canInteract) {
-        return JSON.parse(this.abi).filter(item => {
-          if (
-            item.type !== 'constructor' &&
-            item.type !== 'event' &&
-            item.type !== 'fallback'
-          ) {
-            return item;
-          }
-        });
-      }
-      return [];
-    },
+    // mergedContracts() {
+    //   const checkContract = arr =>
+    //     arr.filter(contract => isString(contract.name));
+    //   return [
+    //     { text: 'Select a Contract', selectLabel: true, divider: true }
+    //   ].concat(
+    //     checkContract(this.localContracts),
+    //     checkContract(this.networkContracts)
+    //   );
+    // },
+    // methods() {
+    //   if (this.canInteract) {
+    //     return JSON.parse(this.abi).filter(item => {
+    //       if (
+    //         item.type !== 'constructor' &&
+    //         item.type !== 'event' &&
+    //         item.type !== 'fallback'
+    //       ) {
+    //         return item;
+    //       }
+    //     });
+    //   }
+    //   return [];
+    // },
     canInteract() {
       return isAddress(this.contractAddress) && parseABI(parseJSON(this.abi));
     },
@@ -368,16 +368,16 @@ export default {
           this.inputsValid = false;
       }
     },
-    selectedContract(selected) {
-      if (parseABI(parseJSON(selected.abi))) {
-        if (typeof selected.abi !== 'string')
-          this.abi = JSON.stringify(selected.abi);
-        else this.abi = selected.abi;
-      }
-      if (isAddress(selected.address)) {
-        this.contractAddress = selected.address;
-      }
-    },
+    // selectedContract(selected) {
+    //   if (parseABI(parseJSON(selected.abi))) {
+    //     if (typeof selected.abi !== 'string')
+    //       this.abi = JSON.stringify(selected.abi);
+    //     else this.abi = selected.abi;
+    //   }
+    //   if (isAddress(selected.address)) {
+    //     this.contractAddress = selected.address;
+    //   }
+    // },
     closeInteract() {
       this.interact = false;
       this.resetDefaults();
@@ -389,15 +389,15 @@ export default {
         this.contractAddress
       );
     },
-    methodSelect(evt) {
-      if (evt && evt.inputs && evt.outputs) {
-        this.inputsValid = false;
-        this.selectedMethod = evt;
-        this.selectedMethod.inputs.forEach(v => (v.value = ''));
-        this.selectedMethod.outputs.forEach(v => (v.value = ''));
-        this.outputValues = [];
-      }
-    },
+    // methodSelect(evt) {
+    //   if (evt && evt.inputs && evt.outputs) {
+    //     this.inputsValid = false;
+    //     this.selectedMethod = evt;
+    //     this.selectedMethod.inputs.forEach(v => (v.value = ''));
+    //     this.selectedMethod.outputs.forEach(v => (v.value = ''));
+    //     this.outputValues = [];
+    //   }
+    // },
 
     isValidInput(value, sType) {
       return isContractArgValid(value, sType);

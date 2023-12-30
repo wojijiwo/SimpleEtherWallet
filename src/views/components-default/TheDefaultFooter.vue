@@ -2,7 +2,7 @@
   <div class="mew-component--home-footer textDark--text">
     <div class="desktop-content d-none d-lg-block">
       <v-container class="pt-12 pb-6">
-        <v-row>
+        <v-row v-if="false">
           <v-col v-for="(f, fkey) in footers" :key="fkey" cols="3">
             <div class="subtitle-1 font-weight-bold mb-1">{{ f.title }}</div>
             <v-list>
@@ -423,84 +423,84 @@ export default {
     btcDonationAddress: BTC_DONATION_ADDRESS,
     version: VERSION,
     footers: [
-      {
-        title: 'Affiliate Hardware Wallets',
-        data: [
-          { label: 'Ledger', link: 'https://www.ledger.com/?r=fa4b' },
-          { label: 'BitBox02', link: 'https://shiftcrypto.ch/?ref=mew' },
-          {
-            label: 'Ether Cards',
-            link: 'https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site'
-          },
-          { label: 'Trezor', link: 'https://trezor.io/' },
-          { label: 'KeepKey', link: 'http://lddy.no/a4im' },
-          {
-            label: 'CoolWallet',
-            link: 'https://www.coolwallet.io/mew/?ref=myetherwallet1'
-          },
-          {
-            label: 'Billfodl',
-            link: 'https://billfodl.com/?afmc=2j&utm_campaign=2j&utm_source=leaddyno&utm_medium=affiliate'
-          }
-        ]
-      },
-      {
-        title: 'MEW',
-        data: [
-          { label: 'About us', routerLink: ROUTES_HOME.ABOUT_PAGE.NAME },
-          { label: 'Careers', routerLink: ROUTES_HOME.JOBS.NAME },
-          { label: 'How it works', routerLink: ROUTES_HOME.HOW_IT_WORKS.NAME },
-          { label: 'Team', routerLink: ROUTES_HOME.TEAM_PAGE.NAME },
-          { label: 'Help center', link: 'https://help.myetherwallet.com/en/' },
-          {
-            label: 'Customer support',
-            link: 'mailto:support@myetherwallet.com'
-          },
-          { label: 'MEWtopia', link: 'https://www.mewtopia.com/' },
-          { label: 'Press Kit', routerLink: ROUTES_HOME.PRESS_KIT.NAME },
-          {
-            label: 'Security Policy',
-            routerLink: ROUTES_HOME.SECURITY_POLICY.NAME
-          },
-          {
-            label: 'Advertise With Us',
-            routerLink: ROUTES_HOME.ADVERTISE.NAME
-          }
-        ]
-      },
-      {
-        title: 'Tools',
-        data: [
-          {
-            label: 'MEW wallet',
-            class: 'FooterMEWTool',
-            link: 'https://www.mewwallet.com/'
-          },
-          {
-            label: 'Enkrypt',
-            class: 'FooterCXTool',
-            link: 'https://www.enkrypt.com'
-          },
-          {
-            label: 'Verify message',
-            class: 'FooterVerifyTool',
-            routerLink: 'Tools',
-            query: { tool: 'verify' }
-          },
-          {
-            label: 'Convert units',
-            class: 'FooterConvertTool',
-            routerLink: 'Tools',
-            query: { tool: 'convert' }
-          },
-          {
-            label: 'Send Offline Helper',
-            class: 'FooterOfflineTool',
-            routerLink: 'Tools',
-            query: { tool: 'offline' }
-          }
-        ]
-      }
+      // {
+      //   title: 'Affiliate Hardware Wallets',
+      //   data: [
+      //     { label: 'Ledger', link: 'https://www.ledger.com/?r=fa4b' },
+      //     { label: 'BitBox02', link: 'https://shiftcrypto.ch/?ref=mew' },
+      //     {
+      //       label: 'Ether Cards',
+      //       link: 'https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site'
+      //     },
+      //     { label: 'Trezor', link: 'https://trezor.io/' },
+      //     { label: 'KeepKey', link: 'http://lddy.no/a4im' },
+      //     {
+      //       label: 'CoolWallet',
+      //       link: 'https://www.coolwallet.io/mew/?ref=myetherwallet1'
+      //     },
+      //     {
+      //       label: 'Billfodl',
+      //       link: 'https://billfodl.com/?afmc=2j&utm_campaign=2j&utm_source=leaddyno&utm_medium=affiliate'
+      //     }
+      //   ]
+      // },
+      // {
+      //   title: 'MEW',
+      //   data: [
+      //     { label: 'About us', routerLink: ROUTES_HOME.ABOUT_PAGE.NAME },
+      //     { label: 'Careers', routerLink: ROUTES_HOME.JOBS.NAME },
+      //     { label: 'How it works', routerLink: ROUTES_HOME.HOW_IT_WORKS.NAME },
+      //     { label: 'Team', routerLink: ROUTES_HOME.TEAM_PAGE.NAME },
+      //     { label: 'Help center', link: 'https://help.myetherwallet.com/en/' },
+      //     {
+      //       label: 'Customer support',
+      //       link: 'mailto:support@myetherwallet.com'
+      //     },
+      //     { label: 'MEWtopia', link: 'https://www.mewtopia.com/' },
+      //     { label: 'Press Kit', routerLink: ROUTES_HOME.PRESS_KIT.NAME },
+      //     {
+      //       label: 'Security Policy',
+      //       routerLink: ROUTES_HOME.SECURITY_POLICY.NAME
+      //     },
+      //     {
+      //       label: 'Advertise With Us',
+      //       routerLink: ROUTES_HOME.ADVERTISE.NAME
+      //     }
+      //   ]
+      // },
+      // {
+      //   title: 'Tools',
+      //   data: [
+      //     {
+      //       label: 'MEW wallet',
+      //       class: 'FooterMEWTool',
+      //       link: 'https://www.mewwallet.com/'
+      //     },
+      //     {
+      //       label: 'Enkrypt',
+      //       class: 'FooterCXTool',
+      //       link: 'https://www.enkrypt.com'
+      //     },
+      //     {
+      //       label: 'Verify message',
+      //       class: 'FooterVerifyTool',
+      //       routerLink: 'Tools',
+      //       query: { tool: 'verify' }
+      //     },
+      //     {
+      //       label: 'Convert units',
+      //       class: 'FooterConvertTool',
+      //       routerLink: 'Tools',
+      //       query: { tool: 'convert' }
+      //     },
+      //     {
+      //       label: 'Send Offline Helper',
+      //       class: 'FooterOfflineTool',
+      //       routerLink: 'Tools',
+      //       query: { tool: 'offline' }
+      //     }
+      //   ]
+      // }
     ],
     select: 'en_US',
     languages: [
@@ -509,11 +509,11 @@ export default {
         value: 'en_US',
         flag: require('@/assets/images/flags/uk.png')
       },
-      {
-        name: 'Russian',
-        value: 'ru_RU',
-        flag: require('@/assets/images/flags/russia.png')
-      }
+      // {
+      //   name: 'Russian',
+      //   value: 'ru_RU',
+      //   flag: require('@/assets/images/flags/russia.png')
+      // }
     ],
     socialIcons: [
       {

@@ -93,7 +93,7 @@
         </v-list-item-group>
       </v-list>
 
-      <v-divider class="my-1 mx-6" />
+      <!-- <v-divider class="my-1 mx-6" />
 
       <v-list v-if="!isOfflineApp" dense>
         <v-list-item-group>
@@ -124,7 +124,7 @@
             </v-list-item>
           </template>
         </v-list-item-group>
-      </v-list>
+      </v-list> -->
 
       <v-divider v-if="!isOfflineApp" class="my-1 mx-6" />
 
@@ -275,11 +275,11 @@ import { mapActions, mapGetters, mapState } from 'vuex';
 import send from '@/assets/images/icons/icon-send.svg';
 import portfolio from '@/assets/images/icons/icon-dashboard-enable.svg';
 // import bridge from '@/assets/images/icons/icon-bridge-enable.svg';
-import nft from '@/assets/images/icons/icon-nft.svg';
-import swap from '@/assets/images/icons/icon-swap-enable.svg';
-import receive from '@/assets/images/icons/icon-arrow-down-right.svg';
-import buy from '@/assets/images/icons/icon-credit-card.svg';
-import dapp from '@/assets/images/icons/icon-apps-enable.svg';
+// import nft from '@/assets/images/icons/icon-nft.svg';
+// import swap from '@/assets/images/icons/icon-swap-enable.svg';
+// import receive from '@/assets/images/icons/icon-arrow-down-right.svg';
+// import buy from '@/assets/images/icons/icon-credit-card.svg';
+// import dapp from '@/assets/images/icons/icon-apps-enable.svg';
 import contract from '@/assets/images/icons/icon-contract-enable.svg';
 import message from '@/assets/images/icons/icon-message-enable.svg';
 import settings from '@/assets/images/icons/icon-setting-enable.svg';
@@ -288,10 +288,10 @@ import { EventBus } from '@/core/plugins/eventBus';
 import { ETH, BSC, MATIC } from '@/utils/networks/types';
 import { ROUTES_WALLET } from '@/core/configs/configRoutes';
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
-import { DASHBOARD } from '@/modules/analytics-opt-in/handlers/configs/events';
-import dappsMeta from '@/dapps/metainfo-dapps';
-import { BUYSELL_EVENT } from '@/modules/buy-sell/helpers';
-import isNew from '@/core/helpers/isNew.js';
+// import { DASHBOARD } from '@/modules/analytics-opt-in/handlers/configs/events';
+// import dappsMeta from '@/dapps/metainfo-dapps';
+// import { BUYSELL_EVENT } from '@/modules/buy-sell/helpers';
+// import isNew from '@/core/helpers/isNew.js';
 
 export default {
   components: {
@@ -355,11 +355,11 @@ export default {
     },
     sectionOne() {
       if (this.online) {
-        const hasNew = Object.values(dappsMeta).filter(item => {
-          if (isNew(item.release)) {
-            return item;
-          }
-        });
+        // const hasNew = Object.values(dappsMeta).filter(item => {
+        //   if (isNew(item.release)) {
+        //     return item;
+        //   }
+        // });
         return [
           {
             title: this.$t('interface.menu.portfolio'),
@@ -367,16 +367,22 @@ export default {
             icon: portfolio
           },
           {
-            title: this.$t('interface.menu.apps'),
-            route: { name: ROUTES_WALLET.DAPPS.NAME },
-            icon: dapp,
-            hasNew: hasNew.length > 0
-          },
-          {
-            title: this.$t('interface.menu.nft'),
-            route: { name: ROUTES_WALLET.NFT_MANAGER.NAME },
-            icon: nft
+            title: this.$t('interface.menu.send'),
+            icon: send,
+            route: { name: ROUTES_WALLET.SEND_TX.NAME }
           }
+          //,
+          // {
+          //   title: this.$t('interface.menu.apps'),
+          //   route: { name: ROUTES_WALLET.DAPPS.NAME },
+          //   icon: dapp,
+          //   hasNew: hasNew.length > 0
+          // },
+          // {
+          //   title: this.$t('interface.menu.nft'),
+          //   route: { name: ROUTES_WALLET.NFT_MANAGER.NAME },
+          //   icon: nft
+          // }
         ];
       }
       return [
@@ -392,51 +398,52 @@ export default {
         }
       ];
     },
-    sectionTwo() {
-      if (this.online) {
-        const sectionTwo = [
-          {
-            title: this.$t('interface.menu.swap'),
-            icon: swap,
-            route: { name: ROUTES_WALLET.SWAP.NAME },
-            fn: this.trackToSwap
-          },
-          // {
-          //   title: this.$t('interface.menu.bridge'),
-          //   icon: bridge,
-          //   route: { name: ROUTES_WALLET.BRIDGE.NAME }
-          // },
-          {
-            title: this.$t('interface.menu.send'),
-            icon: send,
-            route: { name: ROUTES_WALLET.SEND_TX.NAME }
-          },
-          {
-            title: this.$t('interface.menu.receive'),
-            icon: receive,
-            fn: () => {
-              this.trackDashboardAmplitude(DASHBOARD.SHOW_RECEIVE_ADDRESS);
-              this.openQR = true;
-            },
-            route: undefined
-          }
-        ];
-        if (
-          this.network.type.name === ETH.name ||
-          this.network.type.name === BSC.name ||
-          this.network.type.name === MATIC.name
-        ) {
-          sectionTwo.push({
-            title: this.$t('interface.menu.buy-sell'),
-            icon: buy,
-            fn: this.openBuySell,
-            route: undefined
-          });
-        }
-        return sectionTwo;
-      }
-      return [];
-    },
+    // sectionTwo() {
+    //   if (this.online) {
+    //     const sectionTwo = [
+    //       // {
+    //       //   title: this.$t('interface.menu.swap'),
+    //       //   icon: swap,
+    //       //   route: { name: ROUTES_WALLET.SWAP.NAME },
+    //       //   fn: this.trackToSwap
+    //       // },
+    //       // {
+    //       //   title: this.$t('interface.menu.bridge'),
+    //       //   icon: bridge,
+    //       //   route: { name: ROUTES_WALLET.BRIDGE.NAME }
+    //       // },
+    //       {
+    //         title: this.$t('interface.menu.send'),
+    //         icon: send,
+    //         route: { name: ROUTES_WALLET.SEND_TX.NAME }
+    //       } //,
+    //       // {
+    //       //   title: this.$t('interface.menu.receive'),
+    //       //   icon: receive,
+    //       //   fn: () => {
+    //       //     this.trackDashboardAmplitude(DASHBOARD.SHOW_RECEIVE_ADDRESS);
+    //       //     this.openQR = true;
+    //       //   },
+    //       //   route: undefined
+    //       // }
+    //     ];
+
+    //     // if (
+    //     //   this.network.type.name === ETH.name ||
+    //     //   this.network.type.name === BSC.name ||
+    //     //   this.network.type.name === MATIC.name
+    //     // ) {
+    //     //   sectionTwo.push({
+    //     //     title: this.$t('interface.menu.buy-sell'),
+    //     //     icon: buy,
+    //     //     fn: this.openBuySell,
+    //     //     route: undefined
+    //     //   });
+    //     // }
+    //     return sectionTwo;
+    //   }
+    //   return [];
+    // },
     sectionThree() {
       if (this.online) {
         return [
@@ -544,9 +551,9 @@ export default {
   methods: {
     ...mapActions('wallet', ['removeWallet']),
     ...mapActions('global', ['setDarkMode']),
-    trackToSwap() {
-      this.trackDashboardAmplitude(DASHBOARD.SWAP_LEFT_NAVIGATION);
-    },
+    // trackToSwap() {
+    //   this.trackDashboardAmplitude(DASHBOARD.SWAP_LEFT_NAVIGATION);
+    // },
     closeNetworkOverlay() {
       if (this.validNetwork) {
         this.isOpenNetworkOverlay = false;
@@ -564,9 +571,9 @@ export default {
     openNetwork() {
       this.isOpenNetworkOverlay = true;
     },
-    openBuySell() {
-      EventBus.$emit(BUYSELL_EVENT);
-    },
+    // openBuySell() {
+    //   EventBus.$emit(BUYSELL_EVENT);
+    // },
     openNavigation() {
       this.navOpen = true;
     },

@@ -3,9 +3,9 @@
     <template #leftColItem1>
       <module-contract-deploy />
     </template>
-    <template #rightColItem1>
+    <!-- <template #rightColItem1>
       <module-swap-rates />
-    </template>
+    </template> -->
   </the-wrapper-wallet>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   components: {
     TheWrapperWallet: () =>
       import('@/views/components-wallet/TheWrapperWallet'),
-    ModuleSwapRates: () => import('@/modules/swap/ModuleSwapRates'),
+    // ModuleSwapRates: () => import('@/modules/swap/ModuleSwapRates'),
     ModuleContractDeploy: () =>
       import('@/modules/contract/ModuleContractDeploy')
   }

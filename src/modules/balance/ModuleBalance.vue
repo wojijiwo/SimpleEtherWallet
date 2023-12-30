@@ -73,14 +73,6 @@
               class="mr-3"
               @click.native="navigateToSend"
             />
-            <mew-button
-              v-if="hasSwap"
-              :has-full-width="false"
-              :title="swapText"
-              btn-size="large"
-              btn-style="outline"
-              @click.native="navigateToSwap"
-            />
           </div>
         </div>
       </template>
@@ -109,7 +101,7 @@ import {
 import { ROUTES_WALLET } from '@/core/configs/configRoutes';
 
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
-import { DASHBOARD } from '@/modules/analytics-opt-in/handlers/configs/events.js';
+// import { DASHBOARD } from '@/modules/analytics-opt-in/handlers/configs/events.js';
 export default {
   components: {
     Loader: () => import('./ModuleBalanceLoader'),
@@ -154,9 +146,9 @@ export default {
     sendText() {
       return `Send ${this.network.type.currencyName}`;
     },
-    swapText() {
-      return `Swap ${this.network.type.currencyName}`;
-    },
+    // swapText() {
+    //   return `Swap ${this.network.type.currencyName}`;
+    // },
     subtitle() {
       return `My ${this.network.type.currencyName} Balance`;
     },
@@ -280,11 +272,12 @@ export default {
     },
     navigateToSend() {
       this.$router.push({ name: ROUTES_WALLET.SEND_TX.NAME });
-    },
-    navigateToSwap() {
-      this.trackDashboardAmplitude(DASHBOARD.SWAP_BALANCE);
-      this.$router.push({ name: ROUTES_WALLET.SWAP.NAME });
     }
+    // ,
+    // navigateToSwap() {
+    //   this.trackDashboardAmplitude(DASHBOARD.SWAP_BALANCE);
+    //   this.$router.push({ name: ROUTES_WALLET.SWAP.NAME });
+    // }
   }
 };
 </script>

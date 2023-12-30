@@ -9,6 +9,13 @@ const SAFE_TIME = 1000 * 1 * 60 * 60 * 24 * 7; //7days
 // copy-webpack-plugin major update
 // holding off on husky changes as the cli still has some weird necessary changes to run commitlint
 const EXCEPTIONS = [
+  '@amplitude/analytics-browser',
+  '@walletconnect/ethereum-provider',
+  '@sentry/browser',
+  '@sentry/tracing',
+  '@sentry/vue',
+  '@trezor/connect-web',
+
   'multicoin-address-validator',
   'postcss-import',
   'postcss-url',
