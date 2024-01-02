@@ -1,4 +1,3 @@
-import DappRoutes from '@/dapps/routes-dapps.js';
 import { swapProps, swapRouterGuard } from './helpers';
 import { ROUTES_WALLET } from '../configs/configRoutes';
 export default {
@@ -96,17 +95,6 @@ export default {
         title: 'Swap and Trade Crypto | Easy Crypto Trading',
         description:
           'Swap crypto across chains. Trade crypto securely without using a centralized exchange.'
-      }
-    },
-    {
-      path: ROUTES_WALLET.DAPPS.PATH,
-      component: () => import('@/views/layouts-wallet/TheDappCenterLayout.vue'),
-      children: DappRoutes,
-      meta: {
-        noAuth: false,
-        title: 'Access DApps on MyEtherWallet | Web3 DApps',
-        description:
-          'Engage with the featured web3 DApps on MyEtherWallet. Find the next cool crypto project.'
       }
     },
     {

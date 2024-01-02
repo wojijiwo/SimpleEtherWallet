@@ -1,6 +1,6 @@
 <template>
   <v-container class="the-wallet-header">
-    <v-row v-if="false" class="d-flex align-center py-2 pb-md-4 pb-lg-2 px-1">
+    <v-row class="d-flex align-center py-2 pb-md-4 pb-lg-2 px-1">
       <v-col
         cols="12"
         :md="hasAds ? '6' : '8'"
@@ -101,16 +101,6 @@
             </a>
           </v-menu>
         </div>
-        <a
-          v-if="ads.length < 3"
-          class="ad-button-template prototype-background d-flex align-center justify-center white--text mr-3"
-          href="https://www.myetherwallet.com/advertise-with-us"
-          target="_blank"
-          rel="noopener noreferrer"
-          @click="buttonTracking('AdvertiseWithUs')"
-        >
-          <span> Advertise With Us </span>
-        </a>
         <div class="align-center d-none d-lg-block">
           <notification-overlay
             v-if="online"

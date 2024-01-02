@@ -14,9 +14,6 @@ import VueIntercom from '@mathieustan/vue-intercom';
 import VueSocialSharing from 'vue-social-sharing';
 import * as amplitude from '@amplitude/analytics-browser';
 
-/**Dapps Store */
-import { dappStoreBeforeCreate } from '../dapps/dappsStore';
-
 const originalPush = Router.prototype.push;
 const originalReplace = Router.prototype.replace;
 Router.prototype.push = function push(path) {
@@ -106,7 +103,6 @@ new Vue({
     this.$store.commit('addressBook/INIT_STORE');
     this.$store.commit('article/INIT_STORE');
     this.$store.commit('popups/INIT_STORE');
-    dappStoreBeforeCreate(this.$store);
 
     this.$amplitude.setOptOut(!this.$store.state.popups.consentToTrack);
   },

@@ -34,16 +34,6 @@
                   | lokalise('home.eth-blocks.description')
               }}
             </div>
-            <mew-button
-              :has-full-width="$vuetify.breakpoint.smAndDown"
-              class="mt-8"
-              btn-size="xlarge"
-              :title="
-                $t('home.eth-blocks.btn-text')
-                  | lokalise('home.eth-blocks.btn-text')
-              "
-              @click.native="navigateToEthBlocks"
-            ></mew-button>
           </div>
         </v-col>
       </v-row>
@@ -56,7 +46,6 @@ import ethBlocksThree from '@/assets/images/icons/eth-blocks-3.jpg';
 import ethBlocksSix from '@/assets/images/icons/eth-blocks-6.jpg';
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
 import { LANDING_PAGE } from '@/modules/analytics-opt-in/handlers/configs/events.js';
-import { ETH_BLOCKS_ROUTE } from '@/dapps/eth-blocks/configsRoutes';
 export default {
   name: 'HomeEthBlocks',
   mixins: [handlerAnalytics],
@@ -67,12 +56,6 @@ export default {
     };
   },
   methods: {
-    navigateToEthBlocks() {
-      this.trackLandingPageAmplitude(LANDING_PAGE.ACCESS_WALLET_MINT);
-      this.$router.push({
-        name: ETH_BLOCKS_ROUTE.CORE.NAME
-      });
-    }
   }
 };
 </script>
