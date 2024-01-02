@@ -15,13 +15,6 @@
                 height="32px"
               />
             </a>
-            <a
-              href="javascript:void(0)"
-              class="header__mobile-menu-open"
-              @click="openMobileMenu"
-            >
-              <open-menu />
-            </a>
           </div>
         </div>
       </div>
@@ -31,15 +24,14 @@
 
 <script>
 import LogoComponent from '@/assets/images/icons/logo-component.vue';
-import OpenMenu from '@/assets/images/icons/open-menu.vue';
+// import OpenMenu from '@/assets/images/icons/open-menu.vue';
 import ScrollMagic from 'scrollmagic';
 // import { ROUTES_HOME } from '@/core/configs/configRoutes';
 
 export default {
   name: 'TheDefaultHeader',
   components: {
-    LogoComponent,
-    OpenMenu
+    LogoComponent
   },
   data() {
     return {
@@ -85,9 +77,9 @@ export default {
       .addTo(controller);
   },
   methods: {
-    openMobileMenu() {
-      this.$emit('openMobileMenu');
-    }
+    // openMobileMenu() {
+    //   this.$emit('openMobileMenu');
+    // }
   }
 };
 </script>

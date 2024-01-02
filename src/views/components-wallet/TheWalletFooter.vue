@@ -43,27 +43,7 @@
               target="_blank"
               >Help Center</a
             >
-            <span class="px-1">|</span>
-            <a
-              v-if="!isOfflineApp"
-              class="textDark--text"
-              href="https://hackenproof.com/myetherwallet/myetherwallet"
-              target="_blank"
-              >Bug Bounty</a
             >
-            <!-- hide language select till translations are done-->
-            <!-- <span class="mx-5">|</span>
-            <div style="max-width=200px">
-              <v-select
-                v-model="onLanguage"
-                append-icon="mdi-chevron-down"
-                :items="languages"
-                item-text="name"
-                item-value="value"
-                return-object
-                single-line
-              ></v-select>
-            </div> -->
           </div>
         </v-col>
       </v-row>

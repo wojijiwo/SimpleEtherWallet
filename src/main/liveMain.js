@@ -93,7 +93,9 @@ new Vue({
     const userId = this.$route.query.intercomid
       ? this.$route.query.intercomid
       : uuidv4();
-    this.$intercom.boot({ user_id: userId });
+    if (this.$intercom) {
+      this.$intercom.boot({ user_id: userId });
+    }
 
     if (locStore.get('mew-testing') === undefined) {
       locStore.set('mew-testing', false);

@@ -156,34 +156,19 @@ export default {
     buttons() {
       return !this.isOfflineApp
         ? [
-            /* Enkrypt */
+            /* Extension */
             {
               color: 'white',
-              title: 'Install Enkrypt browser extension',
+              title: 'Install Browser extension',
               subtitle:
-                'MEW’s official browser extension. Connect to web3 on Ethereum and Polkadot, manage your NFTs, buy, send and swap',
-              official: true,
+                'Use browser extension. Connect to web3 on Ethereum and Polkadot, manage your NFTs, buy, send and swap',
+              official: false,
               recommended: true,
               icon: require('@/assets/images/icons/icon-enkrypt-block.svg'),
-              alt: 'Enkrypt',
+              alt: 'Extension',
               fn: () => {
                 this.trackCreateWalletAmplitude(COMMON.GOOGLE_STORE);
                 this.openEnkrypt();
-              }
-            },
-            /* MEW wallet Button */
-            {
-              color: 'white',
-              title: 'Download MEW wallet app',
-              subtitle:
-                'Our official mobile app to create your wallet, and connect to MEW Web using your mobile phone',
-              official: true,
-              recommended: true,
-              icon: require('@/assets/images/icons/icon-mew-wallet.png'),
-              alt: 'MEW wallet',
-              fn: () => {
-                this.trackCreateWalletAmplitude(COMMON.MEW_WALLET);
-                this.openMewWallet();
               }
             },
             /* Hardware wallets */

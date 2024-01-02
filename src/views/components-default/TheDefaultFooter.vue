@@ -2,79 +2,6 @@
   <div class="mew-component--home-footer textDark--text">
     <div class="desktop-content d-none d-lg-block">
       <v-container class="pt-12 pb-6">
-        <v-row v-if="false">
-          <v-col v-for="(f, fkey) in footers" :key="fkey" cols="3">
-            <div class="subtitle-1 font-weight-bold mb-1">{{ f.title }}</div>
-            <v-list>
-              <v-list-item v-for="(d, dkey) in f.data" :key="dkey" class="px-0">
-                <router-link
-                  v-if="d.routerLink"
-                  :to="{ name: d.routerLink, query: d.query }"
-                  :class="d.class"
-                  @click="trackFooterLink(d)"
-                >
-                  {{ d.label }}
-                </router-link>
-                <a
-                  v-if="d.link"
-                  :href="d.link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  :class="d.class"
-                  @click="trackFooterLink(d)"
-                >
-                  {{ d.label }}
-                </a>
-              </v-list-item>
-            </v-list>
-          </v-col>
-          <v-col cols="3">
-            <div class="subtitle-1 font-weight-bold mb-5 d-flex align-center">
-              {{ $t('footer.donation.heading') }}
-            </div>
-            <p>{{ $t('footer.donation.text') }}</p>
-            <a
-              class="color--inherit d-flex align-center mb-3"
-              target="_blank"
-              rel="noopener noreferrer"
-              :href="`https://ethvm.com/address/${ethDonationAddress}`"
-              @click="trackDonationAddress('ethereum')"
-            >
-              <mew-icon
-                icon-name="eth"
-                icon-type="mew"
-                :img-height="35"
-                class="mr-2"
-              />
-              <div>
-                <div>{{ $t('footer.donation.ether') }}</div>
-                <div v-show="false" class="overline">
-                  Address: {{ ethDonationAddress }}
-                </div>
-              </div>
-            </a>
-            <a
-              class="color--inherit d-flex align-center"
-              target="_blank"
-              rel="noopener noreferrer"
-              :href="`https://blockchain.info/address/${btcDonationAddress}`"
-              @click="trackDonationAddress('bitcoin')"
-            >
-              <mew-icon
-                icon-name="btc"
-                icon-type="mew"
-                :img-height="35"
-                class="mr-2"
-              />
-              <div>
-                <div>{{ $t('footer.donation.bitcoin') }}</div>
-                <div v-show="false" class="overline">
-                  Address: {{ btcDonationAddress }}
-                </div>
-              </div>
-            </a>
-          </v-col>
-        </v-row>
         <div class="d-flex align-center justify-space-between mt-12">
           <div class="d-flex align-center mx-n6">
             <div class="d-flex align-center line-height-small">
@@ -110,17 +37,6 @@
                 >
                   {{ $t('footer.tos') }}
                 </router-link>
-              </div>
-              <div class="px-6">
-                <a
-                  class="color--inherit"
-                  href="https://hackenproof.com/myetherwallet/myetherwallet"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  @click="trackFooterLink({ label: 'bug_bounty' })"
-                >
-                  Bug Bounty
-                </a>
               </div>
             </div>
           </div>
@@ -197,49 +113,6 @@
     </div>
 
     <div class="mobile-content d-block d-lg-none">
-      <v-expansion-panels accordion>
-        <v-expansion-panel v-for="(mf, mfkey) in footers" :key="mfkey">
-          <v-expansion-panel-header>
-            <v-container>
-              <v-sheet color="transparent" max-width="500px" class="mx-auto">
-                <h3>{{ mf.title }}</h3>
-              </v-sheet>
-            </v-container>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content>
-            <v-container>
-              <v-sheet color="transparent" max-width="500px" class="mx-auto">
-                <ul>
-                  <li
-                    v-for="(md, mdkey) in mf.data"
-                    :key="mdkey"
-                    class="d-flex align-center"
-                  >
-                    <v-icon>mdi-menu-right</v-icon>
-                    <router-link
-                      v-if="md.routerLink"
-                      :to="{ name: md.routerLink, query: md.query }"
-                      @click="trackFooterLink(md)"
-                    >
-                      {{ md.label }}
-                    </router-link>
-                    <a
-                      v-if="md.link"
-                      :href="md.link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      @click="trackFooterLink(md)"
-                    >
-                      {{ md.label }}
-                    </a>
-                  </li>
-                </ul>
-              </v-sheet>
-            </v-container>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-expansion-panels>
-
       <v-container class="py-12">
         <v-sheet color="transparent" max-width="500px" class="mx-auto">
           <div>
@@ -347,17 +220,6 @@
                   Terms
                 </router-link>
               </div>
-              <div class="px-4 px-lg-6">
-                <a
-                  class="color--inherit"
-                  href="https://hackenproof.com/myetherwallet/myetherwallet"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  @click="trackFooterLink({ label: 'bug_bounty' })"
-                >
-                  Bug Bounty
-                </a>
-              </div>
             </div>
           </div>
         </v-sheet>
@@ -422,86 +284,6 @@ export default {
     // eslint-disable-next-line
     btcDonationAddress: BTC_DONATION_ADDRESS,
     version: VERSION,
-    footers: [
-      // {
-      //   title: 'Affiliate Hardware Wallets',
-      //   data: [
-      //     { label: 'Ledger', link: 'https://www.ledger.com/?r=fa4b' },
-      //     { label: 'BitBox02', link: 'https://shiftcrypto.ch/?ref=mew' },
-      //     {
-      //       label: 'Ether Cards',
-      //       link: 'https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site'
-      //     },
-      //     { label: 'Trezor', link: 'https://trezor.io/' },
-      //     { label: 'KeepKey', link: 'http://lddy.no/a4im' },
-      //     {
-      //       label: 'CoolWallet',
-      //       link: 'https://www.coolwallet.io/mew/?ref=myetherwallet1'
-      //     },
-      //     {
-      //       label: 'Billfodl',
-      //       link: 'https://billfodl.com/?afmc=2j&utm_campaign=2j&utm_source=leaddyno&utm_medium=affiliate'
-      //     }
-      //   ]
-      // },
-      // {
-      //   title: 'MEW',
-      //   data: [
-      //     { label: 'About us', routerLink: ROUTES_HOME.ABOUT_PAGE.NAME },
-      //     { label: 'Careers', routerLink: ROUTES_HOME.JOBS.NAME },
-      //     { label: 'How it works', routerLink: ROUTES_HOME.HOW_IT_WORKS.NAME },
-      //     { label: 'Team', routerLink: ROUTES_HOME.TEAM_PAGE.NAME },
-      //     { label: 'Help center', link: 'https://help.myetherwallet.com/en/' },
-      //     {
-      //       label: 'Customer support',
-      //       link: 'mailto:support@myetherwallet.com'
-      //     },
-      //     { label: 'MEWtopia', link: 'https://www.mewtopia.com/' },
-      //     { label: 'Press Kit', routerLink: ROUTES_HOME.PRESS_KIT.NAME },
-      //     {
-      //       label: 'Security Policy',
-      //       routerLink: ROUTES_HOME.SECURITY_POLICY.NAME
-      //     },
-      //     {
-      //       label: 'Advertise With Us',
-      //       routerLink: ROUTES_HOME.ADVERTISE.NAME
-      //     }
-      //   ]
-      // },
-      // {
-      //   title: 'Tools',
-      //   data: [
-      //     {
-      //       label: 'MEW wallet',
-      //       class: 'FooterMEWTool',
-      //       link: 'https://www.mewwallet.com/'
-      //     },
-      //     {
-      //       label: 'Enkrypt',
-      //       class: 'FooterCXTool',
-      //       link: 'https://www.enkrypt.com'
-      //     },
-      //     {
-      //       label: 'Verify message',
-      //       class: 'FooterVerifyTool',
-      //       routerLink: 'Tools',
-      //       query: { tool: 'verify' }
-      //     },
-      //     {
-      //       label: 'Convert units',
-      //       class: 'FooterConvertTool',
-      //       routerLink: 'Tools',
-      //       query: { tool: 'convert' }
-      //     },
-      //     {
-      //       label: 'Send Offline Helper',
-      //       class: 'FooterOfflineTool',
-      //       routerLink: 'Tools',
-      //       query: { tool: 'offline' }
-      //     }
-      //   ]
-      // }
-    ],
     select: 'en_US',
     languages: [
       {
@@ -509,11 +291,11 @@ export default {
         value: 'en_US',
         flag: require('@/assets/images/flags/uk.png')
       },
-      // {
-      //   name: 'Russian',
-      //   value: 'ru_RU',
-      //   flag: require('@/assets/images/flags/russia.png')
-      // }
+      {
+        name: 'Russian',
+        value: 'ru_RU',
+        flag: require('@/assets/images/flags/russia.png')
+      }
     ],
     socialIcons: [
       {

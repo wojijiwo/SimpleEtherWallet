@@ -177,6 +177,7 @@ export default {
     // Hide intercom button when users reach the footer or bottom of screen
     footerHideIntercom() {
       window.onscroll = function () {
+        if (!window.Intercom) return;
         if (
           window.innerHeight + window.scrollY >=
           document.body.offsetHeight - 100
