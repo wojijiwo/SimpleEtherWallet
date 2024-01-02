@@ -1,7 +1,5 @@
 /* eslint camelcase: 0 */
 import common from './common/ru_RU';
-// import dappsMaker from './dapps-maker/ru_RU';
-// import dappsSubmission from './dapps-submission/ru_RU';
 import home from './home/ru_RU';
 import footer from './footer/ru_RU';
 import gettingStarted from './getting-started/ru_RU';

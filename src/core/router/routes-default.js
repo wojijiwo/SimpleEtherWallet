@@ -23,17 +23,6 @@ export default {
       }
     },
     {
-      path: ROUTES_HOME.HOW_IT_WORKS.PATH,
-      name: ROUTES_HOME.HOW_IT_WORKS.NAME,
-      component: () => import('@/views/layouts-default/TheHowItWorksLayout'),
-      meta: {
-        noAuth: true,
-        title: 'What MyEtherWallet Does | How MyEtherWallet Works',
-        description:
-          "How you can use MyEtherWallet to create a crypto wallet, swap crypto and more. Ethereum's original wallet."
-      }
-    },
-    {
       path: ROUTES_HOME.SECURITY_POLICY.PATH,
       name: ROUTES_HOME.SECURITY_POLICY.NAME,
       component: () =>
@@ -92,17 +81,6 @@ export default {
       }
     },
     {
-      path: ROUTES_HOME.ABOUT_PAGE.PATH,
-      name: ROUTES_HOME.ABOUT_PAGE.NAME,
-      component: () => import('@/views/layouts-default/TheCompanyLayout'),
-      meta: {
-        noAuth: true,
-        title: 'About MyEtherWallet | The Original Ethereum Wallet',
-        description:
-          'Learn about MyEtherWallet, the original Ethereum wallet. Founded in 2015, MyEtherWallet is trusted by millions of crypto users.'
-      }
-    },
-    {
       path: ROUTES_HOME.TEAM_PAGE.PATH,
       name: ROUTES_HOME.TEAM_PAGE.NAME,
       component: () => import('@/views/layouts-default/TheTeamLayout'),
@@ -133,17 +111,6 @@ export default {
         title: 'Convert Ether Units | Ethereum Gas Calculator ',
         description:
           'Calculate your Ethereum gas with MyEtherWallet. Convert Gwei to ETH units easily with MEW.'
-      }
-    },
-    {
-      path: ROUTES_HOME.JOBS.PATH,
-      name: ROUTES_HOME.JOBS.NAME,
-      component: () => import('@/views/layouts-default/TheCareersLayout'),
-      meta: {
-        noAuth: true,
-        title: 'Careers at MyEtherWallet',
-        description:
-          'Looking to work in crypto? Inquire about open positions at MyEtherWallet.'
       }
     },
     {
