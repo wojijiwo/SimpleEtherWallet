@@ -1,7 +1,5 @@
 /* eslint camelcase: 0 */
 import common from './common/en_US';
-import dappsMaker from './dapps-maker/en_US';
-import dappsSubmission from './dapps-submission/en_US';
 import home from './home/en_US';
 import howItWorks from './how-it-works/en_US.json';
 import aboutUs from './about-us/en_US.json';
@@ -26,19 +24,10 @@ import buyHardwareWallet from './other/buy-hardware-wallet/en_US';
 import convertUnits from './other/convert-units/en_US';
 import verifyMessage from './other/verify-message/en_US';
 import sendTx from './send-tx/en_US';
-import ens from './dapps-ens/en_US';
-import rns from './dapps-rns/en_US';
-import unstoppable from './dapps-unstoppable/en_US';
-import subDomain from './dapps-sub-domain/en_US';
-import scheduleTx from './dapps-schedule-tx/en_US';
 import nftManager from './nft-manager/en_US';
 import signMessage from './sign-message/en_US';
-import ambrpay from './dapps-ambrpay/en_US';
 import phishing from './other/phishing/en_US';
-import aave from './dapps-aave/en_US';
 import header from './header/en_US';
-import mcdMaker from './dapps-mcd-maker/en_US';
-import dappsStaked from './dapps-staked/en_US';
 
 const en_US = {
   common: common,
@@ -63,23 +52,12 @@ const en_US = {
   bitboxError: bitboxError,
   bitbox02Error: bitbox02Error,
   buyHardwareWallet: buyHardwareWallet,
-  dappsMaker: dappsMaker,
   convertUnits: convertUnits,
   verifyMessage: verifyMessage,
   sendTx: sendTx,
-  ens: ens,
-  rns: rns,
-  unstoppable: unstoppable,
-  subDomain: subDomain,
-  scheduleTx: scheduleTx,
   nftManager: nftManager,
   signMessage: signMessage,
-  dappsSubmission: dappsSubmission,
-  ambrpay: ambrpay,
   phishing: phishing,
-  aave: aave,
-  header: header,
-  mcdMaker: mcdMaker,
-  dappsStaked: dappsStaked
+  header: header
 };
 export default en_US;

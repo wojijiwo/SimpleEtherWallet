@@ -1,4 +1,3 @@
-import { swapProps, swapRouterGuard } from './helpers';
 import { ROUTES_WALLET } from '../configs/configRoutes';
 export default {
   path: '/wallet',
@@ -82,19 +81,6 @@ export default {
         title: 'Manage Your NFTs | View Your NFTs',
         description:
           'View and send your NFTs on MyEtherWallet. See all your NFTs on multiple chains.'
-      }
-    },
-    {
-      path: ROUTES_WALLET.SWAP.PATH,
-      name: ROUTES_WALLET.SWAP.NAME,
-      component: () => import('@/views/layouts-wallet/TheSwapLayout'),
-      props: swapProps,
-      beforeEnter: swapRouterGuard,
-      meta: {
-        noAuth: false,
-        title: 'Swap and Trade Crypto | Easy Crypto Trading',
-        description:
-          'Swap crypto across chains. Trade crypto securely without using a centralized exchange.'
       }
     },
     {

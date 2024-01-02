@@ -9,7 +9,7 @@
       class="text-center d-flex justify-end flex-grow-1 pt-6 mr-3"
       :has-elevation="true"
       :has-indicator="true"
-      title="NFT Manager"
+      title="NFTs"
     >
       <template #moduleBody>
         <!--
@@ -313,7 +313,7 @@ export default {
       } else {
         setTimeout(() => {
           Toast(
-            `NFT Manager not supported in network: ${this.network.type.name}`,
+            `NFTs not supported in network: ${this.network.type.name}`,
             {},
             WARNING
           );

@@ -98,7 +98,6 @@ import formatNonChainNotification from './helpers/formatNonChainNotification';
 import { EventBus } from '@/core/plugins/eventBus.js';
 
 import handlerNotification from './handlers/handlerNotification.mixin';
-import handlerSwap from '@/modules/swap/handlers/handlerSwap';
 import NonChainNotification from './handlers/nonChainNotification';
 
 export default {
@@ -132,12 +131,6 @@ export default {
     ...mapState('wallet', ['address', 'web3']),
     loading() {
       return this.$apollo.loading;
-    },
-    /**
-     * Swap Handler
-     */
-    swapper() {
-      return new handlerSwap(this.web3, this.network.type.name);
     },
     /**
      * Formatted outgoing tx notifications
