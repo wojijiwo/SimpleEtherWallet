@@ -44,11 +44,6 @@
               ]"
               >Enjoy 0.9% fee when you select ‘Bank account’ as payment method.
               <br v-if="ads.length > 0" />
-              <span
-                class="greenPrimary--text font-weight-bold cursor--pointer"
-                @click="buyCryptoNow"
-                >Buy crypto now.</span
-              >
             </span>
           </div>
         </div>
@@ -115,8 +110,6 @@
 <script>
 import { mapGetters, mapState } from 'vuex';
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
-import { BUYSELL_EVENT } from '@/modules/buy-sell/helpers';
-import { EventBus } from '@/core/plugins/eventBus';
 export default {
   components: {
     notificationOverlay: () =>
@@ -144,9 +137,6 @@ export default {
       const res = await fetch('https://partners.mewapi.io/ads-web');
       const ads = await res.json();
       this.ads = ads;
-    },
-    buyCryptoNow() {
-      EventBus.$emit(BUYSELL_EVENT);
     },
     buttonTracking(name) {
       this.trackAd(name);

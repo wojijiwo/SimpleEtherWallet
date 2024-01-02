@@ -19,8 +19,7 @@ export default {
     TheDefaultHeader: () => import('./components-default/TheDefaultHeader'),
     // TheMobileMenu: () => import('./components-default/TheMobileMenu'),
     // NewLookBanner: () => import('./components-default/NewLookBanner'),
-    TheDefaultFooter: () => import('./components-default/TheDefaultFooter'),
-    TheEnkryptPopup: () => import('./components-default/TheEnkryptPopup')
+    TheDefaultFooter: () => import('./components-default/TheDefaultFooter')
   },
   data() {
     return {

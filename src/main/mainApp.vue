@@ -4,7 +4,6 @@
     <module-toast />
     <module-global-modals />
     <module-analytics />
-    <module-buy-sell :open="buySellOpen" @close="buySellOpen = false" />
   </v-app>
 </template>
 
@@ -25,11 +24,9 @@ import {
   SUCCESS,
   INFO
 } from '@/modules/toast/handler/handlerToast';
-import { BUYSELL_EVENT } from '@/modules/buy-sell/helpers';
 import { EventBus } from '@/core/plugins/eventBus';
 import handlerAnalyticsMixin from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin.js';
 import {
-  BUY_SELL,
   SWAP
 } from '@/modules/analytics-opt-in/handlers/configs/events.js';
 
@@ -39,13 +36,11 @@ export default {
     ModuleToast: () => import('@/modules/toast/ModuleToast.vue'),
     ModuleGlobalModals: () =>
       import('@/modules/global-modals/ModuleGlobalModals'),
-    ModuleAnalytics: () => import('@/modules/analytics-opt-in/ModuleAnalytics'),
-    ModuleBuySell: () => import('@/modules/buy-sell/ModuleBuySell')
+    ModuleAnalytics: () => import('@/modules/analytics-opt-in/ModuleAnalytics')
   },
   mixins: [handlerAnalyticsMixin],
   data() {
     return {
-      buySellOpen: false
     };
   },
   computed: {
@@ -106,9 +101,6 @@ export default {
     EventBus.$on('swapTxNotBroadcastedFailed', () => {
       this.trackSwapAmplitude(SWAP.NOT_BROADCASTED);
     });
-    EventBus.$on(BUYSELL_EVENT, () => {
-      this.openBuy();
-    });
     this.footerHideIntercom();
     this.logMessage();
     this.setOnlineStatus(window.navigator.onLine);
@@ -133,17 +125,8 @@ export default {
         this.setMigrated(true);
       });
     }
-
-    const _self = this;
-    // Close modal with 'esc' key
-    document.addEventListener('keydown', e => {
-      if (e.keyCode === 27) {
-        _self.buySellOpen = false;
-      }
-    });
   },
   beforeDestroy() {
-    EventBus.$off(BUYSELL_EVENT);
     EventBus.$off('swapTxBroadcasted');
     EventBus.$off('swapTxReceivedReceipt');
     EventBus.$off('swapTxFailed');
@@ -160,10 +143,6 @@ export default {
     ...mapActions('article', ['updateArticles']),
     ...mapActions('popups', ['showSurveyPopup']),
     ...mapActions('external', ['storeEIP6963Wallet']),
-    openBuy() {
-      this.trackBuySell(BUY_SELL.OPEN_BUY_SELL_MODAL);
-      this.buySellOpen = true;
-    },
     logMessage() {
       /* eslint-disable no-console */
       console.log(

@@ -156,10 +156,6 @@
         :close="close"
         :wallet-type="type"
       />
-      <enkrypt-missing-snackbar
-        :show="showInstallEnkrypt"
-        @closeEnkryptMissingSnackbar="showInstallEnkrypt = false"
-      />
     </v-container>
   </div>
 </template>
@@ -195,8 +191,6 @@ export default {
       import('@/modules/access-wallet/ModuleAccessWalletSoftware'),
     ModuleAccessWalletMobile: () =>
       import('@/modules/access-wallet/ModuleAccessWalletMobile'),
-    EnkryptMissingSnackbar: () =>
-      import('@/views/components-default/EnkryptMissingSnackbar.vue'),
     TheLayoutHeader: () => import('../components-default/TheLayoutHeader')
   },
   mixins: [handlerAnalytics],

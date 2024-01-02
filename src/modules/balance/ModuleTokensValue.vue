@@ -68,9 +68,6 @@
 import { mapGetters, mapState } from 'vuex';
 import { toBN } from 'web3-utils';
 
-import { EventBus } from '@/core/plugins/eventBus';
-import { BUYSELL_EVENT } from '../buy-sell/helpers';
-
 export default {
   name: 'ModuleTokensValue',
   components: {
@@ -143,9 +140,6 @@ export default {
     checkLink() {
       if (this.tokenCount > 0) this.handleTokensPopup();
       else this.openBuySell();
-    },
-    openBuySell() {
-      EventBus.$emit(BUYSELL_EVENT);
     }
   }
 };

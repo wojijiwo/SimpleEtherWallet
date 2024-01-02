@@ -92,17 +92,6 @@ export default {
       }
     },
     {
-      path: ROUTES_HOME.PRESS_KIT.PATH,
-      name: ROUTES_HOME.PRESS_KIT.NAME,
-      component: () => import('@/views/layouts-default/ThePressKitLayout'),
-      meta: {
-        noAuth: true,
-        title: 'Press Kit And Logos For MyEtherWallet',
-        description:
-          'The press kit and logos for MyEtherWallet. Download images and boilerplates for MEW.'
-      }
-    },
-    {
       path: ROUTES_HOME.CONVERT_UNITS.PATH,
       name: ROUTES_HOME.CONVERT_UNITS.NAME,
       component: () => import('@/views/layouts-default/TheConvertUnitsLayout'),
@@ -123,14 +112,6 @@ export default {
         title: 'Advertise On MyEtherWallet | Grow Your Crypto Audience',
         description:
           "Advertise to MyEtherWallet's 3 million users. Maximize your crypto advertising spend."
-      }
-    },
-    {
-      path: ROUTES_HOME.QR_CODE.PATH,
-      name: ROUTES_HOME.QR_CODE.NAME,
-      component: () => import('@/views/layouts-default/TheQrCodeLayout'),
-      meta: {
-        noAuth: true
       }
     },
     {

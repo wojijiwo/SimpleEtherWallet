@@ -25,7 +25,6 @@
         </template>
       </mew-tabs>
     </v-container>
-    <get-started />
   </div>
 </template>
 
@@ -39,8 +38,7 @@ export default {
     ModuleToolsConvert: () => import('@/modules/tools/ModuleToolsConvert'),
     ModuleToolsOfflineHelper: () =>
       import('@/modules/tools/ModuleToolsOfflineHelper'),
-    ModuleMessageVerify: () => import('@/modules/message/ModuleMessageVerify'),
-    GetStarted: () => import('../components-default/GetStarted')
+    ModuleMessageVerify: () => import('@/modules/message/ModuleMessageVerify')
   },
   data: () => ({
     currentTool: '',
