@@ -111,10 +111,8 @@ import { mapGetters, mapState } from 'vuex';
 import { uniqWith, isEqual } from 'lodash';
 import BigNumber from 'bignumber.js';
 
-// import { ROUTES_WALLET } from '@/core/configs/configRoutes';
 import { currencyToNumber } from '@/core/helpers/localization';
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
-// import { DASHBOARD } from '../analytics-opt-in/handlers/configs/events';
 
 export default {
   components: {
@@ -292,30 +290,6 @@ export default {
         newObj.tokenImg = item.img ? item.img : this.network.type.icon;
       }
 
-      if (this.hasSwap) {
-        newObj.callToAction = [
-          // {
-          //   title: 'Swap',
-          //   method: () => {
-          //     const obj = {
-          //       fromToken: item.contract,
-          //       amount: item.balancef
-          //     };
-          //     this.trackDashboardAmplitude(DASHBOARD.SWAP_MY_TOKENS_VALUE);
-          //     this.$router
-          //       .push({
-          //         name: ROUTES_WALLET.SWAP.NAME,
-          //         query: obj
-          //       })
-          //       .then(() => {
-          //         this.$emit('trade');
-          //       });
-          //   },
-          //   btnStyle: 'outline',
-          //   colorTheme: 'greenPrimary'
-          // }
-        ];
-      }
       return newObj;
     },
     toggleAddCustomToken(val) {

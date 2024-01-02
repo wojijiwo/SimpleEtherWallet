@@ -60,9 +60,7 @@ export default async ({ payload, store, requestManager }, res, next) => {
   tx.from = tx.from ? tx.from : store.state.wallet.address;
   getSanitizedTx(tx)
     .then(_tx => {
-      const event = confirmInfo
-        ? EventNames.SHOW_SWAP_TX_MODAL
-        : EventNames.SHOW_TX_CONFIRM_MODAL;
+      const event = EventNames.SHOW_TX_CONFIRM_MODAL;
       const params = confirmInfo
         ? [_tx, confirmInfo]
         : [_tx, toDetails, currency];

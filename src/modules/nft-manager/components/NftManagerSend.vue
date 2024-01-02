@@ -42,7 +42,6 @@
 import { mapGetters } from 'vuex';
 
 import nftPlaceholder from '@/assets/images/icons/icon-nft-placeholder.png';
-import buyMore from '@/core/mixins/buyMore.mixin.js';
 export default {
   components: {
     ModuleAddressBook: () => import('@/modules/address-book/ModuleAddressBook')
@@ -57,7 +56,6 @@ export default {
       )}`;
     }
   },
-  mixins: [buyMore],
   props: {
     nft: {
       default: () => {

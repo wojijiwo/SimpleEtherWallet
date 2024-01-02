@@ -193,7 +193,6 @@
 </template>
 
 <script>
-import { SWAP } from '@/modules/analytics-opt-in/handlers/configs/events.js';
 export default {
   props: {
     title: {
@@ -270,13 +269,13 @@ export default {
   },
   methods: {
     handleClickOutside() {
-      this.close(SWAP.CLICK_OUTSIDE);
+      // this.close(SWAP.CLICK_OUTSIDE);
     },
     handleCloseButton() {
-      this.close(SWAP.BUTTON_CANCEL);
+      // this.close(SWAP.BUTTON_CANCEL);
     },
     handleClickX() {
-      this.close(SWAP.X_OUT);
+      // this.close(SWAP.X_OUT);
     }
   }
 };

@@ -34,16 +34,9 @@
 =====================================================================================
 -->
     <template #message="item">
-      <span class="mew-label"
-        >{{ item.message }}
-        <a
-          v-if="buyMoreStr"
-          rel="noopener noreferrer"
-          class="mew-label"
-          @click="emitBuyMore"
-          >{{ buyMoreStr }}</a
-        ></span
-      >
+      <span class="mew-label">
+        {{ item.message }}
+      </span>
     </template>
     <template #prepend-inner>
       <!--
@@ -245,13 +238,6 @@ export default {
       default: ''
     },
     /**
-     * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
-     */
-    buyMoreStr: {
-      type: String,
-      default: ''
-    },
-    /**
      * Displays a button to the right inner side of the input.
      * Takes an object.
      * i.e. {title: 'Max', disabled: false, method: () => {}, loading: false}.
@@ -317,9 +303,6 @@ export default {
     this.inputValue = this.value;
   },
   methods: {
-    emitBuyMore() {
-      this.$emit('buyMore');
-    },
     onPasswordIconClick() {
       if (this.isPasswordType) {
         this.showPassword = !this.showPassword;

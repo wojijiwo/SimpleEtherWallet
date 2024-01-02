@@ -47,10 +47,8 @@
                 disabled: disableSwapBtn,
                 method: setEntireBal
               }"
-              :buy-more-str="buyMoreStr"
               class="AmountInput"
               @keydown.native="preventCharE($event)"
-              @buyMore="openBuySell"
               @input="val => setAmount(val, false)"
             />
           </div>
@@ -200,7 +198,6 @@ import {
   toBNSafe
 } from '@/core/helpers/numberFormatHelper';
 import { MAIN_TOKEN_ADDRESS } from '@/core/helpers/common';
-import buyMore from '@/core/mixins/buyMore.mixin.js';
 import { fromBase, toBase } from '@/core/helpers/unit';
 
 import SendTransaction from '@/modules/send/handlers/handlerSend';
@@ -211,7 +208,6 @@ export default {
     TransactionFee: () => import('@/modules/transaction-fee/TransactionFee'),
     SendLowBalanceNotice: () => import('./components/SendLowBalanceNotice.vue')
   },
-  mixins: [buyMore],
   props: {
     prefilledAmount: {
       type: String,
@@ -279,15 +275,6 @@ export default {
         !this.gasEstimationIsReady ||
         !isHexStrict(this.data)
       );
-    },
-    buyMoreStr() {
-      return this.isEthNetwork &&
-        this.isFromNetworkCurrency &&
-        this.amountError === 'Not enough balance to send!'
-        ? this.network.type.canBuy
-          ? 'Buy more.'
-          : ''
-        : '';
     },
     hasEnoughEth() {
       // Check whether user has enough eth to cover tx fee + amount to send

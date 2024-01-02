@@ -1,10 +1,7 @@
 import LANDING_PAGE from './landingPage';
 import HEADER from './header';
-import DASHBOARD from './dashboard';
-import SWAP from './swap';
 import CREATE_WALLET from './createWallet';
 import ACCESS_WALLET from './accessWallet';
-import BUY_SELL from './buySell';
 
 const COMMON = {
   PAGE_SHOWN: 'PageShown',
@@ -12,13 +9,4 @@ const COMMON = {
   MEW_WALLET: 'MEWWallet'
 };
 
-export {
-  LANDING_PAGE,
-  HEADER,
-  DASHBOARD,
-  SWAP,
-  CREATE_WALLET,
-  COMMON,
-  ACCESS_WALLET,
-  BUY_SELL
-};
+export { LANDING_PAGE, HEADER, CREATE_WALLET, COMMON, ACCESS_WALLET };

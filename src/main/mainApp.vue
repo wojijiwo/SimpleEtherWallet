@@ -24,11 +24,7 @@ import {
   SUCCESS,
   INFO
 } from '@/modules/toast/handler/handlerToast';
-import { EventBus } from '@/core/plugins/eventBus';
 import handlerAnalyticsMixin from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin.js';
-import {
-  SWAP
-} from '@/modules/analytics-opt-in/handlers/configs/events.js';
 
 export default {
   name: 'App',
@@ -39,10 +35,6 @@ export default {
     ModuleAnalytics: () => import('@/modules/analytics-opt-in/ModuleAnalytics')
   },
   mixins: [handlerAnalyticsMixin],
-  data() {
-    return {
-    };
-  },
   computed: {
     ...mapState('custom', ['addressBook']),
     ...mapState('addressBook', ['isMigrated']),
@@ -85,22 +77,6 @@ export default {
     window.addEventListener('eip6963:announceProvider', e => {
       this.storeEIP6963Wallet(e.detail);
     });
-    EventBus.$on('swapTxBroadcasted', hash => {
-      const id = this.network.type.chainID;
-      this.trackSwapAmplitude(SWAP.BROADCASTED, { hash: hash, network: id });
-    });
-    EventBus.$on('swapTxReceivedReceipt', hash => {
-      const id = this.network.type.chainID;
-      this.trackSwapAmplitude(SWAP.RECEIPT, { hash: hash, network: id });
-    });
-    EventBus.$on('swapTxFailed', hash => {
-      const id = this.network.type.chainID;
-      const passedHash = hash === '0x' ? 'no hash' : hash;
-      this.trackSwapAmplitude(SWAP.FAILED, { hash: passedHash, network: id });
-    });
-    EventBus.$on('swapTxNotBroadcastedFailed', () => {
-      this.trackSwapAmplitude(SWAP.NOT_BROADCASTED);
-    });
     this.footerHideIntercom();
     this.logMessage();
     this.setOnlineStatus(window.navigator.onLine);
@@ -127,10 +103,6 @@ export default {
     }
   },
   beforeDestroy() {
-    EventBus.$off('swapTxBroadcasted');
-    EventBus.$off('swapTxReceivedReceipt');
-    EventBus.$off('swapTxFailed');
-    EventBus.$off('swapTxNotBroadcastedFailed');
     document.removeEventListener('visibilitychange');
     window.removeEventListener('mouseout');
     window.removeEventListener('eip6963:announceProvider');
@@ -143,16 +115,7 @@ export default {
     ...mapActions('article', ['updateArticles']),
     ...mapActions('popups', ['showSurveyPopup']),
     ...mapActions('external', ['storeEIP6963Wallet']),
-    logMessage() {
-      /* eslint-disable no-console */
-      console.log(
-        '%cWhoa whoa whoa!',
-        'font-weight: bold',
-        '\n\nThis feature is intended only for developers.  Using it without knowing exactly what you are doing can expose your wallet keys and lead to the loss of your funds.',
-        '\n\nOn the other hand, if you are a developer and do know what you’re doing, MEW is hiring and we probably want to talk to you. Send us an email at careers@myetherwallet.com with the subject line: I am a software developer.'
-      );
-      /* eslint-enable no-console */
-    },
+    logMessage() {},
     // Hide intercom button when users reach the footer or bottom of screen
     footerHideIntercom() {
       window.onscroll = function () {

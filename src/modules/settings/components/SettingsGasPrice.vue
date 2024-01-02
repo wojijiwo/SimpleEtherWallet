@@ -129,11 +129,9 @@ import {
   formatFloatingPointValue,
   toBNSafe
 } from '@/core/helpers/numberFormatHelper';
-import buyMore from '@/core/mixins/buyMore.mixin.js';
 
 export default {
   name: 'SettingsGasPrice',
-  mixins: [buyMore],
   props: {
     setSelected: {
       type: Function,

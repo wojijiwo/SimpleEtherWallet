@@ -58,63 +58,6 @@ export default {
       }
     },
     {
-      path: ROUTES_HOME.TOOLS.PATH,
-      name: ROUTES_HOME.TOOLS.NAME,
-      component: () => import('@/views/layouts-default/TheToolsLayout'),
-      meta: {
-        noAuth: true,
-        title: 'Tools For Ethereum | Verify Message | Send Offline',
-        description:
-          "Verify messages and send offline using MyEtherWallet. Ethereum's best crypto wallet since 2015."
-      }
-    },
-    {
-      path: ROUTES_HOME.BUY_HARDWARE_WALLET.PATH,
-      name: ROUTES_HOME.BUY_HARDWARE_WALLET.NAME,
-      component: () =>
-        import('@/views/layouts-default/TheBuyHardwareWalletLayout'),
-      meta: {
-        noAuth: true,
-        title: 'Buy a Hardware Crypto Wallet | Secure Your Crypto',
-        description:
-          'Buy a crypto hardware wallet from one of our trusted partners. Use Ledger, Trezor and others with MEW to keep your crypto secure.'
-      }
-    },
-    {
-      path: ROUTES_HOME.TEAM_PAGE.PATH,
-      name: ROUTES_HOME.TEAM_PAGE.NAME,
-      component: () => import('@/views/layouts-default/TheTeamLayout'),
-      meta: {
-        noAuth: true,
-        title: 'The Team Behind MyEtherWallet | Crypto Experts',
-        description:
-          'Meet the team behind MyEtherWallet. Crypto OGs, enthusiasts, developers, educators and more.'
-      }
-    },
-    {
-      path: ROUTES_HOME.CONVERT_UNITS.PATH,
-      name: ROUTES_HOME.CONVERT_UNITS.NAME,
-      component: () => import('@/views/layouts-default/TheConvertUnitsLayout'),
-      meta: {
-        noAuth: true,
-        title: 'Convert Ether Units | Ethereum Gas Calculator ',
-        description:
-          'Calculate your Ethereum gas with MyEtherWallet. Convert Gwei to ETH units easily with MEW.'
-      }
-    },
-    {
-      path: ROUTES_HOME.ADVERTISE.PATH,
-      name: ROUTES_HOME.ADVERTISE.NAME,
-      component: () =>
-        import('@/views/layouts-default/TheAdvertiseWithUsLayout'),
-      meta: {
-        noAuth: true,
-        title: 'Advertise On MyEtherWallet | Grow Your Crypto Audience',
-        description:
-          "Advertise to MyEtherWallet's 3 million users. Maximize your crypto advertising spend."
-      }
-    },
-    {
       path: ROUTES_HOME.CREATE_WALLET.PATH,
       name: ROUTES_HOME.CREATE_WALLET.NAME,
       component: () => import('@/views/layouts-default/TheCreateWalletLayout'),

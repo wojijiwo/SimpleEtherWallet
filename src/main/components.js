@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import AppAddrQr from '@/core/components/AppAddrQr.vue';
 import AppQrCode from '@/core/components/AppQrCode.vue';
 import AppBlockTitle from '@/core/components/AppBlockTitle.vue';
 import AppBtnMenu from '@/core/components/AppBtnMenu.vue';
@@ -49,7 +48,6 @@ import MewTransformHash from '@/core/components/MewTransformHash.vue';
 import MewWarningSheet from '@/core/components/MewWarningSheet.vue';
 import WhiteSheet from '@/core/components/WhiteSheet.vue';
 
-Vue.component('AppAddrQr', AppAddrQr);
 Vue.component('AppQrCode', AppQrCode);
 Vue.component('AppBlockTitle', AppBlockTitle);
 Vue.component('AppBtnMenu', AppBtnMenu);

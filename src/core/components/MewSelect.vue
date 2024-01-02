@@ -25,14 +25,6 @@
     <template #message="item">
       <span class="mew-label">
         {{ item.message }}
-        <a
-          v-if="buyMoreStr"
-          rel="noopener noreferrer"
-          class="mew-label"
-          @click="emitBuyMore"
-        >
-          {{ buyMoreStr }}
-        </a>
       </span>
     </template>
 
@@ -220,13 +212,6 @@ export default {
   },
   props: {
     /**
-     * Adds a "Buy more" string to the end of the first index of the errorMessages prop.
-     */
-    buyMoreStr: {
-      type: String,
-      default: ''
-    },
-    /**
      * Error messages to display
      */
     errorMessages: {
@@ -396,9 +381,6 @@ export default {
         : this.defaultItem;
   },
   methods: {
-    emitBuyMore() {
-      this.$emit('buyMore');
-    },
     togglePointerEventStyle() {
       const elems = document.querySelectorAll('div.v-list-item--link');
       if (elems) {

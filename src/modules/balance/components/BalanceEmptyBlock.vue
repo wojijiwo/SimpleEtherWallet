@@ -39,11 +39,8 @@
 </template>
 
 <script>
-// import { ROUTES_WALLET } from '@/core/configs/configRoutes';
-import buyMore from '@/core/mixins/buyMore.mixin.js';
 export default {
   name: 'BalanceEmptyBlock',
-  mixins: [buyMore],
   props: {
     networkType: {
       type: String,
@@ -53,24 +50,8 @@ export default {
       type: Boolean,
       default: false
     }
-    // ,
-    // isEth: {
-    //   type: Boolean,
-    //   default: true
-    // }
   },
   methods: {
-    /**
-     * Method which naviagates to the swap page.
-     * Used in Empty Tokens Block
-     */
-    // navigateToSwap() {
-    //   this.$router.push({ name: ROUTES_WALLET.SWAP.NAME });
-    // },
-    /**
-     * method that emits event to open
-     * custom token modal
-     */
     openCustomTokens() {
       this.$emit('openAddCustomToken');
     }

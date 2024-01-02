@@ -93,39 +93,6 @@
         </v-list-item-group>
       </v-list>
 
-      <!-- <v-divider class="my-1 mx-6" />
-
-      <v-list v-if="!isOfflineApp" dense>
-        <v-list-item-group>
-          <template v-for="(item, idx) in sectionTwo">
-            <v-list-item
-              v-if="shouldShow(item.route)"
-              :key="item + idx"
-              :to="item.route"
-              :active-class="item.route ? '' : 'remove-active-class'"
-              @click="item.fn ? item.fn() : () => {}"
-            >
-              <v-list-item-icon class="mx-3">
-                <img
-                  width="24"
-                  height="24"
-                  :src="item.icon"
-                  :alt="item.title"
-                />
-              </v-list-item-icon>
-
-              <v-list-item-content>
-                <v-list-item-title
-                  class="white--text mew-body font-weight-regular"
-                >
-                  {{ item.title }}
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </template>
-        </v-list-item-group>
-      </v-list> -->
-
       <v-divider v-if="!isOfflineApp" class="my-1 mx-6" />
 
       <v-list v-if="!isOfflineApp" dense>
@@ -274,12 +241,7 @@
 import { mapActions, mapGetters, mapState } from 'vuex';
 import send from '@/assets/images/icons/icon-send.svg';
 import portfolio from '@/assets/images/icons/icon-dashboard-enable.svg';
-// import bridge from '@/assets/images/icons/icon-bridge-enable.svg';
 import nft from '@/assets/images/icons/icon-nft.svg';
-// import swap from '@/assets/images/icons/icon-swap-enable.svg';
-// import receive from '@/assets/images/icons/icon-arrow-down-right.svg';
-// import buy from '@/assets/images/icons/icon-credit-card.svg';
-// import dapp from '@/assets/images/icons/icon-apps-enable.svg';
 import contract from '@/assets/images/icons/icon-contract-enable.svg';
 import message from '@/assets/images/icons/icon-message-enable.svg';
 import settings from '@/assets/images/icons/icon-setting-enable.svg';
@@ -288,10 +250,6 @@ import { EventBus } from '@/core/plugins/eventBus';
 import { ETH, BSC, MATIC } from '@/utils/networks/types';
 import { ROUTES_WALLET } from '@/core/configs/configRoutes';
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
-// import { DASHBOARD } from '@/modules/analytics-opt-in/handlers/configs/events';
-// import dappsMeta from '@/dapps/metainfo-dapps';
-// import { BUYSELL_EVENT } from '@/modules/buy-sell/helpers';
-// import isNew from '@/core/helpers/isNew.js';
 
 export default {
   components: {
@@ -313,7 +271,6 @@ export default {
       onSettings: false,
       showLogoutPopup: false,
       routeNetworks: {
-        [ROUTES_WALLET.SWAP.NAME]: [ETH, BSC, MATIC],
         [ROUTES_WALLET.NFT_MANAGER.NAME]: [ETH, BSC, MATIC]
       },
       footer: {
@@ -500,9 +457,6 @@ export default {
   methods: {
     ...mapActions('wallet', ['removeWallet']),
     ...mapActions('global', ['setDarkMode']),
-    // trackToSwap() {
-    //   this.trackDashboardAmplitude(DASHBOARD.SWAP_LEFT_NAVIGATION);
-    // },
     closeNetworkOverlay() {
       if (this.validNetwork) {
         this.isOpenNetworkOverlay = false;
@@ -520,9 +474,6 @@ export default {
     openNetwork() {
       this.isOpenNetworkOverlay = true;
     },
-    // openBuySell() {
-    //   EventBus.$emit(BUYSELL_EVENT);
-    // },
     openNavigation() {
       this.navOpen = true;
     },

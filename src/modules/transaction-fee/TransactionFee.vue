@@ -174,13 +174,12 @@ import {
 import { estimatedTime } from '@/core/helpers/gasPriceHelper';
 
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
-import buyMore from '@/core/mixins/buyMore.mixin.js';
 export default {
   name: 'AppTransactionFee',
   components: {
     AppNetworkSettingsModal: () => import('./AppNetworkSettingsModal.vue')
   },
-  mixins: [buyMore, handlerAnalytics],
+  mixins: [handlerAnalytics],
   props: {
     showFee: {
       type: Boolean,

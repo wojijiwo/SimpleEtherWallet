@@ -74,34 +74,6 @@
               btn-size="xlarge"
               @click.native="navigateToAccessWallet"
             />
-            <mew-button
-              class="extension-btns chrome-extension text-transform--none mt-5 mb-2"
-              :has-full-width="true"
-              btn-style="transparent"
-              color-theme="white"
-              btn-size="large"
-              style="border-radius: 40px !important"
-              btn-link="https://www.enkrypt.com"
-              @click.native="trackOpenEnkrypt"
-            >
-              <img class="mr-3 browser-icons" :src="browserLogo" />
-              Get the Enkrypt Extension
-            </mew-button>
-            <mew-button
-              class="extension-btns app-extension"
-              :has-full-width="true"
-              btn-style="transparent"
-              color-theme="white"
-              btn-size="large"
-              style="border-radius: 40px !important"
-              @click.native="trackOpenMEWWallet"
-            >
-              <img
-                class="mr-2 app-icons"
-                src="@/assets/images/icons/icon-apple-google.svg"
-              />
-              Get the app
-            </mew-button>
           </div>
         </v-card>
       </v-container>
@@ -113,10 +85,7 @@
 import { ROUTES_HOME } from '@/core/configs/configRoutes';
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
 import enkryptMarketing from '@/core/mixins/enkryptMarketing.mixin.js';
-import {
-  COMMON,
-  LANDING_PAGE
-} from '@/modules/analytics-opt-in/handlers/configs/events.js';
+import { LANDING_PAGE } from '@/modules/analytics-opt-in/handlers/configs/events.js';
 
 export default {
   name: 'HomeLanding',
@@ -127,13 +96,6 @@ export default {
     }, 1000);
   },
   methods: {
-    trackOpenMEWWallet() {
-      this.trackLandingPageAmplitude(LANDING_PAGE.APPLE_STORE);
-      this.openMewWallet();
-    },
-    trackOpenEnkrypt() {
-      this.trackLandingPageAmplitude(COMMON.GOOGLE_STORE);
-    },
     navigateToCreateWallet() {
       this.trackLandingPageAmplitude(LANDING_PAGE.CREATE_WALLET);
       this.$router.push({
