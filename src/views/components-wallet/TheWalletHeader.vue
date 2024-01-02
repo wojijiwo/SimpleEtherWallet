@@ -2,6 +2,50 @@
   <v-container class="the-wallet-header">
     <v-row class="d-flex align-center py-2 pb-md-4 pb-lg-2 px-1">
       <v-col
+        cols="12"
+        :md="hasAds ? '6' : '8'"
+        :lg="hasAds ? '6' : '8'"
+        no-gutters
+        dense
+        :class="[
+          $vuetify.breakpoint.md ||
+          $vuetify.breakpoint.lg ||
+          $vuetify.breakpoint.xl
+            ? 'set-fixed-height'
+            : '',
+          'd-flex align-center justify-space-between'
+        ]"
+      >
+        <div v-if="!isOfflineApp" class="eth-banner d-flex">
+          <div class="mr-5">
+            <white-sheet class="pa-3">
+              <v-icon color="blackBg"> mdi-bank </v-icon>
+            </white-sheet>
+          </div>
+          <!-- Advertise  -->
+          <div class="d-flex flex-column align-start">
+            <span
+              class="font-weight-bold textDark--text"
+              style="font-size: 0.95rem"
+            >
+              You can now buy crypto with low fees
+            </span>
+            <span
+              :class="[
+                $vuetify.breakpoint.md ||
+                $vuetify.breakpoint.lg ||
+                $vuetify.breakpoint.xl
+                  ? ''
+                  : 'py-2',
+                'mew-body textMedium--text'
+              ]"
+              >Enjoy 0.9% fee when you select ‘Bank account’ as payment method.
+              <br v-if="ads.length > 0" />
+            </span>
+          </div>
+        </div>
+      </v-col>
+      <v-col
         v-if="
           $vuetify.breakpoint.md ||
           $vuetify.breakpoint.lg ||
