@@ -20,7 +20,7 @@ const WalletErrorHandler = (errors, warnings, successes = []) => {
             ? err.message.message
             : err.message
           : err;
-      if (!message) return false;
+      if (!message || !message.includes) return false;
       return message.includes(item);
     });
     const foundWarning = warningValues.find(item => {
@@ -30,7 +30,7 @@ const WalletErrorHandler = (errors, warnings, successes = []) => {
             ? err.message.message
             : err.message
           : err;
-      if (!message) return false;
+      if (!message || !message.includes) return false;
       return message.includes(item);
     });
     const foundSuccess = successValues.find(item => {
@@ -40,7 +40,7 @@ const WalletErrorHandler = (errors, warnings, successes = []) => {
             ? err.message.message
             : err.message
           : err;
-      if (!message) return false;
+      if (!message || !message.includes) return false;
       return message.includes(item);
     });
     if (foundError) {

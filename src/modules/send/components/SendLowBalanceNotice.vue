@@ -36,15 +36,6 @@
             >
               Transfer {{ currencyName }} from another account
             </div>
-            <br />
-            <a
-              v-if="isEthNetwork"
-              class="mew-body font-weight-medium"
-              rel="noopener noreferrer"
-              @click="openBuySell"
-            >
-              Buy {{ currencyName }}
-            </a>
           </v-col>
         </v-row>
       </v-col>

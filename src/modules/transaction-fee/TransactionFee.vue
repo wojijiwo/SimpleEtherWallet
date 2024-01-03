@@ -143,9 +143,6 @@
             class="ml-2"
           >
             {{ error }}
-            <a v-if="notEnoughEth && network.type.canBuy" @click="openBuySell">
-              Buy more {{ network.type.currencyName }}
-            </a>
           </div>
           <div>
             <div

@@ -26,7 +26,7 @@ const setI18nLanguage = lang => {
   return lang;
 };
 
-export const loadLanguageAsync = lang => {
+export const loadLanguageAsync = async lang => {
   // If the same language
   if (i18n.locale === lang) {
     return Promise.resolve(setI18nLanguage(lang));

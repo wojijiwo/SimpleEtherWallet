@@ -198,7 +198,9 @@ export default {
      * Will call left btn method which is cancel method.
      */
     handleClickOutside() {
-      this.leftBtn.method();
+      if (this.leftBtn.method) {
+        this.leftBtn.method();
+      }
     }
   }
 };

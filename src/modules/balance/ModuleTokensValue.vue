@@ -121,7 +121,7 @@ export default {
       return '';
     },
     linkText() {
-      return this.tokenCount > 0 ? 'See all' : 'Buy Crypto';
+      return this.tokenCount > 0 ? 'See all' : '';
     },
     tokenCount() {
       if (
@@ -139,7 +139,6 @@ export default {
     },
     checkLink() {
       if (this.tokenCount > 0) this.handleTokensPopup();
-      else this.openBuySell();
     }
   }
 };

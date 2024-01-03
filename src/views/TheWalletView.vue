@@ -327,6 +327,7 @@ export default {
         const networkId = await this.selectedEIP6963Provider?.request({
           method: 'eth_chainId'
         });
+        console.log('new network id is ', networkId);
 
         const foundNetwork = Object.values(nodeList).find(item => {
           if (toBN(networkId).eq(toBN(item[0].type.chainID))) return item;

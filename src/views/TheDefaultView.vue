@@ -6,7 +6,6 @@
       <router-view />
     </v-main>
     <the-default-footer />
-    <!-- <the-mobile-menu :is-open="mobileOpen" @closeMobileMenu="handleClose" /> -->
   </div>
 </template>
 
@@ -17,7 +16,6 @@ export default {
   name: 'TheDefaultView',
   components: {
     TheDefaultHeader: () => import('./components-default/TheDefaultHeader'),
-    // TheMobileMenu: () => import('./components-default/TheMobileMenu'),
     // NewLookBanner: () => import('./components-default/NewLookBanner'),
     TheDefaultFooter: () => import('./components-default/TheDefaultFooter')
   },

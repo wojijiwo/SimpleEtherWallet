@@ -3,9 +3,6 @@
     <template #leftColItem1>
       <module-contract-interact />
     </template>
-    <!-- <template #rightColItem1>
-      <module-swap-rates />
-    </template> -->
   </the-wrapper-wallet>
 </template>
 
@@ -15,7 +12,6 @@ export default {
   components: {
     TheWrapperWallet: () =>
       import('@/views/components-wallet/TheWrapperWallet'),
-    // ModuleSwapRates: () => import('@/modules/swap/ModuleSwapRates'),
     ModuleContractInteract: () =>
       import('@/modules/contract/ModuleContractInteract')
   }

@@ -299,6 +299,7 @@ export default {
      * @return {void}
      */
     setNetworkDebounced: debounce(function (value) {
+      console.log("network changing to ", value);
       this.savePreviousNetwork();
 
       const found = Object.values(this.nodes).filter(item => {
