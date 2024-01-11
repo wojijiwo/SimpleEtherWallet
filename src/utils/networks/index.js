@@ -1,6 +1,4 @@
-const chainList = import('@/_generated/chainlist.json').then(
-  val => val.default
-);
+import chainList from '@/_generated/chainlist.json';
 
 // add attributes to chainList array
 Object.keys(chainList).forEach(key => {
@@ -33,7 +31,7 @@ Object.keys(chainList).forEach(key => {
 
 const chainMap = {};
 Object.keys(chainList).forEach(key => {
-  chainMap[chainList[key].name] = chainList[key];
+  chainMap[chainList[key].chainId] = chainList[key];
 });
 
 const ETH = chainMap[1];

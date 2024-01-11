@@ -100,7 +100,7 @@ const contractToToken =
     if (contractAddress === MAIN_TOKEN_ADDRESS) {
       tokenId = rootGetters['global/network'].coingeckoID;
       cgToken = getters.getCoinGeckoTokenById(tokenId);
-      const networkType = rootGetters['global/network'].type;
+      const networkType = rootGetters['global/network'];
       return Object.assign(cgToken, {
         name: networkType.currencyName,
         symbol: networkType.currencyName,

@@ -15,7 +15,7 @@ const setPreferredCurrency = function ({ commit }, val) {
 
 const updateGasPrice = function ({ rootState, dispatch, getters, state }) {
   const web3 = rootState.wallet.web3;
-  const { gasPriceMultiplier } = getters.network.type;
+  const gasPriceMultiplier = getters.network.gasPriceMultiplier;
   if (!getters.isEIP1559SupportedNetwork) {
     return web3.eth.getGasPrice().then(res => {
       const modifiedGasPrice = toBNSafe(res).muln(gasPriceMultiplier);
