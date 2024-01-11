@@ -63,6 +63,9 @@ const setTokenAndEthBalance = function ({
   const _getBalance = () => {
     rootState.wallet.web3.eth.getBalance(address).then(res => {
       const token = getters.contractToToken(MAIN_TOKEN_ADDRESS);
+      console.log('token info');
+      console.dir(token);
+
       const usdBalance = new BigNumber(fromBase(res, token.decimals))
         .times(token.price)
         .toString();

@@ -151,8 +151,21 @@ const fetchPlatformCoinList = async () => {
     JSON.stringify(list)
   );
 };
+
+const fetchAssettforms = async () => {
+  const list = await fetch(
+    'https://api.coingecko.com/api/v3/asset_platforms'
+  )
+    .then(res => res.json())
+    .catch(console.error);
+  fs.writeFileSync(
+    configs.GENERATED_FOLDER_PATH + '/asset_platformlist.json',
+    JSON.stringify(list)
+  );
+};
+
 const run = async () => {
-  await fetchChainList().then(fetchTokenList).then(fetchPlatformCoinList);
+  await fetchChainList().then(fetchTokenList).then(fetchPlatformCoinList).then(fetchAssettforms);
 };
 
 (async () => {

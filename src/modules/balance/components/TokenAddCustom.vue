@@ -300,6 +300,7 @@ export default {
      */
     next() {
       if (this.step === 1) {
+        // TODO: search token
         this.loading = true;
         this.checkIfValidAddress();
         return;

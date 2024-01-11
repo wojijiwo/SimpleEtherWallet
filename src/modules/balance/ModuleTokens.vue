@@ -293,7 +293,9 @@ export default {
       return newObj;
     },
     toggleAddCustomToken(val) {
-      this.openAddCustomToken = val ? val : !this.openAddCustomToken;
+      this.openAddCustomToken = typeof val === 'boolean'
+        ? val
+        : !this.openAddCustomToken;
     },
     toggleRemoveCustomToken() {
       this.openRemoveCustomToken = !this.openRemoveCustomToken;

@@ -1,4 +1,14 @@
 import chainList from '@/_generated/chainlist.json';
+import platformList from '@/_generated/asset_platformlist.json';
+
+const platformMap = {};
+Object.keys(platformList).forEach(key => {
+  const t = platformList[key];
+  platformMap[t.name] = t.native_coin_id;
+  if (t.chain_identifier) {
+    platformMap[t.chain_identifier] = t.native_coin_id;
+  }
+});
 
 // add attributes to chainList array
 Object.keys(chainList).forEach(key => {
@@ -14,7 +24,15 @@ Object.keys(chainList).forEach(key => {
   chainList[key].gasPriceMultiplier = 1;
   chainList[key].name_long = chain.name;
   chainList[key].currencyName = chain.nativeCurrency.symbol;
-  chainList[key].coingeckoID = null;
+  // add coingeckoID
+  if (platformMap[chain.name]) {
+    chainList[key].coingeckoID = platformMap[chain.name];
+  } else if (platformMap[chain.chainId]) {
+    chainList[key].coingeckoID = platformMap[chain.chainId];
+  } else {
+    chainList[key].coingeckoID = null;
+  }
+
   chainList[key].homePage = chain.infoURL;
   chainList[key].icon = chain.logoURI;
 

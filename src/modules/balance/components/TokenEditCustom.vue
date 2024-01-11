@@ -247,7 +247,7 @@ export default {
       this.$emit('addToken');
     },
     explorerAddr(addr) {
-      const networkType = this.network.type;
+      const networkType = this.network;
       const explorer = networkType.blockExplorerAddr;
       return explorer.replace('[[address]]', addr);
     }
