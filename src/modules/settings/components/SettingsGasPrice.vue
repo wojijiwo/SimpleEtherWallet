@@ -170,7 +170,7 @@ export default {
     ...mapState('global', ['gasPriceType', 'gasPrice', 'preferredCurrency']),
     ...mapGetters('wallet', ['balanceInETH']),
     currencyName() {
-      return this.network.type.currencyName;
+      return this.network.currencyName;
     },
     economyInEth() {
       const txFee = this.calcTxFee(gasPriceTypes.ECONOMY);

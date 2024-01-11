@@ -224,7 +224,7 @@ export default {
       ];
       newObj.token = item.symbol;
       newObj.address = item.contract;
-      newObj.tokenImg = item.img ? item.img : this.network.type.icon;
+      newObj.tokenImg = item.img ? item.img : this.network.icon;
       newObj.callToAction = item.isCustom
         ? [
             {

@@ -84,12 +84,11 @@
 <script>
 import { ROUTES_HOME } from '@/core/configs/configRoutes';
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
-import enkryptMarketing from '@/core/mixins/enkryptMarketing.mixin.js';
 import { LANDING_PAGE } from '@/modules/analytics-opt-in/handlers/configs/events.js';
 
 export default {
   name: 'HomeLanding',
-  mixins: [handlerAnalytics, enkryptMarketing],
+  mixins: [handlerAnalytics],
   mounted() {
     setTimeout(() => {
       this.trackLandingPage();

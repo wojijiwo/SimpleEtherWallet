@@ -118,14 +118,14 @@
               :class="hasError ? 'redPrimary--text' : 'textLight--text'"
               class="ml-3 py-1"
             >
-              {{ txFeeFormatted }} {{ network.type.currencyName }}
+              {{ txFeeFormatted }} {{ network.currencyName }}
             </div>
           </div>
           <div v-if="fromEth">
             <div class="py-2 ml-2 text-right">
               <div class="textMedium--text">
                 <span class="mr-2 textMedium--text">Total:</span>
-                {{ actualCostFormatted }} {{ network.type.currencyName }}
+                {{ actualCostFormatted }} {{ network.currencyName }}
               </div>
             </div>
           </div>

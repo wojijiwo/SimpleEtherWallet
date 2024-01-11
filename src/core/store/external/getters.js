@@ -47,7 +47,7 @@ const networkTokenUSDMarket = function (
   rootState,
   rootGetters
 ) {
-  const cgid = rootGetters['global/network'].type.coingeckoID;
+  const cgid = rootGetters['global/network'].coingeckoID;
   if (cgid) {
     const token = state.coinGeckoTokens.get(cgid);
     if (token)
@@ -98,7 +98,7 @@ const contractToToken =
     let tokenId = platformList[contractAddress];
     let cgToken;
     if (contractAddress === MAIN_TOKEN_ADDRESS) {
-      tokenId = rootGetters['global/network'].type.coingeckoID;
+      tokenId = rootGetters['global/network'].coingeckoID;
       cgToken = getters.getCoinGeckoTokenById(tokenId);
       const networkType = rootGetters['global/network'].type;
       return Object.assign(cgToken, {

@@ -19,7 +19,7 @@ export default class NFT {
   async getNfts() {
     try {
       let { result } = await fetch(
-        `${chains[this.network.type.chainID]}${this.address}`
+        `${chains[this.network.chainId]}${this.address}`
       ).then(response => response.json());
       let nftResults = result.nfts;
       while (result.next) {

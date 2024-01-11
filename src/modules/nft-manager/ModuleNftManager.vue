@@ -152,7 +152,7 @@ import {
 import getService from '@/core/helpers/getService';
 
 import { ROUTES_WALLET } from '@/core/configs/configRoutes';
-import { ETH, BSC, MATIC } from '@/utils/networks/types';
+import { ETH, BSC, MATIC } from '@/utils/networks';
 import { toBNSafe } from '@/core/helpers/numberFormatHelper';
 import NFT from './handlers/handlerNftManager';
 import handleError from '@/modules/confirmation/handlers/errorHandler.js';
@@ -289,7 +289,7 @@ export default {
      * Check if network is supported
      */
     supportedNetwork() {
-      return this.supportedNetworks.includes(this.network.type.name);
+      return this.supportedNetworks.includes(this.network.chainId);
     },
     /**
      * List of supported networks
@@ -313,7 +313,7 @@ export default {
       } else {
         setTimeout(() => {
           Toast(
-            `NFTs not supported in network: ${this.network.type.name}`,
+            `NFTs not supported in network: ${this.network.name}`,
             {},
             WARNING
           );
@@ -427,7 +427,7 @@ export default {
       if (this.isValid) {
         try {
           let gasPrice = undefined;
-          if (this.network.type.name === 'MATIC')
+          if (this.network.chainId === MATIC.chainId)
             gasPrice = `0x${toBN(this.localGasPrice).toString('hex')}`;
           this.nft
             .send(this.toAddress, this.selectedNft, gasPrice)
@@ -439,8 +439,8 @@ export default {
               Toast(
                 'Cheers! Your transaction was mined. Check it in ',
                 {
-                  title: `${getService(this.network.type.blockExplorerTX)}`,
-                  url: this.network.type.blockExplorerTX.replace(
+                  title: `${getService(this.network.blockExplorerTX)}`,
+                  url: this.network.blockExplorerTX.replace(
                     '[[txHash]]',
                     response.blockHash
                   )

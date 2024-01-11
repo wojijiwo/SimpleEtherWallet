@@ -8,7 +8,7 @@ import {
  * Formatted notification for mew-notification component
  */
 const formatNotification = (obj, network) => {
-  const explorer = network.type.blockExplorerTX;
+  const explorer = network.blockExplorerTX;
   const newObj = {
     txHash: {
       value: obj.hash ? obj.hash : '',
@@ -26,7 +26,7 @@ const formatNotification = (obj, network) => {
     total: {
       value: `${
         formatFloatingPointValue(fromWei(obj.transactionFee, 'ether')).value
-      } ${network.type.currencyName}`,
+      } ${network.currencyName}`,
       string: 'Total Transaction fee'
     },
     to: {
@@ -39,7 +39,7 @@ const formatNotification = (obj, network) => {
     },
     amount: {
       value: `${formatFloatingPointValue(fromWei(obj.value, 'ether')).value} ${
-        network.type.currencyName
+        network.currencyName
       }`,
       string: 'Amount'
     },

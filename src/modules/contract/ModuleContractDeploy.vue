@@ -218,7 +218,7 @@ export default {
       const params = [];
       let details = {};
       for (const _input of this.constructorInputs) {
-        if (_input.type.includes('[]') && _input.value)
+        if (_input.includes('[]') && _input.value)
           params.push(stringToArray(_input.value));
         else params.push(_input.value);
       }

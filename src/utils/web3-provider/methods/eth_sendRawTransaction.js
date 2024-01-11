@@ -8,7 +8,7 @@ export default async ({ payload, store }, res, next) => {
   if (val) {
     res(null, toPayload(payload.id, randomHex(32)));
   } else {
-    if (store.getters['global/network'].type.chainID === 1) {
+    if (store.getters['global/network'].chainId=== 1) {
       const burl = 'https://broadcast.mewapi.io/eth?product=web';
       fetch(burl, {
         method: 'POST',

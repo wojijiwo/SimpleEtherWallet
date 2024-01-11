@@ -16,7 +16,7 @@
         <div class="mew-body">
           {{ feeFormatted }}
           <span class="greyPrimary--text"
-            >{{ network.type.currencyName }}/</span
+            >{{ network.currencyName }}/</span
           >
           ~{{ txFeeUsd }}
         </div>
@@ -25,7 +25,7 @@
         <div class="mew-body">
           {{ totalFee }}
           <span class="greyPrimary--text"
-            >{{ network.type.currencyName }}/</span
+            >{{ network.currencyName }}/</span
           >
           ~{{ totalFeeUSD }}
         </div>
@@ -94,13 +94,13 @@ export default {
       return obj;
     },
     isNetworkCurrency() {
-      return this.currency.symbol === this.network.type.currencyName;
+      return this.currency.symbol === this.network.currencyName;
     },
     feeFormatted() {
       return formatFloatingPointValue(this.txFee).value;
     },
     totalFee() {
-      if (this.currency.symbol === this.network.type.currencyName) {
+      if (this.currency.symbol === this.network.currencyName) {
         return formatFloatingPointValue(BigNumber(this.value).plus(this.txFee))
           .value;
       }
@@ -108,7 +108,7 @@ export default {
     },
     totalFeeUSD() {
       const ethFeeToUsd = BigNumber(this.txFee).times(this.value);
-      if (this.currency.symbol === this.network.type.currencyName) {
+      if (this.currency.symbol === this.network.currencyName) {
         return this.getFiatValue(
           BigNumber(this.totalFee).times(this.fiatValue).toFixed(2)
         );

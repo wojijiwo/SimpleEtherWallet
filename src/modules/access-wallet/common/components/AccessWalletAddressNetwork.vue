@@ -31,7 +31,7 @@
                   <td v-if="!isMobile" style="padding: 0"></td>
                   <td>ADDRESS</td>
                   <td v-if="!isOfflineApp" class="text-right">
-                    <span v-if="!isMobile">{{ network.type.name }}</span>
+                    <span v-if="!isMobile">{{ network.name }}</span>
                     BALANCE
                   </td>
                 </tr>
@@ -103,7 +103,7 @@
                       style="width: 18vw; max-width: 81px"
                     >
                       {{ acc.balance }}
-                      <span v-if="!isMobile">{{ network.type.name }}</span>
+                      <span v-if="!isMobile">{{ network.name }}</span>
                     </div>
                   </td>
                 </tr>
@@ -465,10 +465,10 @@ export default {
           // resets the array to empty
           this.accounts.splice(0);
           const ens =
-            this.network.type.hasOwnProperty('ens') && !this.isOfflineApp
+            this.network.hasOwnProperty('ens') && !this.isOfflineApp
               ? new ENS({
                   provider: this.web3.eth.currentProvider,
-                  ensAddress: this.network.type.ens.registry
+                  ensAddress: this.network.ens.registry
                 })
               : null;
           for (
@@ -485,7 +485,7 @@ export default {
                 };
             const balance = this.isOfflineApp
               ? '0'
-              : this.network.type.isEthVMSupported.supported
+              : this.network.isEthVMSupported.supported
               ? 'Loading..'
               : await this.web3.eth.getBalance(address);
             const nickname = this.getNickname(address);
@@ -549,7 +549,7 @@ export default {
      * @return {void}
      */
     setNetworkPanel() {
-      this.panelNetworkSubstring = `${this.network.type.name} - ${this.network.type.name_long}`;
+      this.panelNetworkSubstring = `${this.network.name} - ${this.network.name_long}`;
     },
     /**
      * Methods emits parent to unlock wallet

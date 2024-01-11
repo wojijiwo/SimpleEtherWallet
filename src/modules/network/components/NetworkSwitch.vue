@@ -95,8 +95,7 @@
 import { mapActions, mapGetters, mapState } from 'vuex';
 import { debounce } from 'lodash';
 
-import * as nodes from '@/utils/networks/nodes';
-import * as types from '@/utils/networks/types';
+import { chainMap, ETH, BSC, MATIC } from '@/utils/networks';
 import { Toast, SUCCESS, ERROR } from '@/modules/toast/handler/handlerToast';
 
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
@@ -120,7 +119,7 @@ export default {
     return {
       networkSelectedBefore: null,
       networkSelected: null,
-      nodes: nodes,
+      nodes: chainMap,
       toggleType: 0,
       searchInput: '',
       networkLoading: false
@@ -140,14 +139,14 @@ export default {
         const unsorted =
           this.filterTypes.length > 0
             ? [...this.filterTypes]
-            : Object.keys(types);
+            : Object.keys(chainMap);
         unsorted.splice(unsorted.indexOf('ETH'), 1);
         unsorted.sort();
         const test = unsorted.filter(item => {
-          return types[item].isTestNetwork;
+          return chainMap[item].isTestNetwork;
         });
         const main = unsorted.filter(item => {
-          return !types[item].isTestNetwork;
+          return !chainMap[item].isTestNetwork;
         });
         const sorted = main.concat(test);
         sorted.unshift('ETH');
@@ -162,14 +161,14 @@ export default {
     networks() {
       let allNetworks = [];
       this.typeNames.forEach(item => {
-        allNetworks.push(types[item]);
+        allNetworks.push(chainMap[item]);
       });
       if (this.isSwapPage || this.identifier === WALLET_TYPES.MEW_WALLET) {
         allNetworks = allNetworks.filter(
           item =>
-            item.name === types.ETH.name ||
-            item.name === types.BSC.name ||
-            item.name === types.MATIC.name
+            item.name === ETH.name ||
+            item.name === BSC.name ||
+            item.name === MATIC.name
         );
       }
       if (this.searchInput && this.searchInput !== '') {
@@ -226,14 +225,14 @@ export default {
   watch: {
     network: {
       handler: function (newVal, oldVal) {
-        if (newVal.type.name !== oldVal.type.name) {
-          this.networkSelected = newVal.type.name;
+        if (newVal.chainId !== oldVal.chainId) {
+          this.networkSelected = newVal.chainId
         }
       },
       deep: true
     },
     networkSelected(value) {
-      if (!!value && (value !== this.network.type.name || !this.validNetwork)) {
+      if (!!value && (value !== this.network.chainId || !this.validNetwork)) {
         this.networkLoading = true;
         this.setNetworkDebounced(value);
       }
@@ -251,7 +250,7 @@ export default {
       }
     },
     validNetwork(val) {
-      this.networkSelected = val ? this.network.type.name : null;
+      this.networkSelected = val ? this.network.chainId : null;
     },
     /**
      * Set networkSelected on toggle change, if network is in the list
@@ -259,18 +258,18 @@ export default {
     toggleType() {
       if (!this.networkSelected) {
         if (
-          this.networks.filter(item => item.name === this.network.type.name)
+          this.networks.filter(item => item.chainId === this.network.chainId)
             .length > 0
         ) {
           this.networkSelected = this.validNetwork
-            ? this.network.type.name
-            : '';
+            ? this.network.chainId
+            : 0;
         }
       }
     }
   },
   mounted() {
-    this.networkSelected = this.validNetwork ? this.network.type.name : '';
+    this.networkSelected = this.validNetwork ? this.network.chainId: 0;
     this.networkSelectedBefore = this.networkSelected;
   },
   methods: {
@@ -303,7 +302,7 @@ export default {
       this.savePreviousNetwork();
 
       const found = Object.values(this.nodes).filter(item => {
-        if (item.type.name === value) {
+        if (item.chainId === value) {
           return item;
         }
       });
@@ -315,15 +314,15 @@ export default {
         .then(() => {
           if (this.isWallet) {
             this.networkSelected = this.validNetwork
-              ? this.network.type.name
-              : '';
+              ? this.network.chainId
+              : 0;
             this.networkLoading = false;
             const setNetworkCall =
               this.identifier === WALLET_TYPES.WEB3_WALLET
                 ? this.setWeb3Instance(this.selectedEIP6963Provider)
                 : this.setWeb3Instance();
             setNetworkCall.then(() => {
-              Toast(`Switched network to: ${found[0].type.name}`, {}, SUCCESS);
+              Toast(`Switched network to: ${found[0].name}`, {}, SUCCESS);
               this.setTokenAndEthBalance();
               this.$emit('newNetwork');
             });
@@ -332,8 +331,8 @@ export default {
         .catch(e => {
           this.setValidNetwork(false);
           this.networkSelected = this.validNetwork
-            ? this.network.type.name
-            : '';
+            ? this.network.chainId
+            : 0;
           this.networkLoading = false;
           Toast(e, {}, ERROR);
         });

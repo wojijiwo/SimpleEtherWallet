@@ -252,7 +252,7 @@ export default {
       }
     },
     web3() {
-      if (this.network.type.ens) {
+      if (this.network.ens) {
         this.nameResolver = new NameResolver(this.network, this.web3);
       } else {
         this.nameResolver = null;
@@ -260,7 +260,7 @@ export default {
     }
   },
   mounted() {
-    if (this.network.type.ens)
+    if (this.network.ens)
       this.nameResolver = new NameResolver(this.network, this.web3);
     if (this.addMode && this.toAddress) {
       this.addressToAdd = this.toAddress;

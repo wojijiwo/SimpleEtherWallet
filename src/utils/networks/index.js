@@ -1,22 +1,43 @@
-const platform = require('platform');
-import * as types from './types';
-import * as nodes from './nodes';
+const chainList = import('@/_generated/chainlist.json').then(
+  val => val.default
+);
 
-const nodeList = {};
-Object.keys(types).forEach(key => {
-  nodeList[types[key].name] = [];
-});
+// add attributes to chainList array
+Object.keys(chainList).forEach(key => {
+  const chain = chainList[key];
 
-Object.keys(nodes).forEach(key => {
-  if (
-    nodes[key].service === 'infura.io' &&
-    platform.name &&
-    platform.name === 'firefox'
+  chainList[key].isTestNetwork = ['test', 'dev'].includes(chain.name);
+  chainList[key].tokens = import(
+    `@/_generated/tokens/tokens-${chain.chainId}.json`
   )
-    return;
-  // temp until infura fix https://github.com/INFURA/infura/issues/174
+    .then(val => val.default)
+    // eslint-disable-next-line
+    .catch(err => []);
+  chainList[key].gasPriceMultiplier = 1;
+  chainList[key].name_long = chain.name;
+  chainList[key].currencyName = chain.nativeCurrency.symbol;
+  chainList[key].coingeckoID = null;
+  chainList[key].homePage = chain.infoURL;
 
-  nodeList[nodes[key].type.name].push(nodes[key]);
+  if (chain.rpc.length > 0) {
+    chainList[key].rpcUrl = chain.rpc[0]; // use first rpc endpoint
+  }
+
+  if (chain.explorers && chain.explorers.length > 0) {
+    const url = chain.explorers[0].url;
+    chainList[key].blockExplorer = url;
+    chainList[key].blockExplorerTX = `$url/tx/[[txHash]]`;
+    chainList[key].blockExplorerAddr = `$url/address/[[address]]`;
+  }
 });
 
-export default nodeList;
+const chainMap = {};
+Object.keys(chainList).forEach(key => {
+  chainMap[chainList[key].name] = chainList[key];
+});
+
+const ETH = chainMap[1];
+const BSC = chainMap[56];
+const MATIC = chainMap[137];
+
+export { chainMap, ETH, BSC, MATIC };

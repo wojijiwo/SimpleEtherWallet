@@ -12,7 +12,7 @@
       :subtitle="subtitle"
       :title="title"
       :has-body-padding="false"
-      :icon="network.type.icon"
+      :icon="network.icon"
       :caption="convertedBalance"
       :has-elevation="true"
       :has-full-height="true"
@@ -42,7 +42,7 @@
           >
             <div class="d-flex align-center">
               <div class="font-weight-bold">
-                {{ network.type.currencyName }} PRICE
+                {{ network.currencyName }} PRICE
               </div>
               <div
                 :class="[
@@ -61,7 +61,7 @@
               >
             </div>
             <div class="ml-sm-5">
-              {{ formatFiatPrice }} / 1 {{ network.type.currencyName }}
+              {{ formatFiatPrice }} / 1 {{ network.currencyName }}
             </div>
           </div>
           <div class="text-center text-md-right mt-4 mt-md-0">
@@ -84,7 +84,7 @@
     -->
     <balance-empty-block
       v-if="!hasBalance && !loadingWalletInfo"
-      :network-type="network.type.currencyName"
+      :network-type="network.currencyName"
       :is-eth="isEthNetwork"
     />
   </div>
@@ -139,14 +139,14 @@ export default {
      */
     title() {
       return `${formatFloatingPointValue(this.balanceInETH).value} ${
-        this.network.type.currencyName
+        this.network.currencyName
       }`;
     },
     sendText() {
-      return `Send ${this.network.type.currencyName}`;
+      return `Send ${this.network.currencyName}`;
     },
     subtitle() {
-      return `My ${this.network.type.currencyName} Balance`;
+      return `My ${this.network.currencyName} Balance`;
     },
     /**
      * Computed property returns formated eth wallet balance value in USD

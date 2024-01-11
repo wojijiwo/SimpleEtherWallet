@@ -109,7 +109,7 @@ export default {
       return this.showSuccessSwap ? 'swap' : 'checkmark';
     },
     explorerText() {
-      return this.network.type.blockExplorer;
+      return this.network.blockExplorer;
     }
   },
   methods: {

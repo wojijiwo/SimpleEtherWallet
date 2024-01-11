@@ -12,8 +12,8 @@ const INIT_STORE = function (state) {
 };
 const SET_CUSTOM_TOKEN = function (state, { token, rootGetters }) {
   const network = rootGetters['global/network'];
-  let customTokensByNetwork = state.tokens[network.type.name];
-  if (!state.tokens[network.type.name]) {
+  let customTokensByNetwork = state.tokens[network.chainId];
+  if (!state.tokens[network.chainId]) {
     customTokensByNetwork = [];
   }
   const found = customTokensByNetwork.findIndex(
@@ -24,12 +24,12 @@ const SET_CUSTOM_TOKEN = function (state, { token, rootGetters }) {
   } else {
     customTokensByNetwork.unshift(token);
   }
-  Vue.set(state.tokens, network.type.name, customTokensByNetwork);
+  Vue.set(state.tokens, network.chainId, customTokensByNetwork);
 };
 
 const DELETE_CUSTOM_TOKEN = function (state, { token, rootGetters }) {
   const network = rootGetters['global/network'];
-  const currentCustomTokens = state.tokens[network.type.name].filter(
+  const currentCustomTokens = state.tokens[network.chainId].filter(
     currentTokens => {
       const found = token.find(item => {
         if (item.address === currentTokens.contract) {
@@ -42,20 +42,20 @@ const DELETE_CUSTOM_TOKEN = function (state, { token, rootGetters }) {
         const newHiddenTokens = hiddenTokens.filter(item => {
           return found.address !== item.address;
         });
-        Vue.set(state.hiddenTokens, network.type.name, newHiddenTokens);
+        Vue.set(state.hiddenTokens, network.chainId, newHiddenTokens);
       }
       if (!found) {
         return currentTokens;
       }
     }
   );
-  Vue.set(state.tokens, network.type.name, currentCustomTokens);
+  Vue.set(state.tokens, network.chainId, currentCustomTokens);
 };
 
 const SET_HIDDEN_TOKEN = function (state, { token, rootGetters }) {
   const network = rootGetters['global/network'];
-  let hiddenTokensByNetwork = state.hiddenTokens[network.type.name];
-  if (!state.hiddenTokens[network.type.name]) {
+  let hiddenTokensByNetwork = state.hiddenTokens[network.chainId];
+  if (!state.hiddenTokens[network.chainId]) {
     hiddenTokensByNetwork = [];
   }
   const found = hiddenTokensByNetwork.findIndex(
@@ -66,12 +66,12 @@ const SET_HIDDEN_TOKEN = function (state, { token, rootGetters }) {
   } else {
     hiddenTokensByNetwork.unshift(token);
   }
-  Vue.set(state.hiddenTokens, network.type.name, hiddenTokensByNetwork);
+  Vue.set(state.hiddenTokens, network.chainId, hiddenTokensByNetwork);
 };
 
 const DELETE_HIDDEN_TOKEN = function (state, { token, rootGetters }) {
   const network = rootGetters['global/network'];
-  const currentHiddenTokens = state.hiddenTokens[network.type.name].filter(
+  const currentHiddenTokens = state.hiddenTokens[network.chainId].filter(
     currentTokens => {
       const found = token.find(item => {
         if (item.address === currentTokens.address) {
@@ -83,14 +83,14 @@ const DELETE_HIDDEN_TOKEN = function (state, { token, rootGetters }) {
       }
     }
   );
-  Vue.set(state.hiddenTokens, network.type.name, currentHiddenTokens);
+  Vue.set(state.hiddenTokens, network.chainId, currentHiddenTokens);
 };
 
 const DELETE_ALL_TOKENS = function (state, { rootGetters }) {
   const network = rootGetters['global/network'];
-  let customTokensByNetwork = state.tokens[network.type.name];
+  let customTokensByNetwork = state.tokens[network.chainId];
   customTokensByNetwork = [];
-  Vue.set(state.tokens, network.type.name, customTokensByNetwork);
+  Vue.set(state.tokens, network.chainId, customTokensByNetwork);
 };
 
 const SET_ADDRESS_BOOK = function (state, val) {

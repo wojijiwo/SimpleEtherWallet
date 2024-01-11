@@ -4,7 +4,7 @@ export default class ENS {
   constructor(network, web3) {
     this.resolver = new ens({
       provider: web3.currentProvider,
-      ensAddress: network.type.ens.registry
+      ensAddress: network.ens.registry
     });
   }
   resolveName(name) {

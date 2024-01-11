@@ -173,7 +173,7 @@ export default {
   },
   watch: {
     web3() {
-      if (this.network.type.ens && this.web3.currentProvider) {
+      if (this.network.ens && this.web3.currentProvider) {
         this.nameResolver = new NameResolver(this.network, this.web3);
       } else {
         this.nameResolver = null;
@@ -196,7 +196,7 @@ export default {
         link: ''
       };
     }
-    if (this.network.type.ens && this.web3.currentProvider)
+    if (this.network.ens && this.web3.currentProvider)
       this.nameResolver = new NameResolver(this.network, this.web3);
     if (this.isHomePage) {
       this.setDonationAddress();
@@ -218,7 +218,7 @@ export default {
       if (typeof value === 'string') {
         if (
           this.currency.toLowerCase() ===
-          this.network.type.currencyName?.toLowerCase()
+          this.network.currencyName?.toLowerCase()
         ) {
           /**
            * Checks if user typed or selected an address from dropdown
@@ -312,7 +312,7 @@ export default {
       });
 
       // Calls setups from mounted
-      if (!this.isOfflineApp && this.network.type.ens)
+      if (!this.isOfflineApp && this.network.ens)
         this.nameResolver = new NameResolver(this.network, this.web3);
       if (this.isHomePage) {
         this.setDonationAddress();

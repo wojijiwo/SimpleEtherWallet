@@ -287,7 +287,7 @@ export default {
       if (item.symbol == 'ETH') {
         newObj.tokenImg = require('@/assets/images/networks/eth.svg');
       } else {
-        newObj.tokenImg = item.img ? item.img : this.network.type.icon;
+        newObj.tokenImg = item.img ? item.img : this.network.icon;
       }
 
       return newObj;

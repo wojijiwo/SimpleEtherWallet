@@ -2,7 +2,7 @@ import { NOTIFICATION_TYPES } from '@/modules/notifications/handlers/handlerNoti
 
 const currentNotifications = function (state, _, rootState, rootGetters) {
   const address = rootState.wallet.address;
-  const currentNetworkType = rootGetters['global/network'].type.name;
+  const currentNetworkType = rootGetters['global/network'].chainId;
   const filteredArray = state.notifications.filter(item => {
     if (
       item.from?.toLowerCase() === address?.toLowerCase() &&
@@ -15,7 +15,7 @@ const currentNotifications = function (state, _, rootState, rootGetters) {
 
 const txNotifications = function (state, _, rootState, rootGetters) {
   const address = rootState.wallet.address;
-  const currentNetworkType = rootGetters['global/network'].type.name;
+  const currentNetworkType = rootGetters['global/network'].chainId;
   const filteredArray = state.notifications.filter(item => {
     if (
       item.from?.toLowerCase() === address?.toLowerCase() &&
@@ -29,7 +29,7 @@ const txNotifications = function (state, _, rootState, rootGetters) {
 
 const swapNotifications = function (state, _, rootState, rootGetters) {
   const address = rootState.wallet.address;
-  const currentNetworkType = rootGetters['global/network'].type.name;
+  const currentNetworkType = rootGetters['global/network'].chainId;
   const filteredArray = state.notifications.filter(item => {
     if (
       item.from?.toLowerCase() === address?.toLowerCase() &&

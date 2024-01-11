@@ -1,4 +1,3 @@
-import url from 'url';
 import web3 from 'web3';
 import { formatters } from 'web3-core-helpers';
 
@@ -49,28 +48,10 @@ const setWeb3Instance = function (
   { commit, state, rootState, rootGetters },
   provider
 ) {
-  const hostUrl = rootState.global.currentNetwork.url
-    ? url.parse(rootState.global.currentNetwork.url)
-    : rootGetters['global/Networks']['ETH'][0];
+  const hostUrl = rootState.global.currentNetwork.rpcUrl;
   const options = {};
-  // eslint-disable-next-line
-  const parsedUrl = `${hostUrl.protocol}//${hostUrl.host}${
-    rootState.global.currentNetwork.port
-      ? ':' + rootState.global.currentNetwork.port
-      : ''
-  }${hostUrl.pathname ? hostUrl.pathname : ''}`;
-  rootState.global.currentNetwork.username !== '' &&
-  rootState.global.currentNetwork.password !== ''
-    ? (options['headers'] = {
-        authorization: `Basic: ${btoa(
-          rootState.global.currentNetwork.username +
-            ':' +
-            rootState.global.currentNetwork.password
-        )}`
-      })
-    : {};
   const web3Instance = new web3(
-    new MEWProvider(provider ? provider : parsedUrl, options)
+    new MEWProvider(provider ? provider : hostUrl, options)
   );
   web3Instance.eth.transactionConfirmationBlocks = 1;
   web3Instance['mew'] = {};
@@ -96,7 +77,7 @@ const setWeb3Instance = function (
         arr[i].gas = gas;
         arr[i].gasLimit = gas;
         arr[i].chainId = !arr[i].chainId
-          ? rootGetters['global/network'].type.chainID
+          ? rootGetters['global/network'].chainId
           : arr[i].chainId;
         arr[i].gasPrice =
           arr[i].gasPrice === undefined ? gasPrice : arr[i].gasPrice;

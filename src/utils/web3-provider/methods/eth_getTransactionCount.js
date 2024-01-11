@@ -10,7 +10,7 @@ export default async ({ payload, store, requestManager }, res, next) => {
   const addr = payload.params[0].toLowerCase();
   let cached = {};
   const storeKey = utils.sha3(
-    `${store.getters['global/network'].type.name}-${addr}`
+    `${store.getters['global/network'].chainId}-${addr}`
   );
   if (!locstore.get(storeKey)) {
     cached = {

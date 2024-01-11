@@ -115,7 +115,7 @@
           <span
             v-if="isTestNetwork"
             style="padding-left: 2px; font-size: 14px"
-            >{{ network.type.currencyName }}</span
+            >{{ network.currencyName }}</span
           >
         </div>
       </div>
@@ -134,7 +134,7 @@
             v-else-if="!isTestNetwork"
             class="info-container--text-chain-balance"
           >
-            {{ walletChainBalance }} {{ network.type.currencyName }}
+            {{ walletChainBalance }} {{ network.currencyName }}
           </div>
           <!--
           =====================================================================================
@@ -461,7 +461,7 @@ export default {
      * and creates a new name resolver instance
      */
     async setupNameResolver() {
-      if (this.network.type.ens && this.web3.currentProvider) {
+      if (this.network.ens && this.web3.currentProvider) {
         this.nameResolver = new NameResolver(this.network, this.web3);
       } else {
         this.nameResolver = null;

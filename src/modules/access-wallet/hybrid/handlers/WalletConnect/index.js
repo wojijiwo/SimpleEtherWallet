@@ -4,7 +4,7 @@ import PromiEvent from 'web3-core-promievent';
 
 import HybridWalletInterface from '../walletInterface';
 import store from '@/core/store';
-import * as nodes from '@/utils/networks/nodes';
+import { chainMap } from '@/utils/networks';
 import WALLET_TYPES from '@/modules/access-wallet/common/walletTypes';
 import {
   sanitizeHex,
@@ -14,7 +14,7 @@ import errorHandler from './errorHandler';
 import commonGenerator from '@/core/helpers/commonGenerator';
 import toBuffer from '@/core/helpers/toBuffer';
 import walletconnect from '@/assets/images/icons/wallets/walletconnect.svg';
-import { BSC, ETH, MATIC } from '@/utils/networks/types';
+import { BSC, ETH, MATIC } from '@/utils/networks';
 
 // eslint-disable-next-line
 const projectId = WALLET_CONNECT_PROJECT_ID;
@@ -104,10 +104,10 @@ class WalletConnectWallet {
 const createWallet = async (identifier = WALLET_TYPES.WALLET_CONNECT) => {
   const allChainIds =
     identifier === WALLET_TYPES.WALLET_CONNECT
-      ? Object.values(nodes)
+      ? Object.values(chainMap)
           .map(item => {
-            if (item.type.chainID !== 1) {
-              return item.type.chainID;
+            if (item.chainId !== 1) {
+              return item.chainId;
             }
           })
           .filter(item => !!item)
@@ -138,8 +138,8 @@ const createWallet = async (identifier = WALLET_TYPES.WALLET_CONNECT) => {
 
   signClient.on('connect', evt => {
     const { chainId } = evt;
-    const foundNode = Object.values(nodes).find(item => {
-      if (item.type.chainID === parseInt(chainId)) return item;
+    const foundNode = Object.values(chainMap).find(item => {
+      if (item.chainId === parseInt(chainId)) return item;
     });
     if (foundNode) {
       store

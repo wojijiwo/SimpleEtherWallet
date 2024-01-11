@@ -49,7 +49,7 @@ const setTokenAndEthBalance = function ({
 }) {
   commit('wallet/SET_LOADING_WALLET_INFO', true, { root: true });
   const network = rootGetters['global/network'];
-  const isTokenBalanceApiSupported = network.type.balanceApi !== '';
+  const isTokenBalanceApiSupported = false;
   const address = rootState.wallet.address;
 
   const _formatBalance = (balance, decimals) => {
@@ -94,13 +94,12 @@ const setTokenAndEthBalance = function ({
     });
   };
 
-  if (!isTokenBalanceApiSupported) {
-    const currentProvider = rootState.wallet.web3.eth.currentProvider;
+  const currentProvider = rootState.wallet.web3.eth.currentProvider;
     // Prevent the 'Invalid return values' error
     // when accessing new network on MetaMask
     if (
       rootState.wallet.identifier === WALLET_TYPES.WEB3_WALLET &&
-      network.type.chainID !== parseInt(currentProvider.chainId)
+      network.chainId !== parseInt(currentProvider.chainId)
     ) {
       return;
     }
@@ -114,106 +113,6 @@ const setTokenAndEthBalance = function ({
       }
     }
     _getBalance();
-    return;
-  }
-  let mainTokenBalance = toBN('0');
-  const isQuery = network.type.balanceApi.includes('partners.mewapi')
-    ? '?'
-    : '&';
-  const TOKEN_BALANCE_API = `${network.type.balanceApi}${address}${isQuery}type=internal&platform=web`;
-  fetch(TOKEN_BALANCE_API)
-    .then(res => res.json())
-    .then(res => res.result)
-    .then(preTokens => {
-      const hasPreTokens = preTokens ? preTokens : [];
-      if (hasPreTokens.length === 0) {
-        _getBalance();
-        return [];
-      }
-      const includedUserBalance = hasPreTokens.filter(item => {
-        if (
-          item.contract.toLowerCase() ===
-          '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
-        )
-          return item;
-      });
-      if (!hasPreTokens.length || !includedUserBalance.length) {
-        hasPreTokens.push({
-          contract: MAIN_TOKEN_ADDRESS,
-          balance: '0x0'
-        });
-      }
-      const promises = [];
-      hasPreTokens.forEach(t => {
-        if (!t.contract) return;
-        const token = getters.contractToToken(t.contract);
-        if (!token) {
-          promises.push(
-            getTokenInfo(t.contract, rootState.wallet.web3).then(info => {
-              if (info) {
-                rootState.external.networkTokens.set({
-                  name: info.name,
-                  symbol: info.symbol,
-                  decimals: info.decimals,
-                  address: t.contract
-                });
-              }
-            })
-          );
-        }
-      });
-      return Promise.all(promises).then(() => {
-        return hasPreTokens;
-      });
-    })
-    .then(tokens => {
-      const formattedList = [];
-      tokens.forEach(t => {
-        const token = getters.contractToToken(t.contract);
-        if (t.contract === MAIN_TOKEN_ADDRESS) {
-          mainTokenBalance = toBN(t.balance);
-        }
-        if (token.name && token.hasOwnProperty('decimals')) {
-          const base = fromBase(t.balance, token.decimals);
-          const usdBalance = new BigNumber(base).times(token.price).toString();
-          formattedList.push(
-            Object.assign(
-              {
-                balance: t.balance,
-                balancef: _formatBalance(t.balance, token.decimals).value,
-                usdBalance: usdBalance,
-                usdBalancef: formatFiatValue(usdBalance).value
-              },
-              t,
-              token
-            )
-          );
-        }
-      });
-      formattedList.sort(function (x, y) {
-        return x.contract == MAIN_TOKEN_ADDRESS
-          ? -1
-          : y.contract == MAIN_TOKEN_ADDRESS
-          ? 1
-          : 0;
-      });
-      dispatch('wallet/setTokens', formattedList, { root: true }).then(() =>
-        dispatch('wallet/setAccountBalance', mainTokenBalance, {
-          root: true
-        }).then(() => {
-          // dispatch can't be blank
-          dispatch('custom/updateCustomTokenBalances', false, {
-            root: true
-          }).catch(e => Toast(e, {}, ERROR));
-          commit('wallet/SET_LOADING_WALLET_INFO', false, { root: true });
-        })
-      );
-    })
-    .catch(e => {
-      Toast(e.message, {}, ERROR);
-      _getBalance();
-      return [];
-    });
 };
 
 const storeEIP6963Wallet = function ({ commit }, params) {

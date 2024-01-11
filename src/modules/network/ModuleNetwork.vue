@@ -63,13 +63,13 @@ export default {
     ...mapState('external', ['selectedEIP6963Provider']),
     ...mapGetters('global', ['network']),
     fullName() {
-      return this.network.type.name_long;
+      return this.network.name_long;
     },
     lastBlock() {
       return formatIntegerToString(this.blockNumber);
     },
     icon() {
-      return this.network.type.icon;
+      return this.network.icon;
     },
     show() {
       let switchNetworkWeb3Supported = false;

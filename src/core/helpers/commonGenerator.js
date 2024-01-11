@@ -2,7 +2,7 @@ import Common, { Hardfork } from '@ethereumjs/common';
 
 const commonGenerator = network => {
   return Common.custom({
-    chainId: network.type.chainID,
+    chainId: network.chainId,
     defaultHardfork: Hardfork.London
   });
 };

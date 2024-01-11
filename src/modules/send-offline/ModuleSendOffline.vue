@@ -184,7 +184,7 @@ import BigNumber from 'bignumber.js';
 import Web3 from 'web3';
 import { isValidAddress } from 'ethereumjs-util';
 import { debounce, isEmpty } from 'lodash';
-import * as nodes from '@/utils/networks/nodes';
+import { chainMap } from '@/utils/networks';
 
 import sanitizeHex from '@/core/helpers/sanitizeHex';
 import { ERROR, SUCCESS, Toast } from '../toast/handler/handlerToast';
@@ -214,7 +214,7 @@ export default {
       jsonFileName: '',
       jsonFile: null,
       tokens: [],
-      nodes: nodes,
+      nodes: chainMap,
       chainID: 1
     };
   },
@@ -223,8 +223,8 @@ export default {
     ...mapGetters('global', ['network']),
     networkToken() {
       return {
-        symbol: this.network.type.currencyName,
-        name: this.network.type.name
+        symbol: this.network.currencyName,
+        name: this.network.name
       };
     },
     isDisabledNextBtn() {
@@ -284,7 +284,7 @@ export default {
       return '';
     },
     disableData() {
-      return this.selectedCurrency?.symbol !== this.network.type.currencyName;
+      return this.selectedCurrency?.symbol !== this.network.currencyName;
     },
     validAddress() {
       return this.toAddress !== '' && isValidAddress(this.toAddress);
@@ -293,7 +293,7 @@ export default {
       return (
         this.validAddress &&
         !isEmpty(this.selectedCurrency) &&
-        this.selectedCurrency.symbol !== this.network.type.currencyName
+        this.selectedCurrency.symbol !== this.network.currencyName
       );
     }
   },
@@ -334,7 +334,7 @@ export default {
     ...mapActions('global', ['setNetwork']),
     generateTokens() {
       const networkToken = [this.networkToken];
-      this.network.type.tokens.then(tokens => {
+      this.network.tokens.then(tokens => {
         this.tokens = networkToken.concat(tokens);
       });
     },
@@ -413,7 +413,7 @@ export default {
       if (files[0]) reader.readAsBinaryString(files[0]);
     },
     async generateTx() {
-      const symbol = this.network.type.currencyName;
+      const symbol = this.network.currencyName;
       const isToken = this.selectedCurrency.symbol !== symbol;
       const amtWei = toWei(this.amount, 'ether');
       const raw = {
@@ -429,7 +429,7 @@ export default {
           ? sanitizeHex(toBNSafe(0).toString(16))
           : sanitizeHex(toBNSafe(amtWei).toString(16)),
         data: this.data,
-        chainId: this.network.type.chainID
+        chainId: this.network.chainId
       };
 
       this.raw = raw;
@@ -446,7 +446,7 @@ export default {
      */
     setNetworkDebounced: debounce(function (value) {
       const found = Object.values(this.nodes).filter(item => {
-        if (item.type.chainID == value) {
+        if (item.chainId == value) {
           return item;
         }
       });
@@ -456,7 +456,7 @@ export default {
       })
         .then(() => {
           this.setWeb3Instance();
-          Toast(`Switched network to: ${found[0].type.name}`, {}, SUCCESS);
+          Toast(`Switched network to: ${found[0].name}`, {}, SUCCESS);
         })
         .catch(e => {
           Toast(e, {}, ERROR);

@@ -190,7 +190,7 @@ import { debounce, isEmpty, isNumber } from 'lodash';
 import { mapGetters, mapState } from 'vuex';
 import BigNumber from 'bignumber.js';
 
-import { ETH } from '@/utils/networks/types';
+import { ETH } from '@/utils/networks';
 import { Toast, ERROR, WARNING } from '@/modules/toast/handler/handlerToast';
 
 import {
@@ -298,7 +298,7 @@ export default {
       );
     },
     currencyName() {
-      return this.network.type.currencyName;
+      return this.network.currencyName;
     },
     showBalanceNotice() {
       const isZero = BigNumber(this.balanceInETH).lte(0);
@@ -437,7 +437,7 @@ export default {
       return 'Invalid hex data';
     },
     isEthNetwork() {
-      return this.network.type.name === ETH.name;
+      return this.network.name === ETH.chainId;
     },
     isToken() {
       if (this.sendTx && this.selectedCurrency?.contract)

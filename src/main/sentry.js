@@ -18,7 +18,7 @@ Sentry.init({
     // eslint-disable-next-line
     console.error(hint.originalException || hint.syntheticException);
     const network = store.getters['global/network']
-      ? store.getters['global/network'].type.name
+      ? store.getters['global/network'].chainId
       : '';
     const service = store.getters['global/network']
       ? store.getters['global/network'].service

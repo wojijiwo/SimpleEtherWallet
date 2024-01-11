@@ -55,7 +55,7 @@ export default async ({ payload, store, requestManager }, res, next) => {
     return;
   }
   tx.chainId = !tx.chainId
-    ? store.getters['global/network'].type.chainID
+    ? store.getters['global/network'].chainId
     : tx.chainId;
   tx.from = tx.from ? tx.from : store.state.wallet.address;
   getSanitizedTx(tx)
@@ -82,7 +82,7 @@ export default async ({ payload, store, requestManager }, res, next) => {
                 if (!isTesting) {
                   const storeKey = utils.sha3(
                     `${
-                      store.getters['global/network'].type.name
+                      store.getters['global/network'].chainId
                     }-${store.state.wallet.instance
                       .getChecksumAddressString()
                       .toLowerCase()}`
@@ -134,7 +134,7 @@ export default async ({ payload, store, requestManager }, res, next) => {
                 if (!isTesting) {
                   const storeKey = utils.sha3(
                     `${
-                      store.getters['global/network'].type.name
+                      store.getters['global/network'].chainId
                     }-${store.state.wallet.instance
                       .getChecksumAddressString()
                       .toLowerCase()}`

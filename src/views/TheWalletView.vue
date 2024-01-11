@@ -23,7 +23,7 @@ import { mapActions, mapState, mapGetters } from 'vuex';
 import { toBN } from 'web3-utils';
 import { debounce, isEqual } from 'lodash';
 import handlerWallet from '@/core/mixins/handlerWallet.mixin';
-import nodeList from '@/utils/networks';
+import { chainMap } from '@/utils/networks';
 import {
   ERROR,
   SUCCESS,
@@ -103,12 +103,12 @@ export default {
         if (
           (this.identifier === WALLET_TYPES.WALLET_CONNECT ||
             this.identifier === WALLET_TYPES.MEW_WALLET) &&
-          newVal.type.chainID !== this.instance.connection.chainId
+          newVal.chainId !== this.instance.connection.chainId
         ) {
           this.instance.connection.sendAsync(
             {
               method: 'wallet_switchEthereumChain',
-              params: [{ chainId: newVal.type.chainID.toString(16) }]
+              params: [{ chainId: newVal.chainId.toString(16) }]
             },
             err => {
               if (err) {
@@ -117,9 +117,7 @@ export default {
                   {},
                   WARNING
                 );
-                this.instance.connection.switchEthereumChain(
-                  oldVal.type.chainID
-                );
+                this.instance.connection.switchEthereumChain(oldVal.chainId);
 
                 setTimeout(() => {
                   this.setNetwork({
@@ -224,14 +222,11 @@ export default {
       this.subscribeToBlockNumber();
     },
     async checkNetwork() {
-      const matched = await matchNetwork(
-        this.network.type.chainID,
-        this.identifier
-      );
+      const matched = await matchNetwork(this.network.chainId, this.identifier);
       this.setValidNetwork(matched);
     },
     processNetworkTokens() {
-      this.network.type.tokens.then(res => {
+      this.network.tokens.then(res => {
         const tokenMap = new Map();
         res.forEach(item => {
           tokenMap.set(item.address.toLowerCase(), item);
@@ -329,8 +324,8 @@ export default {
         });
         console.log('new network id is ', networkId);
 
-        const foundNetwork = Object.values(nodeList).find(item => {
-          if (toBN(networkId).eq(toBN(item[0].type.chainID))) return item;
+        const foundNetwork = Object.values(chainMap).find(item => {
+          if (toBN(networkId).eq(toBN(item[0].chainId))) return item;
         });
         if (this.selectedEIP6963Provider) {
           try {
@@ -344,7 +339,7 @@ export default {
               this.setValidNetwork(true);
               this.$emit('newNetwork');
               Toast(
-                `Switched network to: ${foundNetwork[0].type.name}`,
+                `Switched network to: ${foundNetwork[0].name}`,
                 {},
                 SUCCESS
               );

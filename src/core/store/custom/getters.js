@@ -1,6 +1,6 @@
 const customTokens = function (state, _, rootState, rootGetters) {
   const network = rootGetters['global/network'];
-  return state.tokens[network.type.name] || [];
+  return state.tokens[network.chainId] || [];
 };
 
 const hasCustom = function (state, _, rootState, rootGetters) {
@@ -10,7 +10,7 @@ const hasCustom = function (state, _, rootState, rootGetters) {
 
 const hiddenTokens = function (state, _, rootState, rootGetters) {
   const network = rootGetters['global/network'];
-  return state.hiddenTokens[network.type.name] || [];
+  return state.hiddenTokens[network.chainId] || [];
 };
 
 const hasHidden = function (state, _, rootState, rootGetters) {

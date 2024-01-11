@@ -1,17 +1,15 @@
 import localStore from 'store';
 import Configs from '../configs';
-import nodeList from '@/utils/networks';
-const defaultNetwork = nodeList['ETH'].find(item => {
-  return item.service === 'myetherwallet.com-ws';
-});
+import { chainMap, ETH } from '@/utils/networks';
+
 const INIT_STORE = function (state) {
   if (localStore.get(Configs.LOCAL_STORAGE_KEYS.global)) {
     const savedStore = localStore.get(Configs.LOCAL_STORAGE_KEYS.global);
     if (savedStore.stateVersion === Configs.VERSION.global) {
-      if (!nodeList[savedStore.currentNetwork.type.name]) {
-        savedStore['currentNetwork'] = defaultNetwork;
-        savedStore.currentNetwork.type = {
-          name: 'ETH'
+      if (!chainMap[savedStore.currentNetwork.chainId]) {
+        savedStore['currentNetwork'] = ETH;
+        savedStore.currentNetwork = {
+          chainId: 1
         };
       }
       Object.assign(state, savedStore);
@@ -39,7 +37,7 @@ const SET_VALID_NETWORK = function (state, valid) {
 const SET_NETWORK = async function (state, networkObj) {
   const _netObj = Object.assign({}, networkObj);
   _netObj.type = {
-    name: networkObj.type.name
+    name: networkObj.name
   };
   state.currentNetwork = _netObj;
 };
@@ -53,9 +51,9 @@ const SET_IMPORTED_STATE = function (currentState, newState) {
 };
 
 const ADD_LOCAL_CONTRACT = function (state, contract) {
-  if (!state.localContracts[state.currentNetwork.type.name])
-    state.localContracts[state.currentNetwork.type.name] = [];
-  state.localContracts[state.currentNetwork.type.name].push(contract);
+  if (!state.localContracts[state.currentNetwork.chainId])
+    state.localContracts[state.currentNetworkchainId] = [];
+  state.localContracts[state.currentNetwork.chainId].push(contract);
 };
 const SET_BASE_FEE_PER_GAS = function (state, baseFeePerGasBN) {
   state.eip1559.baseFeePerGas = baseFeePerGasBN.toString();

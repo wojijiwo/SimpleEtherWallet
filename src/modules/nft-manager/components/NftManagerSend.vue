@@ -106,7 +106,7 @@ export default {
       return 'Back to ' + this.nftCategory;
     },
     currencyName() {
-      return this.network.type.currencyName;
+      return this.network.currencyName;
     }
   },
   methods: {

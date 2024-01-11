@@ -247,7 +247,7 @@ import message from '@/assets/images/icons/icon-message-enable.svg';
 import settings from '@/assets/images/icons/icon-setting-enable.svg';
 import logout from '@/assets/images/icons/icon-logout-enable.svg';
 import { EventBus } from '@/core/plugins/eventBus';
-import { ETH, BSC, MATIC } from '@/utils/networks/types';
+import { ETH, BSC, MATIC } from '@/utils/networks';
 import { ROUTES_WALLET } from '@/core/configs/configRoutes';
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
 
@@ -465,7 +465,7 @@ export default {
     shouldShow(route) {
       if (this.routeNetworks[route?.name]) {
         for (const net of this.routeNetworks[route.name]) {
-          if (net.name === this.network.type.name) return true;
+          if (net.name === this.network.name) return true;
         }
         return false;
       }

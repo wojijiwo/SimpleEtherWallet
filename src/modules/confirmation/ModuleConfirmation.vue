@@ -632,7 +632,7 @@ export default {
       if (tx.to && tx.data && tx.data.substr(0, 10) === '0xa9059cbb') {
         tokenData = parseTokenData(tx.data, tx.to);
         tx.fromTxData = {
-          currency: this.network.type.currencyName,
+          currency: this.network.currencyName,
           amount: tx.amount
         };
         tx.toTxData = {
@@ -641,7 +641,7 @@ export default {
           to: tokenData.tokenTransferTo
         };
       }
-      tx.network = this.network.type.name;
+      tx.network = this.network.name;
     },
     async sendBatchTransaction() {
       const _this = this;
@@ -653,7 +653,7 @@ export default {
         _tx.from = _this.address;
         const _rawTx = tx.rawTransaction;
         const promiEvent = web3.eth[_method](_rawTx);
-        _tx.network = _this.network.type.name;
+        _tx.network = _this.network.name;
         _tx.gasPrice = isHex(_tx.gasPrice)
           ? hexToNumberString(_tx.gasPrice)
           : _tx.gasPrice;
@@ -665,7 +665,7 @@ export default {
         promiEvent
           .on('transactionHash', hash => {
             const storeKey = sha3(
-              `${_this.network.type.name}-${_this.address.toLowerCase()}`
+              `${_this.network.name}-${_this.address.toLowerCase()}`
             );
             const localStoredObj = locStore.get(storeKey);
             locStore.set(storeKey, {
@@ -698,7 +698,7 @@ export default {
     showSuccess(param) {
       if (isArray(param)) {
         const lastHash = param[param.length - 1].tx.hash;
-        this.links.explorer = this.network.type.blockExplorerTX.replace(
+        this.links.explorer = this.network.blockExplorerTX.replace(
           '[[txHash]]',
           lastHash
         );
@@ -706,7 +706,7 @@ export default {
         return;
       }
 
-      this.links.explorer = this.network.type.blockExplorerTX.replace(
+      this.links.explorer = this.network.blockExplorerTX.replace(
         '[[txHash]]',
         param
       );
@@ -782,7 +782,7 @@ export default {
                 });
                 batchTxEvents.push(event);
                 const storeKey = sha3(
-                  `${this.network.type.name}-${this.address.toLowerCase()}`
+                  `${this.network.name}-${this.address.toLowerCase()}`
                 );
                 const localStoredObj = locStore.get(storeKey);
                 locStore.set(storeKey, {
@@ -865,20 +865,20 @@ export default {
           ? item.encodeABI()
           : '0x';
         const symbol = isEmpty(this.sendCurrency)
-          ? this.network.type.currencyName
+          ? this.network.currencyName
           : this.sendCurrency.symbol;
         const value =
           data !== '0x'
             ? !this.isBatch
               ? `${this.value} ${symbol}`
-              : `0 ${this.network.type.currencyName}`
+              : `0 ${this.network.currencyName}`
             : `${this.value} ${symbol}`;
         const from = item.from ? item.from : this.address;
         const toAdd = item.to ? item.to : this.txTo;
         return [
           {
             title: 'Network',
-            value: this.network.type.name_long
+            value: this.network.name_long
           },
           {
             title: 'From ENS',
@@ -909,7 +909,7 @@ export default {
           },
           // {
           //   title: 'Transaction fee',
-          //   value: `${this.txFee} ${this.network.type.currencyName} ~ $${this.txFeeUSD}`
+          //   value: `${this.txFee} ${this.network.currencyName} ~ $${this.txFeeUSD}`
           // },
           {
             title: 'Nonce',

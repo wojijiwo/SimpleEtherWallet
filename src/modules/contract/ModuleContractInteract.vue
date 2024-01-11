@@ -246,22 +246,9 @@ export default {
       if (newVal && isAddress(newVal.toLowerCase())) {
         this.resolveAddress();
       }
-    },
-    web3: {
-      handler: function () {
-        this.generateNetworkContracts();
-      }
     }
   },
-  mounted() {
-    this.generateNetworkContracts();
-  },
   methods: {
-    generateNetworkContracts() {
-      this.network.type.contracts.then(contracts => {
-        this.networkContracts = contracts;
-      });
-    },
     resetDefaults() {
       this.currentContract = null;
       this.abi = [];

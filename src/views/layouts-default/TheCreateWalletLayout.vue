@@ -114,7 +114,6 @@ import { mapState } from 'vuex';
 
 import { Toast, ERROR } from '@/modules/toast/handler/handlerToast';
 import { ROUTES_HOME } from '@/core/configs/configRoutes';
-import enkryptMarketing from '@/core/mixins/enkryptMarketing.mixin';
 import handlerAnalytics from '@/modules/analytics-opt-in/handlers/handlerAnalytics.mixin';
 import {
   COMMON,
@@ -128,7 +127,7 @@ export default {
       import('@/modules/create-wallet/ModuleCreateWalletSoftware'),
     TheLayoutHeader: () => import('../components-default/TheLayoutHeader')
   },
-  mixins: [enkryptMarketing, handlerAnalytics],
+  mixins: [handlerAnalytics],
   props: {
     showSoftwareModule: {
       type: Boolean
