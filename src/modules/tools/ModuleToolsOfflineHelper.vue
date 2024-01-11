@@ -389,7 +389,7 @@ export default {
      **********************************************************/
     async txData() {
       const { eth } = this.web3;
-      const chainID = await eth.getChainId();
+      const chainId = await eth.getChainId();
       const fetchedGasPrice = await eth.getGasPrice();
       const gasPrice = fromWei(fetchedGasPrice, 'gwei');
       const nonce = await eth.getTransactionCount(this.fromAddress);
@@ -397,12 +397,12 @@ export default {
         data: {
           nonce,
           fetchedGasPrice,
-          chainID
+          chainId
         },
         details: {
           address: this.fromAddress,
           nonce: nonce.toString(),
-          chainID,
+          chainId,
           gasLimit: `21000`,
           gasPrice
         }
@@ -429,7 +429,7 @@ export default {
         { title: 'Date', value: Date() },
         {
           title: 'Chain ID',
-          value: details.chainID
+          value: details.chainId
         },
         {
           title: 'Gas Limit',
@@ -451,7 +451,7 @@ export default {
       data = {
         nonce: toHex(data.nonce),
         gasPrice: toHex(data.fetchedGasPrice),
-        chainID: toHex(data.chainID)
+        chainId: toHex(data.chainId)
       };
       const blob = new Blob([JSON.stringify(data)], { type: 'mime' });
       this.fileLink = window.URL.createObjectURL(blob);
@@ -522,7 +522,7 @@ export default {
           },
           details: {
             ...basicDetails,
-            chainID: txChain
+            chainId: txChain
           }
         };
       } catch ({ message }) {
@@ -617,7 +617,7 @@ export default {
           },
           {
             title: 'Chain Id',
-            value: details.chainID
+            value: details.chainId
           }
         ];
     },

@@ -17,7 +17,6 @@ import bitboxError from './errors-bitbox/en_US';
 import bitbox02Error from './errors-bitbox02/en_US';
 import verifyMessage from './other/verify-message/en_US';
 import sendTx from './send-tx/en_US';
-import nftManager from './nft-manager/en_US';
 import signMessage from './sign-message/en_US';
 import phishing from './other/phishing/en_US';
 import header from './header/en_US';
@@ -41,7 +40,6 @@ const en_US = {
   bitbox02Error: bitbox02Error,
   verifyMessage: verifyMessage,
   sendTx: sendTx,
-  nftManager: nftManager,
   signMessage: signMessage,
   phishing: phishing,
   header: header

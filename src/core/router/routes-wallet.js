@@ -59,31 +59,6 @@ export default {
       }
     },
     {
-      path: ROUTES_WALLET.NFT_MANAGER.PATH,
-      name: ROUTES_WALLET.NFT_MANAGER.NAME,
-      component: () => import('@/views/layouts-wallet/TheNFTManagerLayout'),
-      children: [
-        {
-          path: ROUTES_WALLET.NFT_MANAGER_SEND.PATH,
-          name: ROUTES_WALLET.NFT_MANAGER_SEND.NAME,
-          component: () =>
-            import('@/modules/nft-manager/components/NftManagerSend'),
-          meta: {
-            noAuth: false,
-            title: 'Send Your NFTs on MyEtherWallet',
-            description:
-              "Send your NFTs easily on MyEtherWallet. From Bored Apes to Doodles and everything in between, we've got you."
-          }
-        }
-      ],
-      meta: {
-        noAuth: false,
-        title: 'Manage Your NFTs | View Your NFTs',
-        description:
-          'View and send your NFTs on MyEtherWallet. See all your NFTs on multiple chains.'
-      }
-    },
-    {
       path: ROUTES_WALLET.DEPLOY_CONTRACT.PATH,
       name: ROUTES_WALLET.DEPLOY_CONTRACT.NAME,
       component: () => import('@/views/layouts-wallet/TheDeployContractLayout'),

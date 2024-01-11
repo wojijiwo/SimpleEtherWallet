@@ -114,7 +114,7 @@ class ledgerWallet {
       accountPath = this.basePath + '/' + idx;
     }
     const txSigner = async txParams => {
-      const networkId = store.getters['global/network'].type.chainID;
+      const networkId = store.getters['global/network'].chainId;
       const tokenInfo = byContractAddressAndChainId(txParams.to, networkId);
       if (tokenInfo)
         await this.ledger.provideERC20TokenInformation(tokenInfo.data);

@@ -41,9 +41,9 @@ const setNetwork = async function (
   { commit, dispatch, rootState },
   { network, walletType }
 ) {
-  const chainID = network?.type?.chainID;
+  const chainId = network?.chainId;
   const matched = await matchNetwork(
-    chainID,
+    chainId,
     walletType,
     rootState.external.selectedEIP6963Provider
   );

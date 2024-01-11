@@ -94,8 +94,8 @@ class CoolWallet {
               locstore.set(CW_DEVICE_NAME, device.name);
               if (_this.isPro) {
                 _this.connectToCWP();
-                const chainID = store.getters['global/network'].type.chainID;
-                await _this.deviceInstance[chainID].getAddress(
+                const chainId = store.getters['global/network'].chainId;
+                await _this.deviceInstance[chainId].getAddress(
                   _this.transport,
                   _this.appPrivateKey,
                   _this.appId,
@@ -194,9 +194,9 @@ class CoolWallet {
   }
 
   async getAccount(idx) {
-    const chainID = store.getters['global/network'].type.chainID;
+    const chainId = store.getters['global/network'].chainId;
     const instance = this.isPro
-      ? this.deviceInstance[chainID]
+      ? this.deviceInstance[chainId]
       : this.deviceInstance;
     const address = this.isPro
       ? await instance.getAddress(
@@ -230,7 +230,7 @@ class CoolWallet {
         };
 
         const result = this.isPro
-          ? await this.deviceInstance[chainID]
+          ? await this.deviceInstance[chainId]
               .signTransaction(signTxData)
               .catch(errorHandler)
           : await this.deviceInstance
@@ -241,11 +241,11 @@ class CoolWallet {
             common: commonGenerator(store.getters['global/network'])
           });
           const signedChainId = calculateChainIdFromV(resultTx.v);
-          if (signedChainId !== chainID)
+          if (signedChainId !== chainId)
             throw new Error(
               Vue.$i18n.t('errorsGlobal.invalid-network-id-sig', {
                 got: signedChainId,
-                expected: chainID
+                expected: chainId
               }),
               'InvalidNetworkId'
             );

@@ -241,7 +241,6 @@
 import { mapActions, mapGetters, mapState } from 'vuex';
 import send from '@/assets/images/icons/icon-send.svg';
 import portfolio from '@/assets/images/icons/icon-dashboard-enable.svg';
-import nft from '@/assets/images/icons/icon-nft.svg';
 import contract from '@/assets/images/icons/icon-contract-enable.svg';
 import message from '@/assets/images/icons/icon-message-enable.svg';
 import settings from '@/assets/images/icons/icon-setting-enable.svg';
@@ -319,22 +318,10 @@ export default {
             icon: portfolio
           },
           {
-            title: this.$t('interface.menu.nft'),
-            route: { name: ROUTES_WALLET.NFT_MANAGER.NAME },
-            icon: nft
-          },
-          {
             title: this.$t('interface.menu.send'),
             icon: send,
             route: { name: ROUTES_WALLET.SEND_TX.NAME }
           }
-          //,
-          // {
-          //   title: this.$t('interface.menu.apps'),
-          //   route: { name: ROUTES_WALLET.DAPPS.NAME },
-          //   icon: dapp,
-          //   hasNew: hasNew.length > 0
-          // },
         ];
       }
       return [

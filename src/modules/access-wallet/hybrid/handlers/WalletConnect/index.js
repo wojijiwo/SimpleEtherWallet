@@ -111,11 +111,11 @@ const createWallet = async (identifier = WALLET_TYPES.WALLET_CONNECT) => {
             }
           })
           .filter(item => !!item)
-      : [BSC.chainID, MATIC.chainID];
+      : [BSC.chainId, MATIC.chainId];
   const signClient = await EthereumProvider.init({
     projectId,
     showQrModal: true,
-    chains: [ETH.chainID],
+    chains: [ETH.chainId],
     optionalChains: allChainIds,
     methods: ['eth_sendTransaction', 'eth_sign'],
     events: ['chainChanged', 'accountsChanged'],

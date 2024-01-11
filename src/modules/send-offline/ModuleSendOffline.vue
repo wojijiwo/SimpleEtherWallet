@@ -215,7 +215,7 @@ export default {
       jsonFile: null,
       tokens: [],
       nodes: chainMap,
-      chainID: 1
+      chainId: 1
     };
   },
   computed: {
@@ -400,8 +400,8 @@ export default {
             const uploadedGasPrice = hexToNumberString(file.gasPrice);
             self.localNonce = hexToNumberString(file.nonce);
             self.gasPrice = fromWei(uploadedGasPrice, 'gwei');
-            self.chainID = hexToNumberString(file.chainID);
-            self.setNetworkDebounced(self.chainID);
+            self.chainId = hexToNumberString(file.chainId);
+            self.setNetworkDebounced(self.chainId);
             self.$refs.upload.value = '';
             return;
           }

@@ -1,7 +1,6 @@
 'use strict';
 
 import { Toast, SENTRY } from '@/modules/toast/handler/handlerToast';
-import VuexStore from '@/core/store';
 const errors = require('web3-core-helpers').errors;
 import { isArray, isFunction } from 'lodash';
 let Ws = null;
@@ -176,7 +175,6 @@ WebsocketProvider.prototype.on = function (type, callback) {
   if (typeof callback !== 'function')
     throw new Error('The second parameter callback must be a function.');
 
-  const chainID = VuexStore.getters['global/network'].chainId;
   switch (type) {
     case 'message':
       this.notificationCallbacks.push(resp => {

@@ -288,7 +288,7 @@ export default {
       });
     }, 500),
     /**
-     * Checks Metamask chainID on load, switches current network if it doesn't match
+     * Checks Metamask chainId on load, switches current network if it doesn't match
      * and setup listeners for metamask changes
      */
     web3Listeners() {

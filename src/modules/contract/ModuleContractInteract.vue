@@ -175,8 +175,7 @@ export default {
       },
       outputValues: [],
       ethPayable: '0',
-      nametag: '',
-      networkContracts: []
+      nametag: ''
     };
   },
   computed: {

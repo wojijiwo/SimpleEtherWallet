@@ -7,7 +7,6 @@ import {
   formatIntegerValue
 } from '@/core/helpers/numberFormatHelper';
 import { toBN } from 'web3-utils';
-import getTokenInfo from '@/core/helpers/tokenInfo';
 import WALLET_TYPES from '@/modules/access-wallet/common/walletTypes';
 import { fromBase } from '../../helpers/unit';
 
@@ -49,7 +48,6 @@ const setTokenAndEthBalance = function ({
 }) {
   commit('wallet/SET_LOADING_WALLET_INFO', true, { root: true });
   const network = rootGetters['global/network'];
-  const isTokenBalanceApiSupported = false;
   const address = rootState.wallet.address;
 
   const _formatBalance = (balance, decimals) => {

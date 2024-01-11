@@ -14,7 +14,6 @@ import keepkeyError from './errors-keepkey/ru_RU';
 import bitboxError from './errors-bitbox/ru_RU';
 import verifyMessage from './other/verify-message/ru_RU';
 import sendTx from './send-tx/ru_RU';
-import nftManager from './nft-manager/ru_RU';
 import signMessage from './sign-message/ru_RU';
 import phishing from './other/phishing/ru_RU';
 import header from './header/ru_RU';
@@ -35,7 +34,6 @@ const ru_RU = {
   bitboxError: bitboxError,
   verifyMessage: verifyMessage,
   sendTx: sendTx,
-  nftManager: nftManager,
   signMessage: signMessage,
   phishing: phishing,
   header: header

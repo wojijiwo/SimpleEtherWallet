@@ -16,6 +16,7 @@ Object.keys(chainList).forEach(key => {
   chainList[key].currencyName = chain.nativeCurrency.symbol;
   chainList[key].coingeckoID = null;
   chainList[key].homePage = chain.infoURL;
+  chainList[key].icon = chain.logoURI;
 
   if (chain.rpc.length > 0) {
     chainList[key].rpcUrl = chain.rpc[0]; // use first rpc endpoint
