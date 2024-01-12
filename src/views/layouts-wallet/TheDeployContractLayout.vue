@@ -15,7 +15,6 @@ export default {
   components: {
     TheWrapperWallet: () =>
       import('@/views/components-wallet/TheWrapperWallet'),
-    // ModuleSwapRates: () => import('@/modules/swap/ModuleSwapRates'),
     ModuleContractDeploy: () =>
       import('@/modules/contract/ModuleContractDeploy')
   }

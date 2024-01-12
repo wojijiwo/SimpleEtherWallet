@@ -1,7 +1,7 @@
 <template>
   <div class="module-network-switch full-width">
     <v-row
-      v-if="!isSwapPage && hasNetworks"
+      v-if="hasNetworks"
       class="align-end justify-center justify-sm-space-between pa-0"
     >
       <!-- ===================================================================================== -->
@@ -37,9 +37,9 @@
     <!-- Empty Search Message -->
     <!-- ===================================================================================== -->
     <app-user-msg-block
-      v-if="showEmptySearch || isSwapPage"
+      v-if="showEmptySearch"
       :message="emptySearchMes"
-      :is-alert="isSwapPage"
+      :is-alert="false"
       class="mt-5"
     />
 
@@ -72,7 +72,7 @@
           </div>
           <div class="px-2 textLight--text">-</div>
           <div class="textLight--text">
-            {{ network.name_long }}
+            ChainID: {{ network.chainId }}
           </div>
           <v-spacer />
 
@@ -109,11 +109,7 @@ export default {
     /** Set this prop to pass specific networks to be displayed */
     filterTypes: { type: Array, default: () => [] },
     /** Set this prop to false if device does not support networks */
-    hasNetworks: { type: Boolean, default: true },
-    isSwapPage: {
-      type: Boolean,
-      default: false
-    }
+    hasNetworks: { type: Boolean, default: true }
   },
   data() {
     return {
@@ -122,7 +118,9 @@ export default {
       nodes: chainMap,
       toggleType: 0,
       searchInput: '',
-      networkLoading: false
+      networkLoading: false,
+      chainNameMap: {},
+      chainNameList: []
     };
   },
   computed: {
@@ -139,17 +137,39 @@ export default {
         const unsorted =
           this.filterTypes.length > 0
             ? [...this.filterTypes]
-            : Object.keys(chainMap);
-        unsorted.splice(unsorted.indexOf('ETH'), 1);
+            : this.chainNameList;
+
         unsorted.sort();
+        const ethChain = 'Ethereum Mainnet';
+        if (unsorted.indexOf(ethChain) !== -1) {
+          unsorted.splice(unsorted.indexOf(ethChain), 1);
+          unsorted.unshift(ethChain);
+        }
+
+        const unknownName = 'unknown';
         const test = unsorted.filter(item => {
-          return chainMap[item].isTestNetwork;
+          return chainMap[this.chainNameMap[item]].isTestNetwork;
         });
+        const testWithLogo = test.filter(item => {
+          return !(chainMap[this.chainNameMap[item]].logoURI.includes(unknownName));
+        });
+        const testWithoutLogo = test.filter(item => {
+          return (chainMap[this.chainNameMap[item]].logoURI.includes(unknownName));
+        });
+        const testList = testWithLogo.concat(testWithoutLogo);
+
         const main = unsorted.filter(item => {
-          return !chainMap[item].isTestNetwork;
+          return !chainMap[this.chainNameMap[item]].isTestNetwork;
         });
-        const sorted = main.concat(test);
-        sorted.unshift('ETH');
+        const mainWithLogo = main.filter(item => {
+          return !(chainMap[this.chainNameMap[item]].logoURI.includes(unknownName));
+        });
+        const mainWithoutLogo = main.filter(item => {
+          return (chainMap[this.chainNameMap[item]].logoURI.includes(unknownName));
+        });
+        const mainList = mainWithLogo.concat(mainWithoutLogo);
+
+        const sorted = mainList.concat(testList);
         return sorted;
       }
       return [];
@@ -161,9 +181,9 @@ export default {
     networks() {
       let allNetworks = [];
       this.typeNames.forEach(item => {
-        allNetworks.push(chainMap[item]);
+        allNetworks.push(chainMap[this.chainNameMap[item]]);
       });
-      if (this.isSwapPage || this.identifier === WALLET_TYPES.MEW_WALLET) {
+      if (this.identifier === WALLET_TYPES.MEW_WALLET) {
         allNetworks = allNetworks.filter(
           item =>
             item.name === ETH.name ||
@@ -200,12 +220,6 @@ export default {
      * @returns {object}
      */
     emptySearchMes() {
-      if (this.isSwapPage && this.typeNames.length === 0) {
-        return {
-          title: 'Swap is not supported on your device',
-          subtitle: ''
-        };
-      }
       if (this.typeNames.length === 0) {
         return {
           title: 'Changing a network is not supported on your device',
@@ -213,12 +227,8 @@ export default {
         };
       }
       return {
-        title: this.isSwapPage
-          ? 'Swap is only available on these networks'
-          : '',
-        subtitle: this.isSwapPage
-          ? 'Select different feature to see all networks.'
-          : 'We do not have a network with this name.'
+        title: '',
+        subtitle: 'We do not have a network with this name.'
       };
     }
   },
@@ -269,6 +279,12 @@ export default {
     }
   },
   mounted() {
+    Object.keys(chainMap).forEach(key => {
+      const c = chainMap[key];
+      this.chainNameList.push(c.name);
+      this.chainNameMap[c.name] = c.chainId;
+    });
+
     this.networkSelected = this.validNetwork ? this.network.chainId: 0;
     this.networkSelectedBefore = this.networkSelected;
   },
@@ -298,17 +314,15 @@ export default {
      * @return {void}
      */
     setNetworkDebounced: debounce(function (value) {
-      console.log("network changing to ", value);
+      console.log('setNetworkDebounced', value);
       this.savePreviousNetwork();
+      const chainId = this.chainNameMap[value];
+      const found = this.nodes[chainId];
+      console.dir(found);
 
-      const found = Object.values(this.nodes).filter(item => {
-        if (item.chainId === value) {
-          return item;
-        }
-      });
       this.setValidNetwork(true);
       this.setNetwork({
-        network: found[0],
+        network: found,
         walletType: this.instance?.identifier || ''
       })
         .then(() => {
@@ -322,7 +336,7 @@ export default {
                 ? this.setWeb3Instance(this.selectedEIP6963Provider)
                 : this.setWeb3Instance();
             setNetworkCall.then(() => {
-              Toast(`Switched network to: ${found[0].name}`, {}, SUCCESS);
+              Toast(`Switched network to: ${found.name}`, {}, SUCCESS);
               this.setTokenAndEthBalance();
               this.$emit('newNetwork');
             });

@@ -51,8 +51,12 @@ class CustomRequestManager extends Web3RequestManager {
 }
 class GivenProvider {
   constructor(host) {
-    this.givenProvider = host;
-    const requestManager = new CustomRequestManager(this.givenProvider);
+    if (typeof host === 'object') {
+      this.givenProvider = host;
+    } else {
+      this.givenProvider = {};
+    }    
+    const requestManager = new CustomRequestManager(host);
     if (this.givenProvider.request && !this.givenProvider.request_) {
       this.givenProvider.request_ = this.givenProvider.request;
     }

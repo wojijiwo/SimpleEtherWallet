@@ -14,7 +14,8 @@ Object.keys(platformList).forEach(key => {
 Object.keys(chainList).forEach(key => {
   const chain = chainList[key];
 
-  chainList[key].isTestNetwork = ['test', 'dev'].includes(chain.name);
+  const chainName = chain.name.toLowerCase();
+  chainList[key].isTestNetwork = chainName.includes('test') || chainName.includes('dev');
   chainList[key].tokens = import(
     `@/_generated/tokens/tokens-${chain.chainId}.json`
   )

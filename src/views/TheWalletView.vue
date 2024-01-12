@@ -322,16 +322,13 @@ export default {
         const networkId = await this.selectedEIP6963Provider?.request({
           method: 'eth_chainId'
         });
-        console.log('new network id is ', networkId);
-
-        const foundNetwork = Object.values(chainMap).find(item => {
-          if (toBN(networkId).eq(toBN(item[0].chainId))) return item;
-        });
+        const foundNetwork = chainMap[parseInt(networkId)];
+        
         if (this.selectedEIP6963Provider) {
           try {
             if (foundNetwork) {
               await this.setNetwork({
-                network: foundNetwork[0],
+                network: foundNetwork,
                 walletType: this.identifier
               });
               await this.setWeb3Instance(this.selectedEIP6963Provider);
@@ -339,7 +336,7 @@ export default {
               this.setValidNetwork(true);
               this.$emit('newNetwork');
               Toast(
-                `Switched network to: ${foundNetwork[0].name}`,
+                `Switched network to: ${foundNetwork.name}`,
                 {},
                 SUCCESS
               );
@@ -348,6 +345,8 @@ export default {
               Toast("Current wallet's network is unsupported", {}, ERROR);
             }
           } catch (er) {
+            console.log("error in switch network");
+            console.dir(er);
             Toast('There was an error switching networks', {}, ERROR);
           }
         } else {

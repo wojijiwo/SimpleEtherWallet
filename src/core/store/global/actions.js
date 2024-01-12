@@ -38,10 +38,11 @@ const setGasPriceType = function ({ commit }, type) {
   commit('SET_GAS_PRICE_TYPE', type);
 };
 const setNetwork = async function (
-  { commit, dispatch, rootState },
+  { commit, rootState },
   { network, walletType }
 ) {
   const chainId = network?.chainId;
+
   const matched = await matchNetwork(
     chainId,
     walletType,
@@ -49,7 +50,6 @@ const setNetwork = async function (
   );
   if (matched) {
     commit('SET_NETWORK', network);
-    dispatch('swap/resetPrefetch', null, { root: true });
     return;
   }
   throw new Error('Network not found');

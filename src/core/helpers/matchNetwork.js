@@ -19,6 +19,8 @@ export default async (
   passedProvider,
   options = { toast: true }
 ) => {
+  console.log('matchNetwork.js: ', chainId, walletType, passedProvider, options);
+
   const { ethereum } = window;
   const provider = passedProvider || ethereum;
   const isMetaMask =
@@ -40,6 +42,7 @@ export default async (
       return false;
     } catch (er) {
       const { message } = er;
+      console.log('matchNetwork.js: ', message);
       let toastMsg = ' ';
       let toastLink = {};
       if (message && options.toast) {
