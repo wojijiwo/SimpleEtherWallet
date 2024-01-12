@@ -345,7 +345,7 @@ export default {
               Toast("Current wallet's network is unsupported", {}, ERROR);
             }
           } catch (er) {
-            console.log("error in switch network");
+            console.log("Error in switch network");
             console.dir(er);
             Toast('There was an error switching networks', {}, ERROR);
           }

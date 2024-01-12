@@ -314,11 +314,9 @@ export default {
      * @return {void}
      */
     setNetworkDebounced: debounce(function (value) {
-      console.log('setNetworkDebounced', value);
       this.savePreviousNetwork();
       const chainId = this.chainNameMap[value];
       const found = this.nodes[chainId];
-      console.dir(found);
 
       this.setValidNetwork(true);
       this.setNetwork({

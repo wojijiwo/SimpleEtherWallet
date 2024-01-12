@@ -1,6 +1,7 @@
 import { ERROR, Toast } from '@/modules/toast/handler/handlerToast';
 import { toHex } from 'web3-utils';
 import wallets from '@/modules/access-wallet/common/walletTypes';
+import { chainMap } from '@/utils/networks';
 
 /**
  * Attempts to switch metamask network to current mew network.
@@ -19,8 +20,6 @@ export default async (
   passedProvider,
   options = { toast: true }
 ) => {
-  console.log('matchNetwork.js: ', chainId, walletType, passedProvider, options);
-
   const { ethereum } = window;
   const provider = passedProvider || ethereum;
   const isMetaMask =
@@ -42,31 +41,40 @@ export default async (
       return false;
     } catch (er) {
       const { message } = er;
-      console.log('matchNetwork.js: ', message);
       let toastMsg = ' ';
-      let toastLink = {};
+      // let toastLink = {};
       if (message && options.toast) {
         if (message.includes('pending')) {
           toastMsg =
             'There is a pending request to MetaMask, make your selection before continuing';
-        } else if (message.includes('adding')) {
-          toastLink = {
-            title:
-              "It seems like you don't have this network set up in MetaMask. Please go here to add the network.",
-            url: 'https://chainlist.org/'
-          };
-        } else if (message.includes('rejected')) return false;
-        else if (message.includes("hasn't been added")) {
-          toastLink = {
-            title:
-              "It seems like you don't have this network set up in your wallet. Please go here to add the network.",
-            url: 'https://chainlist.org/'
-          };
+        } else if (message.includes('rejected')) {
+          return false;
+        } else if (message.includes("wallet_addEthereumChain")) {
+          const c = chainMap[chainId];
+          if (!c) {
+            toastMsg = 'Chain with ChainID ' + chainId + ' not found.';
+          } else {
+            const result = await provider.request({
+              method: 'wallet_addEthereumChain',
+              params: [{
+                "chainId": toHex(chainId),
+                "chainName": c.name,
+                "rpcUrls": c.rpc,
+                "iconUrls": [c.logoURI],
+                "nativeCurrency": c.nativeCurrency,
+                "blockExplorerUrls": c.explorers.map(e => typeof e === 'string' ? e : e.url)
+              }]
+            });
+            if (result === null) {
+              return true;
+            }
+            toastMsg = 'Add chain to MetaMask failed with code: ' + result;
+          }
         } else {
           toastMsg = 'There was a problem processing your request to MetaMask';
         }
         setTimeout(() => {
-          Toast(toastMsg, toastLink, ERROR, 5000);
+          Toast(toastMsg, null, ERROR, 5000);
         }, 100);
       }
       return false;
