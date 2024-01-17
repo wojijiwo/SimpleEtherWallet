@@ -1,11 +1,6 @@
 <template>
   <div class="component--wallet-card theBalanceCard">
     <div class="mew-card drop-shadow">
-      <img
-        :src="'https://mewcard.mewapi.io/?address=' + address"
-        alt="MEW Card"
-        @load="animateMewCard()"
-      />
     </div>
     <div class="info-container pl-8 pr-5 py-4 text-shadow">
       <div class="d-flex flex-row justify-space-between align-start">
