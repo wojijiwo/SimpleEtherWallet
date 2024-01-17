@@ -155,21 +155,6 @@ export default {
     buttons() {
       return !this.isOfflineApp
         ? [
-            /* Extension */
-            {
-              color: 'white',
-              title: 'Install Browser extension',
-              subtitle:
-                'Use browser extension. Connect to web3 on Ethereum and Polkadot, manage your NFTs, buy, send and swap',
-              official: false,
-              recommended: true,
-              icon: require('@/assets/images/icons/icon-enkrypt-block.svg'),
-              alt: 'Extension',
-              fn: () => {
-                this.trackCreateWalletAmplitude(COMMON.GOOGLE_STORE);
-                this.openEnkrypt();
-              }
-            },
             /* Software */
             {
               color: 'white',
@@ -201,6 +186,9 @@ export default {
               }
             }
           ];
+    },
+    isMobile() {
+      return this.$vuetify.breakpoint.mdAndDown;
     }
   },
   mounted() {

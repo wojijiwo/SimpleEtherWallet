@@ -9,7 +9,6 @@
     "test:e2e-offline": "BUILD=offline vue-cli-service test:e2e --tag offline",
     "lint": "npm run lint:code && npm run lint:md",
     "apollo": "apollo",
-    "apollo:aave": "apollo service:download -c=apolloAave.config.js src/dapps/aave-dapp/apollo/schemas/api.json && apollo client:codegen -c=apolloAave.config.js src/dapps/aave-dapp/apollo/global/globalTypes.json --target=json",
     "apollo:codegen": "npm run apollo:schema && apollo client:codegen src/apollo/global/globalTypes.json --target=json",
     "apollo:schema": "apollo service:download src/apollo/schemas/api.json",
     "build:hash": "ROUTER_MODE=hash npm run build",
