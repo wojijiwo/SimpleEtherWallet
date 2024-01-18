@@ -24,9 +24,7 @@
 
 <script>
 import LogoComponent from '@/assets/images/icons/logo-component.vue';
-// import OpenMenu from '@/assets/images/icons/open-menu.vue';
 import ScrollMagic from 'scrollmagic';
-// import { ROUTES_HOME } from '@/core/configs/configRoutes';
 
 export default {
   name: 'TheDefaultHeader',
@@ -39,11 +37,6 @@ export default {
     };
   },
   computed: {
-    // showAccess() {
-    //   return this.$route.name === ROUTES_HOME.ACCESS_WALLET.NAME
-    //     ? 'visibility: hidden'
-    //     : '';
-    // },
     offset() {
       return this.$vuetify.breakpoint.mdAndDown ? 64 : 52;
     },
@@ -75,11 +68,6 @@ export default {
     })
       .setClassToggle('.js-header', 'fixed')
       .addTo(controller);
-  },
-  methods: {
-    // openMobileMenu() {
-    //   this.$emit('openMobileMenu');
-    // }
   }
 };
 </script>

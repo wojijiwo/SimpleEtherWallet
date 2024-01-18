@@ -54,7 +54,6 @@ const webpackConfig = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'security.txt', to: '.well-known/security.txt' },
         {
           from: 'public',
           transform: function (content, filePath) {

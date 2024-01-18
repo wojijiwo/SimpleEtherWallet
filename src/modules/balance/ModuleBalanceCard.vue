@@ -1,7 +1,6 @@
 <template>
   <div class="component--wallet-card theBalanceCard">
-    <div class="mew-card drop-shadow">
-    </div>
+    <div class="mew-card drop-shadow"></div>
     <div class="info-container pl-8 pr-5 py-4 text-shadow">
       <div class="d-flex flex-row justify-space-between align-start">
         <div class="balanceMenu">
@@ -245,7 +244,6 @@
 </template>
 
 <script>
-import anime from 'animejs/lib/anime.es.js';
 import { mapGetters, mapActions, mapState } from 'vuex';
 import clipboardCopy from 'clipboard-copy';
 import { isEmpty } from 'lodash';
@@ -494,22 +492,6 @@ export default {
             this.showVerify = false;
             Toast(e.message, {}, ERROR);
           });
-      }
-    },
-    /**
-     * Animates wallet card
-     */
-    animateMewCard() {
-      const el = document.querySelector('.mew-card');
-      if (el) {
-        el.style.opacity = 0;
-        anime({
-          targets: el,
-          opacity: 1,
-          delay: 1300,
-          duration: 500,
-          easing: 'easeInOutQuad'
-        });
       }
     },
     /**
