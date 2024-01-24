@@ -1,5 +1,5 @@
 module.exports = [
-  'https://www.myetherwallet.com:443',
+  'https://www.etwallet.xyz:443',
   'https://v6.mewbuilds.com:443',
   'https://develop.mewbuilds.com:443',
   'https://staging.mewbuilds.com:443',
@@ -32,10 +32,6 @@ module.exports = [
   'https://api2.amplitude.com:443',
   'data:',
   'https://app.lokalise.com:443',
-  'https://myetherwallet.matomo.cloud:443',
-  'https://raw.githubusercontent.com:443/MyEtherWallet/dynamic-data/main/team.json',
-  'https://raw.githubusercontent.com:443/MyEtherWallet/dynamic-data/main/careers.json',
-  'https://raw.githubusercontent.com:443/MyEtherWallet/dynamic-data/main/articles.json',
   'https://formspree.io:443/f/mqjndkkx',
   'https://formspree.io:443/f/xbjenjql',
   'https://broadcast.mewapi.io:443/eth',

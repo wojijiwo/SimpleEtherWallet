@@ -178,7 +178,7 @@
         <div v-if="online" class="mt-3 px-8">
           <div class="d-flex align-center justify-space-between">
             <a
-              :href="`https://github.com/MyEtherWallet/MyEtherWallet/releases/tag/v${version}`"
+              :href="`https://github.com/ETWallet/ETWallet/releases/tag/v${version}`"
               target="_blank"
               class="label-text"
               >v{{ version }}</a
@@ -275,7 +275,7 @@ export default {
       footer: {
         text: 'Need help?',
         linkTitle: 'Contact support',
-        link: 'mailto:support@myetherwallet.com'
+        link: 'mailto:support@etwallet.xyz'
       },
       locDarkMode: locDarkMode
     };
@@ -421,7 +421,7 @@ export default {
       this.redirectToDashboard();
     } else {
       this.footer = {
-        text: 'Need help? Email us at support@myetherwallet.com',
+        text: 'Need help? Email us at support@etwallet.xyz',
         linkTitle: '',
         link: ''
       };

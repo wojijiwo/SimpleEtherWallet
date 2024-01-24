@@ -8,9 +8,9 @@ const exportObj = {
   lintOnSave: process.env.NODE_ENV === 'production' ? 'error' : true,
   integrity: process.env.WEBPACK_INTEGRITY === 'false' ? false : true,
   pwa: {
-    name: 'MyEtherWallet',
+    name: 'ETWallet',
     workboxOptions: {
-      cacheId: `myetherwallet-${JSON.parse(config.env_vars.VERSION)}`,
+      cacheId: `etwallet-${JSON.parse(config.env_vars.VERSION)}`,
       importWorkboxFrom: 'local',
       skipWaiting: true,
       clientsClaim: true,

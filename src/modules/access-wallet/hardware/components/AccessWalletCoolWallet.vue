@@ -36,7 +36,7 @@
         <p class="pt-3 ml-3">
           Need more help?
           <a
-            href="https://kb.myetherwallet.com/en/hardware-wallets/using-coolwallet-with-mew/"
+            href="https://kb.etwallet.xyz/en/hardware-wallets/using-coolwallet-with-mew/"
             rel="noopener noreferrer"
             target="_blank"
             >Read More

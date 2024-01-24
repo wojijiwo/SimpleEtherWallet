@@ -77,12 +77,12 @@ export default {
         const isMetaMask =
           this.selectedEIP6963Provider.isMetaMask &&
           !this.selectedEIP6963Provider.hasOwnProperty('isTrust') &&
-          !this.selectedEIP6963Provider.hasOwnProperty('isMEWwallet');
-        const isMEWwallet =
+          !this.selectedEIP6963Provider.hasOwnProperty('isETwallet');
+        const isETwallet =
           this.selectedEIP6963Provider.isMetaMask &&
-          this.selectedEIP6963Provider.isMEWwallet &&
+          this.selectedEIP6963Provider.isETwallet &&
           this.selectedEIP6963Provider.isTrust;
-        switchNetworkWeb3Supported = isMetaMask || isMEWwallet;
+        switchNetworkWeb3Supported = isMetaMask || isETwallet;
       }
 
       return (

@@ -68,7 +68,7 @@ const fetchCGtokenList = async () => {
 
 const fetchChainList = async () => {
   try {
-    const chainList = await fetch('https://cdn.jsdelivr.net/gh/simwallet/chainlist/dist/chainlist.json')
+    const chainList = await fetch('https://cdn.jsdelivr.net/gh/etwalletxyz/chainlist/dist/chainlist.json')
       .then(res => res.json())
       .catch(err => console.log(err));
     fs.writeFileSync(

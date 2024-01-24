@@ -31,7 +31,7 @@
               <i18n path="termsOfService.intro-p1" tag="p">
                 <template #privPol>
                   <a
-                    href="https://www.myetherwallet.com/privacy-policy"
+                    href="https://www.etwallet.xyz/privacy-policy"
                     target="_blank"
                     rel="noopener noreferrer"
                     >{{ parent.$t('termsOfService.privacy-policy') }}</a
@@ -198,7 +198,7 @@
               <i18n path="termsOfService.privacy-title-p" tag="p">
                 <template #link>
                   <a
-                    href="https://myetherwallet.com/privacy-policy"
+                    href="https://etwallet.xyz/privacy-policy"
                     target="_blank"
                     rel="noopener noreferrer"
                     >"{{ parent.$t('termsOfService.link') }}"</a
@@ -393,11 +393,11 @@
               <i18n path="termsOfService.contact-info-title-p" tag="p">
                 <template #suppEmail>
                   <a
-                    href="mailto:support@myetherwallet.com"
+                    href="mailto:support@etwallet.xyz"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    support@myetherwallet.com</a
+                    support@etwallet.xyz</a
                   >.
                 </template>
               </i18n>

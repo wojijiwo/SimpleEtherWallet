@@ -251,7 +251,7 @@ export default {
           {
             color: 'white',
             title: 'Browser extension',
-            subtitle: 'Use your Web3 wallet with MEW',
+            subtitle: 'Use your Web3 wallet with ETWallet',
             official: false,
             recommended: true,
             useBtn: this.eip6963Providers.length <= 1,

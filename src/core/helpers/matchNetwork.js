@@ -26,9 +26,9 @@ export default async (
     provider &&
     provider.isMetaMask &&
     !provider.hasOwnProperty('isTrust') &&
-    !provider.hasOwnProperty('isMEWwallet');
-  const isMEWwallet = provider && provider.isMetaMask && provider.isMEWwallet;
-  if (walletType === wallets.WEB3_WALLET && (isMetaMask || isMEWwallet)) {
+    !provider.hasOwnProperty('isETWallet');
+  const isETWallet = provider && provider.isMetaMask && provider.isETWallet;
+  if (walletType === wallets.WEB3_WALLET && (isMetaMask || isETWallet)) {
     try {
       if (chainId) {
         const data = { chainId: toHex(chainId) };

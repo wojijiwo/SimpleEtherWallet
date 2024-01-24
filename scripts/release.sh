@@ -3,7 +3,7 @@ RELEASE="$1"
 GITHUB_TOKEN="$2"
 REPO="$3"
 CHANGELOG=`awk -v version="$RELEASE" '/### Release / {printit = $3 == version}; printit;' 'CHANGELOG.md'`
-cd release && sha256sum * > MyEtherWallet-$RELEASE-CHECKSUM-SHA256 && cd ..
+cd release && sha256sum * > ETWallet-$RELEASE-CHECKSUM-SHA256 && cd ..
 GH_API="https://api.github.com"
 GH_REPO="$GH_API/repos/$REPO"
 AUTH="Authorization: token ${GITHUB_TOKEN}"
@@ -11,7 +11,7 @@ GH_TAGS="$GH_REPO/releases/tags/$RELEASE"
 payload=$(
     jq --null-input \
     --arg tag "$RELEASE" \
-    --arg name "MyEtherWallet $RELEASE" \
+    --arg name "ETWallet $RELEASE" \
     --arg body "$CHANGELOG" \
     '{ tag_name: $tag, name: $name, body: $body, draft: false }'
 )

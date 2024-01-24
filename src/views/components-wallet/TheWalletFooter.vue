@@ -39,7 +39,7 @@
             <a
               v-if="!isOfflineApp"
               class="textDark--text"
-              href="https://help.myetherwallet.com/en/"
+              href="https://help.etwallet.xyz/en/"
               target="_blank"
               >Help Center</a
             >
@@ -67,31 +67,6 @@ export default {
         name: 'English',
         value: 'en',
         flag: require('@/assets/images/flags/uk.png')
-      },
-      {
-        name: 'Russian',
-        value: 'ru',
-        flag: require('@/assets/images/flags/russia.png')
-      },
-      {
-        name: 'Germany',
-        value: 'ge',
-        flag: require('@/assets/images/flags/germany.png')
-      },
-      {
-        name: 'China',
-        value: 'ch',
-        flag: require('@/assets/images/flags/china.png')
-      },
-      {
-        name: 'Korean',
-        value: 'kr',
-        flag: require('@/assets/images/flags/korea.png')
-      },
-      {
-        name: 'Japanese',
-        value: 'jp',
-        flag: require('@/assets/images/flags/japan.png')
       }
     ]
   }),

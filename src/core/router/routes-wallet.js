@@ -10,9 +10,9 @@ export default {
       component: () => import('@/views/layouts-wallet/TheDashboardLayout'),
       meta: {
         noAuth: false,
-        title: 'Crypto Portfolio Manager | MyEtherWallet',
+        title: 'Crypto Portfolio Manager | ETWallet',
         description:
-          'Manage your crypto portfolio with MyEtherWallet. View all your crypto assets in one easy to use portfolio manager.'
+          'Manage your crypto portfolio with ETWallet. View all your crypto assets in one easy to use portfolio manager.'
       }
     },
     {
@@ -21,9 +21,9 @@ export default {
       component: () => import('@/views/layouts-wallet/TheDashboardLayout'),
       meta: {
         noAuth: false,
-        title: 'Crypto Portfolio Manager | MyEtherWallet',
+        title: 'Crypto Portfolio Manager | ETWallet',
         description:
-          'Manage your crypto portfolio with MyEtherWallet. View all your crypto assets in one easy to use portfolio manager.'
+          'Manage your crypto portfolio with ETWallet. View all your crypto assets in one easy to use portfolio manager.'
       }
     },
     {
@@ -32,9 +32,9 @@ export default {
       component: () => import('@/modules/settings/ModuleSettings'),
       meta: {
         noAuth: false,
-        title: 'Modify Your Settings | MyEtherWallet',
+        title: 'Modify Your Settings | ETWallet',
         description:
-          'Manage your settings on MyEtherWallet. We heard you like dark mode crypto apps.'
+          'Manage your settings on ETWallet. We heard you like dark mode crypto apps.'
       }
     },
     {
@@ -53,9 +53,9 @@ export default {
       props: true,
       meta: {
         noAuth: false,
-        title: 'Send And Receive Crypto | MyEtherWallet',
+        title: 'Send And Receive Crypto | ETWallet',
         description:
-          'Send and receive crypto to your self custody wallet using MyEtherWallet. Open sourced, safe and secure EVM wallet.'
+          'Send and receive crypto to your self custody wallet using ETWallet. Open sourced, safe and secure EVM wallet.'
       }
     },
     {
@@ -64,9 +64,9 @@ export default {
       component: () => import('@/views/layouts-wallet/TheDeployContractLayout'),
       meta: {
         noAuth: false,
-        title: 'Deploy Ethereum Contract On MyEtherWallet | MEW',
+        title: 'Deploy Ethereum Contract On ETWallet',
         description:
-          'Deploy a smart contract to the Ethereum mainnet using MyEtherWallet. Trusted by Ethereum developers since 2015. '
+          'Deploy a smart contract to the Ethereum mainnet using ETWallet. Trusted by Ethereum developers since 2015. '
       }
     },
     {
@@ -76,9 +76,9 @@ export default {
         import('@/views/layouts-wallet/TheInteractContractLayout'),
       meta: {
         noAuth: false,
-        title: 'Interact With Ethereum Contracts On MyEtherWallet | MEW',
+        title: 'Interact With Ethereum Contracts On ETWallet',
         description:
-          'MyEtherWallet empowers users to interact with Ethereum contracts directly. Collect airdrops, mint tokens and more.'
+          'ETWallet empowers users to interact with Ethereum contracts directly. Collect airdrops, mint tokens and more.'
       }
     },
     {
@@ -87,9 +87,9 @@ export default {
       component: () => import('@/views/layouts-wallet/TheSignMessageLayout'),
       meta: {
         noAuth: false,
-        title: 'Use Your Wallet To Sign a Message | MyEtherWallet',
+        title: 'Use Your Wallet To Sign a Message | ETWallet',
         description:
-          'Sign a message with your crypto wallet. Use MyEtherWallet to easily verify ownership of your wallet.'
+          'Sign a message with your crypto wallet. Use ETWallet to easily verify ownership of your wallet.'
       }
     },
     {
@@ -98,9 +98,9 @@ export default {
       component: () => import('@/views/layouts-wallet/TheVerifyMessageLayout'),
       meta: {
         noAuth: false,
-        title: 'Verify A Signed Message With a Crypto Wallet | MyEtherWallet',
+        title: 'Verify A Signed Message With a Crypto Wallet | ETWallet',
         description:
-          'Confirm a signed message with your crypto wallet. Access this feature using MyEtherWallet.'
+          'Confirm a signed message with your crypto wallet. Access this feature using ETWallet.'
       }
     }
   ]

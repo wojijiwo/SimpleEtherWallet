@@ -115,7 +115,7 @@ const looper = () => {
         '\nREFUSING TO CONTINUE because above packages are TOO FAR OUT OF DATE!'
       );
       console.error(
-        'In order to build MyEtherWallet, you must edit package.json.'
+        'In order to build ETWallet, you must edit package.json.'
       );
       console.error(
         'Update the versions for the packages above to their current versions.'

@@ -15,7 +15,7 @@
   "currency": {
     "eth": "ETH"
   },
-  "support-email": "support@myetherwallet.com",
+  "support-email": "support@etwallet.xyz",
   "updates": {
     "new": "New update downloaded! Please refresh your browser to receive the most updated version",
     "update-found": "New update found! Downloading...",
@@ -24,7 +24,7 @@
   "swap": "Swap",
   "read": "Read",
   "article": {
-    "using-mew-offline": "Using MEW Offline",
+    "using-mew-offline": "Using ETWallet Offline",
     "mnemonic-password": "Mnemonic Phrase: Should I Include an Extra Word?"
   },
   "password": {

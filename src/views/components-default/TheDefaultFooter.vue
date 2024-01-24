@@ -8,7 +8,7 @@
               <div class="px-6 border-right">
                 <a
                   class="color--inherit"
-                  href="mailto:support@myetherwallet.com"
+                  href="mailto:contact@etwallet.xyz"
                   rel="noopener noreferrer"
                   target="_blank"
                   @click="trackFooterLink({ label: 'feedback' })"
@@ -75,7 +75,7 @@
         <v-container>
           <div class="d-flex align-center">
             <a
-              :href="`https://github.com/MyEtherWallet/MyEtherWallet/releases/tag/v${version}`"
+              :href="`https://github.com/ETWallet/ETWallet/releases/tag/v${version}`"
               target="_blank"
               class="cyan--text text--lighten-3 ma-0"
               rel="noopener noreferrer"
@@ -190,7 +190,7 @@
               <div class="px-4 px-lg-6 border-right">
                 <a
                   class="color--inherit"
-                  href="mailto:support@myetherwallet.com"
+                  href="mailto:support@etwallet.xyz"
                   rel="noopener noreferrer"
                   target="_blank"
                   @click="trackFooterLink({ label: 'feedback' })"
@@ -230,7 +230,7 @@
           <v-sheet color="transparent" max-width="500px" class="mx-auto">
             <div class="d-flex align-center justify-space-between">
               <a
-                :href="`https://github.com/MyEtherWallet/MyEtherWallet/releases/tag/v${version}`"
+                :href="`https://github.com/ETWallet/ETWallet/releases/tag/v${version}`"
                 rel="noopener noreferrer"
                 target="_blank"
                 class="cyan--text text--lighten-3 ma-0"
@@ -290,48 +290,23 @@ export default {
         name: 'English',
         value: 'en_US',
         flag: require('@/assets/images/flags/uk.png')
-      },
-      {
-        name: 'Russian',
-        value: 'ru_RU',
-        flag: require('@/assets/images/flags/russia.png')
       }
     ],
     socialIcons: [
       {
-        link: 'https://www.facebook.com/MyEtherWallet',
-        icon: 'facebook'
-      },
-      {
-        link: 'https://twitter.com/myetherwallet',
+        link: 'https://twitter.com/etwalletxyz',
         icon: 'twitter'
       },
       {
-        link: 'https://www.instagram.com/myetherwallet/',
-        icon: 'instagram'
-      },
-      {
-        link: 'https://www.linkedin.com/company/myetherwallet',
-        icon: 'linkedin'
-      },
-      {
-        link: 'https://github.com/myetherwallet',
+        link: 'https://github.com/etwalletxyz',
         icon: 'github'
       },
       {
-        link: 'https://www.reddit.com/r/MyEtherWallet/',
-        icon: 'reddit'
-      },
-      {
-        link: 'https://www.youtube.com/channel/UCQU5QbObwmaHNEMsuX3uQKA',
-        icon: 'youtube'
-      },
-      {
-        link: 'https://medium.com/@myetherwallet',
+        link: 'https://medium.com/@etwalletxyz',
         icon: 'medium'
       },
       {
-        link: 'https://t.me/myetherwallet',
+        link: 'https://t.me/etwalletxyz',
         iconImage: require('@/assets/images/icons/icon-telegram.svg')
       }
     ],

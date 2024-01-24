@@ -11,7 +11,7 @@ export default {
       meta: {
         noAuth: true,
         title: '404 Page Not Found',
-        description: '404 page for MyEtherWallet.'
+        description: '404 page for ETWallet.'
       }
     }
   ]

@@ -154,7 +154,7 @@ export default {
     /**
      * Displays on the outside bottom of the white sheet.
      * takes an object, i.e {text: 'Need help?', linkTitle: 'Contact support',
-     * link: 'mailto:support@myetherwallet.com'}
+     * link: 'mailto:support@etwallet.xyz'}
      */
     footer: {
       type: Object,

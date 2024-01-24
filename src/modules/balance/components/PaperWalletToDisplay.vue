@@ -13,11 +13,11 @@
             <v-icon color="textDark" class="mr-2" size="20px"
               >mdi-face-agent</v-icon
             >
-            <div>support@myetherwallet.com</div>
+            <div>support@etwallet.xyz</div>
           </div>
           <div class="d-flex align-center mr-3">
             <v-icon color="textDark" class="mr-2" size="20px">mdi-web</v-icon>
-            <div>https://www.myetherwallet.com</div>
+            <div>https://www.etwallet.xyz</div>
           </div>
         </v-col>
       </v-row>

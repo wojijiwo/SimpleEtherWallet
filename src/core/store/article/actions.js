@@ -1,6 +1,6 @@
 import { Toast, ERROR } from '@/modules/toast/handler/handlerToast';
 const Url =
-  'https://raw.githubusercontent.com/MyEtherWallet/dynamic-data/main/articles.json';
+  'https://raw.githubusercontent.com/etwalletxyz/dynamic-data/main/articles.json';
 /**
  * Update the articles array
  */

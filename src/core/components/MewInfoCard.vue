@@ -1,7 +1,7 @@
 <template>
   <!--
   =====================================================================================
-    Mew Info Card - mainly used on MEW's landing page.
+    Mew Info Card - mainly used on ETWallet's landing page.
   =====================================================================================
   -->
   <v-card :max-width="maxWidth" class="info-card elevation-3">

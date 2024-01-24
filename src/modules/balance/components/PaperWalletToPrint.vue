@@ -17,7 +17,7 @@
               height="20"
               src="@/assets/images/icons/icon-support.svg"
             />
-            <div>support@myetherwallet.com</div>
+            <div>support@etwallet.xyz</div>
           </div>
           <div class="d-flex align-center mr-3">
             <img
@@ -25,7 +25,7 @@
               height="20"
               src="@/assets/images/icons/icon-support.svg"
             />
-            <div>https://www.myetherwallet.com</div>
+            <div>https://www.etwallet.xyz</div>
           </div>
         </div></v-col
       >

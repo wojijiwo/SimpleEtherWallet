@@ -100,7 +100,7 @@ export default {
       default: ''
     },
     /**
-     * Expects a link object with attributes text and url, i.e { url: 'www.myetherwallet.com', text: 'Home" }
+     * Expects a link object with attributes text and url, i.e { url: 'www.etwallet.xyz', text: 'Home" }
      * This is added at the end of description.
      */
     linkObject: {
@@ -210,7 +210,7 @@ export default {
 
 <style lang="scss" scoped>
 /**
-  * MEW ALERT STYLES
+  * ETWallet ALERT STYLES
   */
 .mew-alert {
   border-radius: 8px;

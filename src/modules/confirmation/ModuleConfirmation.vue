@@ -25,7 +25,7 @@
       <template #dialogBody>
         <v-card-text ref="scrollableContent" class="py-0 px-4 px-md-0">
           <div class="px-4 py-6 pr-6 textBlack2--text border-radius--5px mb-5">
-            <b>Please double check everything.</b> MEW team will not be able to
+            <b>Please double check everything.</b> ETWallet team will not be able to
             reverse your transaction once it's submitted. You will still be
             charged gas fee even if the transaction fails.
             <a
@@ -284,7 +284,7 @@ export default {
       footer: {
         text: 'Need help?',
         linkTitle: 'Contact support',
-        link: 'mailto:support@myetherwallet.com'
+        link: 'mailto:support@etwallet.xyz'
       },
       showTxOverlay: false,
       showSignOverlay: false,
@@ -549,7 +549,7 @@ export default {
               msg: msg,
               sig: result,
               version: '3',
-              signer: this.isHardware ? this.identifier : 'MEW'
+              signer: this.isHardware ? this.identifier : 'ETWallet'
             },
             null,
             2
@@ -571,7 +571,7 @@ export default {
   mounted() {
     if (this.isOfflineApp) {
       this.footer = {
-        text: 'Need help? Email us at support@myetherwallet.com',
+        text: 'Need help? Email us at support@etwallet.xyz',
         linkTitle: '',
         link: ''
       };

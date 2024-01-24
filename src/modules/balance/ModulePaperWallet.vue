@@ -58,7 +58,7 @@ export default {
       footer: {
         text: 'Need help?',
         linkTitle: 'Contact support',
-        link: 'mailto:support@myetherwallet.com'
+        link: 'mailto:support@etwallet.xyz'
       }
     };
   },
@@ -78,7 +78,7 @@ export default {
   mounted() {
     if (this.isOfflineApp) {
       this.footer = {
-        text: 'Need help? Email us at support@myetherwallet.com',
+        text: 'Need help? Email us at support@etwallet.xyz',
         linkTitle: '',
         link: ''
       };

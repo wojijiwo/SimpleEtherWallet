@@ -25,7 +25,7 @@ export default class SignAndVerifyMessage {
               msg: _this.message,
               sig: _signedMessage,
               version: '3',
-              signer: _this.isHardware() ? _this.identifier() : 'MEW'
+              signer: _this.isHardware() ? _this.identifier() : 'ETWallet'
             },
             null,
             2

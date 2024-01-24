@@ -1,6 +1,6 @@
 {
-  "name": "MEW",
-  "short_name": "MEW",
+  "name": "ETWallet",
+  "short_name": "ETWallet",
   "icons": [
     {
       "src": "./icons/android-chrome-192x192.png",

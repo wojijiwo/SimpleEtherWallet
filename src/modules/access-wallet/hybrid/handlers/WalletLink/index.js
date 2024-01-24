@@ -16,8 +16,8 @@ import HybridWalletInterface from '../walletInterface';
 import walletlink from '@/assets/images/icons/wallets/walletlink.png';
 
 const IS_HARDWARE = false;
-const APP_NAME = 'MEW';
-const APP_LOGO = 'https://www.myetherwallet.com/img/icons/icon192.png';
+const APP_NAME = 'ETWallet';
+const APP_LOGO = 'https://www.etwallet.xyz/img/icons/icon192.png';
 class WalletLinkWallet {
   constructor() {
     this.identifier = WALLET_TYPES.WALLET_LINK;

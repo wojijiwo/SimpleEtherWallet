@@ -12,6 +12,6 @@ const WALLET_TYPES = {
   COOL_WALLET_S: 'coolWalletS',
   COOL_WALLET_PRO: 'coolWalletPro',
   WALLET_LINK: 'walletLink',
-  MEW_WALLET: 'mewWallet'
+  MEW_WALLET: 'ETWallet'
 };
 export default WALLET_TYPES;

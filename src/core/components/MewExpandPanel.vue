@@ -155,7 +155,7 @@ export default {
 
 <style lang="scss" scoped>
 /**
-  *  MEW EXPAND STYLES
+  *  ETWallet EXPAND STYLES
   */
 .mew-expand-panel {
   // grey theme + split panels border styles

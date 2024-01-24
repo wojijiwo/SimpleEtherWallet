@@ -30,7 +30,7 @@ const ERRORS = {
   'Manifest not set. Read more at https://github.com/trezor/connect/blob/develop/docs/index.md':
     'Device is busy! Please try again.',
   'Forbidden key path': 'Path not supported!',
-  'DOMException: Blocked a frame with origin "https://myetherwallet.com" from accessing a cross-origin frame.':
+  'DOMException: Blocked a frame with origin "https://etwallet.xyz" from accessing a cross-origin frame.':
     'Block frame',
   'Manifest not set.': 'Device is busy! Please try again.',
   't._window is null': 'Please try again.'

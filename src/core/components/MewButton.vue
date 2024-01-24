@@ -308,7 +308,7 @@ export default {
 .full-width {
   width: 100%;
 }
-// MEW BUTTON STYLES
+// ETWallet BUTTON STYLES
 .v-application {
   .v-btn.mew-button {
     letter-spacing: 0.5px;

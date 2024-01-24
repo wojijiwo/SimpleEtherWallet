@@ -233,7 +233,7 @@ export default {
       default: 'Search token name'
     },
     /**
-     * MEW select value
+     * ETWallet select value
      */
     value: {
       type: Object,

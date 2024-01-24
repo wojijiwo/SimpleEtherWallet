@@ -28,7 +28,7 @@ import {
 import commonGenerator from '@/core/helpers/commonGenerator';
 
 const NEED_PASSWORD = true;
-const APP_NAME = 'MyEtherWalletV6';
+const APP_NAME = 'ETWallet';
 const APP_ID = 'coolWallet-appId';
 const APP_PRIVATE_KEY = 'coolWallet-appPrivateKey';
 const APP_PUBLIC_KEY = 'coolWallet-appPublicKey';

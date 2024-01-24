@@ -93,7 +93,7 @@ export default {
       footer: {
         text: 'Need help?',
         linkTitle: 'Contact support',
-        link: 'mailto:support@myetherwallet.com'
+        link: 'mailto:support@etwallet.xyz'
       }
     };
   },
@@ -123,7 +123,7 @@ export default {
             {
               address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
               currency: 'ETH',
-              nickname: 'MEW Donations',
+              nickname: 'ETWallet Donations',
               resolverAddr: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
             }
           ]
@@ -142,12 +142,12 @@ export default {
               resolverAddr: ''
             }
           ].concat(this.addressBookStore)
-        : // If address is undefined set to MEW Donations
+        : // If address is undefined set to ETWallet Donations
           [
             {
               address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
               currency: 'ETH',
-              nickname: 'MEW Donations',
+              nickname: 'ETWallet Donations',
               resolverAddr: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
             }
           ].concat(this.addressBookStore);
@@ -191,7 +191,7 @@ export default {
   mounted() {
     if (this.isOfflineApp) {
       this.footer = {
-        text: 'Need help? Email us at support@myetherwallet.com',
+        text: 'Need help? Email us at support@etwallet.xyz',
         linkTitle: '',
         link: ''
       };
@@ -319,7 +319,7 @@ export default {
       }
     },
     /**
-     * Sets selected address to be MEW donation address
+     * Sets selected address to be ETWallet donation address
      * only happens on home page
      */
     setDonationAddress() {

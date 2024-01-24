@@ -15,9 +15,9 @@
     @click:outside="onClick(false, true)"
   >
     <div class="inner-container pa-5">
-      <div class="mew-heading-3 mb-3">Help improve MEW?</div>
+      <div class="mew-heading-3 mb-3">Help improve ETWallet?</div>
       <div>
-        MEW would like to gather basic usage data and will never collect
+        ETWallet would like to gather basic usage data and will never collect
         personal information.
       </div>
 
@@ -43,7 +43,7 @@
             </div>
             <div class="text-center">
               <a
-                href="https://www.myetherwallet.com/privacy-policy"
+                href="https://www.etwallet.xyz/privacy-policy"
                 target="_blank"
                 class="greenPrimary--text"
               >

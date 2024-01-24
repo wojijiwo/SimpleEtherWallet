@@ -120,11 +120,11 @@ const createWallet = async (identifier = WALLET_TYPES.WALLET_CONNECT) => {
     methods: ['eth_sendTransaction', 'eth_sign'],
     events: ['chainChanged', 'accountsChanged'],
     metadata: {
-      name: 'MyEtherWallet Inc',
+      name: 'ETWallet Inc',
       description:
-        'MyEtherWallet (MEW) is a free, open-source, client-side interface for generating Ethereum wallets & more. Interact with the Ethereum blockchain easily & securely.',
-      url: 'https://myetherwallet.com',
-      icons: ['https://www.myetherwallet.com/favicon.png']
+        'ETWallet is a free, open-source, client-side interface for generating Ethereum wallets & more. Interact with the Ethereum blockchain easily & securely.',
+      url: 'https://etwallet.xyz',
+      icons: ['https://www.etwallet.xyz/favicon.png']
     },
     qrModalOptions: {
       themeVariables: {

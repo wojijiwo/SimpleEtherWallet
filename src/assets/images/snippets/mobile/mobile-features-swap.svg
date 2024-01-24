@@ -31,13 +31,13 @@
             <g id="Group-8" filter="url(#filter-1)" transform="translate(15.000000, 1283.000000)">
                 <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="385" height="516" rx="12"></rect>
                 <text id="MEW-has-partnered-wi" font-family="SFProText-Regular, SF Pro Text" font-size="14" font-weight="normal" line-spacing="20" fill="#334758">
-                    <tspan x="39" y="73">MEW has partnered with Bity, Kyber Network, </tspan>
+                    <tspan x="39" y="73">ETWallet has partnered with Bity, Kyber Network, </tspan>
                     <tspan x="39" y="93">Changelly, and Simplex to allow users to swap </tspan>
                     <tspan x="39" y="113">fiat to crypto, ETH and BTC, ETH,  ERC-20, </tspan>
                     <tspan x="39" y="133">ERC-721. </tspan>
                 </text>
                 <text id="Swap-with-MEW" font-family="SFProDisplay-Bold, SF Pro Display" font-size="22" font-weight="bold" fill="#0B1A40">
-                    <tspan x="39" y="49">Swap with MEW</tspan>
+                    <tspan x="39" y="49">Swap with ETWallet</tspan>
                 </text>
                 <g id="Group-18-Copy" transform="translate(24.000000, 353.000000)">
                     <path d="M4,0 L333,0 C335.209139,-4.05812251e-16 337,1.790861 337,4 L337,54 C337,56.209139 335.209139,58 333,58 L4,58 C1.790861,58 2.705415e-16,56.209139 0,54 L0,4 C-2.705415e-16,1.790861 1.790861,4.05812251e-16 4,0 Z" id="Rectangle-6" fill="#F2FAFA"></path>

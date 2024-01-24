@@ -38,7 +38,7 @@ function main() {
         const parsedFile = `* ${fileContent.replace(
           '\n',
           ''
-        )} [#${prNumber}](https://github.com/MyEtherWallet/MyEtherWallet/pull/${prNumber})`;
+        )} [#${prNumber}](https://github.com/etwalletxyz/ETWallet/pull/${prNumber})`;
         body = `${body} \n ${parsedFile}`;
         if (idx === container[item].length - 1) {
           updatedStr = `${updatedStr}\n ${sectionHeader} \n ${body}`;

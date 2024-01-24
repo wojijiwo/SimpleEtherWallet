@@ -300,7 +300,7 @@ export default {
       label: 'To access my wallet, I accept ',
       link: {
         title: 'Terms',
-        url: 'https://www.myetherwallet.com/terms-of-service'
+        url: 'https://www.etwallet.xyz/terms-of-service'
       },
       selectedAddress: '',
       accountAddress: '',

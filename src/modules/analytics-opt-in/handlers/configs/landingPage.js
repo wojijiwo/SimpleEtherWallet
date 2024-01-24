@@ -13,7 +13,7 @@ export default {
   ACCESS_WALLET_MINT: 'AccessWalletMint',
   SWAP_CLICKED: 'SwapClicked',
   GET_TOKENS_CLICKED: 'GetTokensClicked',
-  MEW_COMMUNITY: 'MEWCommunity',
+  MEW_COMMUNITY: 'ETWalletCommunity',
   ACCESS_WALLET_MOBILE: 'AccessWalletMobile',
   CREATE_WALLET_MOBILE: 'CreateWalletMobile'
 };

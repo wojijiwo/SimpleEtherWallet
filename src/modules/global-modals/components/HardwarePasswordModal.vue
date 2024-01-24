@@ -42,7 +42,7 @@ export default {
       password: '',
       link: {
         title: 'Terms',
-        url: 'https://www.myetherwallet.com/terms-of-service'
+        url: 'https://www.etwallet.xyz/terms-of-service'
       }
     };
   },

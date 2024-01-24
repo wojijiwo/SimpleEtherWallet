@@ -1,9 +1,9 @@
 <template>
   <div class="pb-4">
-    <mew-switch label="Receive the notifications from MEW" />
+    <mew-switch label="Receive the notifications from ETWallet" />
     <div class="greyLight pa-8 border-radius--5px">
       <div class="mew-heading-3">
-        What kind of notification do you want to receive from MEW?
+        What kind of notification do you want to receive from ETWallet?
       </div>
       <mew-checkbox label="All" />
       <mew-checkbox label="Transaction" />

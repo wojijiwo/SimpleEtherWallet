@@ -158,7 +158,7 @@ export default {
         currency: '$',
         price: '99.00',
         note: 'Unmatched physical security for your private keys.',
-        link: 'https://www.coolwallet.io/mew/?ref=myetherwallet1',
+        link: 'https://www.coolwallet.io/mew/?ref=etwalletxyz',
         name: 'CoolWallet'
       }
     ]

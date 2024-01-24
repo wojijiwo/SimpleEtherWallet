@@ -304,7 +304,7 @@ export default {
             {
               address: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D',
               currency: 'ETH',
-              nickname: 'MEW Donations',
+              nickname: 'ETWallet Donations',
               resolverAddr: '0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D'
             }
           ]

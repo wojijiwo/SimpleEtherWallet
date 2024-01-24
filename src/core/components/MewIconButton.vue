@@ -404,7 +404,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// MEW BUTTON STYLES
+// ETWallet BUTTON STYLES
 .v-application {
   .v-btn:not(.v-btn--round) {
     padding: 0;

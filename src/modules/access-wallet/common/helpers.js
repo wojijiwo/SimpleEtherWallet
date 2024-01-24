@@ -5,7 +5,7 @@ import sanitizeHex from '@/core/helpers/sanitizeHex';
 import { getMinPriorityFee } from '@/core/helpers/gasPriceHelper';
 import { toBN } from 'web3-utils';
 /* These needs to be changed further due to the new async library */
-const fromMyEtherWalletV2 = json => {
+const fromETWallet = json => {
   if (json.privKey.length !== 64) {
     throw new Error('Invalid private key length');
   }
@@ -18,8 +18,8 @@ const getWalletFromPrivKeyFile = (jsonfile, password) => {
     return Wallet.fromV3(jsonfile, password, true);
   else if (jsonfile.hash != null)
     return Wallet.ThirdParty.fromEtherWallet(jsonfile, password);
-  else if (jsonfile.publisher == 'MyEtherWallet')
-    return fromMyEtherWalletV2(jsonfile);
+  else if (jsonfile.publisher == 'ETWallet')
+    return fromETWallet(jsonfile);
   throw new Error('Invalid Wallet file');
 };
 
@@ -51,7 +51,7 @@ const walletRequirePass = ethjson => {
   else if (ethjson.Crypto != null || ethjson.crypto != null) return true;
   else if (ethjson.hash != null && ethjson.locked) return true;
   else if (ethjson.hash != null && !ethjson.locked) return false;
-  else if (ethjson.publisher == 'MyEtherWallet' && !ethjson.encrypted)
+  else if (ethjson.publisher == 'ETWallet' && !ethjson.encrypted)
     return false;
   return true;
 };

@@ -430,33 +430,9 @@ export default {
      * TODO: get link urls from Russ
      */
     footerLink() {
-      // Commented for now as the new articles aren't available yet
-      // if (this.onKeepkey) {
-      //   return {
-      //     title: 'Using a KeepKey Hardware wallet with MEW',
-      //     url: 'https://kb.myetherwallet.com/en/hardware-wallets/using-keepkey-with-mew/'
-      //   };
-      // } else if (this.onCoolWalletS) {
-      //   return {
-      //     title: 'Using a CoolWallet S Hardware Wallet with MEW',
-      //     url: 'https://kb.myetherwallet.com/en/hardware-wallets/using-coolwallet-with-mew/'
-      //   };
-      // }
-      // if (this.onLedger) {
-      //   return {
-      //     title: 'Using a Ledger Hardware wallet with MEW',
-      //     url: 'https://kb.myetherwallet.com/en/hardware-wallets/using-ledger-with-mew/'
-      //   };
-      // }
-      // if (this.onTrezor) {
-      //   return {
-      //     title: 'Using a Trezor Hardware wallet with MEW',
-      //     url: 'https://kb.myetherwallet.com/en/hardware-wallets/using-trezor-with-mew/'
-      //   };
-      // }
       return {
         title: 'Hardware Wallets',
-        url: 'https://help.myetherwallet.com/en/collections/3043244-access-wallet'
+        url: 'https://help.etwallet.xyz/en/collections/3043244-access-wallet'
       };
     },
     showBack() {

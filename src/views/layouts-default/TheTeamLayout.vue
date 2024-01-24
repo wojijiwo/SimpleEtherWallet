@@ -54,7 +54,7 @@ export default {
     fetchTeam() {
       axios
         .get(
-          'https://raw.githubusercontent.com/MyEtherWallet/dynamic-data/main/team.json'
+          'https://raw.githubusercontent.com/ETWallet/dynamic-data/main/team.json'
         )
         .then(res => {
           this.loadingTeam = false;

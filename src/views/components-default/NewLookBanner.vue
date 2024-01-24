@@ -4,9 +4,9 @@
       <div class="row no-gutters">
         <div class="col-12">
           <p>
-            MEW got a new look! It's the same secure wallet. More info:
-            <a href="https://x.com/myetherwallet" target="_blank"
-              >@MyEtherWallet</a
+            ETWallet got a new look! It's the same secure wallet. More info:
+            <a href="https://x.com/etwalletxyz" target="_blank"
+              >@ETWallet</a
             >
           </p>
         </div>

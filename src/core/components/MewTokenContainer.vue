@@ -69,7 +69,7 @@ export default {
      */
     name: {
       type: String,
-      default: 'MEW'
+      default: 'ETWallet'
     },
     /**
      * Token Icon img src
